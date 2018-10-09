@@ -36,7 +36,9 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
     <body>
         <%@include file="WEB-INF/jspf/cabecera.jspf" %>
         <%@include file="WEB-INF/jspf/navAdministrador.jspf" %>
-        <div class="conteiner-fluid">
+    <%@include file="WEB-INF/jspf/navAdministrador2.jspf" %>
+        <div id="page-content-wrapper container">
+        <div class="container-fluid bg-info">
 
             <section class="bg-info">
 
@@ -229,16 +231,19 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 
 
 
-
                 </div>
-
-
-
-
             </section>
-            <%@include file="WEB-INF/jspf/footer.jspf" %>
-            <%@include file="WEB-INF/jspf/jsfooter.jspf" %>
+                </div>
+<%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>
+ </div>
+            <%@include file="WEB-INF/jspf/jsfooter.jspf" %> 
+                    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
     </body>
 </html>
 

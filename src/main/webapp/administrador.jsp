@@ -28,13 +28,13 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/estilos.jspf" %>
-         <link href="css/simple-sidebar.css" rel="stylesheet">
+         
     </head>
 <body>
     <%@include file="WEB-INF/jspf/cabecera.jspf" %>
     <%@include file="WEB-INF/jspf/navAdministrador.jspf" %>
     <%@include file="WEB-INF/jspf/navAdministrador2.jspf" %>
-        <div id="page-content-wrapper conteiner">
+    <div id="page-content-wrapper container" >
             
                 <main role="main" class="bg-light">
 
