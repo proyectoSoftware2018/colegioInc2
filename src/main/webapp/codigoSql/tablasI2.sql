@@ -6,6 +6,7 @@ CREATE TABLE alumno (
   dnih varchar(20),
   direccionh varchar(200),
   grado varchar(80) ,
+  seccion varchar(10),
   sexoh varchar(20) ,
   departamento varchar(200) ,
   distrito varchar(200),
@@ -20,7 +21,7 @@ CREATE TABLE alumno (
   telefono int(11),
   contra varchar(60),
   estado int(11) 
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 create table profesor(
 usuario varchar(20) NOT NULL PRIMARY KEY,
@@ -29,17 +30,19 @@ apellido varchar(200),
 direccion varchar(200) ,
 ciudad varchar(40),
 edad int(11),
+grado varchar(80) ,
+seccion varchar(10),
 telefonoCasa int(20),
 telefonoMovil int(20),
 correo varchar(100),
 contraseña varchar(20),
 estado int(11)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 
 create table nota(
-idnota int(11) primary key AUTO_INCREMENT,
-usuarioA varchar(20),
-usuarioP varchar(20),
+idnota int(11) primary key,
+usuarioA varchar(20) KEY,
+usuarioP varchar(20) KEY,
 noral int(11),
 nprac int(11),
 ntrab int(11),
@@ -50,5 +53,5 @@ prome double,
 estado int(11),
 CONSTRAINT alumno_foreana1 FOREIGN KEY (usuarioA) REFERENCES alumno(usuario) ON DELETE RESTRICT,
 CONSTRAINT alumno_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 

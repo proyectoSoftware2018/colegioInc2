@@ -5,7 +5,25 @@
     Author     : alumno
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+response.setHeader("Pragma", "no-cache");
+response.addHeader("Cache-control", "must-revalidate");
+response.addHeader("Cache-control", "no-cache");
+response.addHeader("Cache-control", "no-store");
+response.setDateHeader("Expires", 0);
+
+try{
+if(session.getAttribute("usuario")==null){
+request.getRequestDispatcher("index.jsp").forward(request, response);
+}   
+}catch(Exception e){
+request.getRequestDispatcher("index.jsp").forward(request, response);
+   
+}
+
+
+%>
 <!DOCTYPE html>
 <html>
     <%
@@ -29,18 +47,17 @@
         <%@include  file="WEB-INF/jspf/estilos.jspf" %>
     </head>
     <body>
+        <%@include  file="WEB-INF/jspf/cabecera.jspf" %>      
+        <%@include  file="WEB-INF/jspf/navAdministrador.jspf" %>
+        <div class="container-fluid">
 
-        
-            <%@include  file="WEB-INF/jspf/cabecera.jspf" %>      
-            <%@include  file="WEB-INF/jspf/navAdministrador.jspf" %>    
-            <div class="container-fluid">
             <section>
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-2">
 
                     </div>
                     <div class="col-12">
-                      
+                        <section>
                             <table class="table table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -77,10 +94,10 @@
 
                                 </tbody>
                             </table>
-                       
+                        </section>
 
                     </div>
-                    <div class="col-1">
+                    <div class="col-2">
 
                     </div>
 

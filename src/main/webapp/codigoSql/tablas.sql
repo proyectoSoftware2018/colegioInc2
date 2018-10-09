@@ -20,7 +20,7 @@ CREATE TABLE alumno (
   telefono int(11),
   contra varchar(60),
   estado int(11) 
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table profesor(
 usuario varchar(20) NOT NULL PRIMARY KEY,
@@ -34,7 +34,7 @@ telefonoMovil int(20),
 correo varchar(100),
 contraseña varchar(20),
 estado int(11)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table nota(
 usuarioA varchar(20) primary key,
@@ -48,5 +48,5 @@ exbi int(11),
 proce double,
 prome double,
 estado int(11)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

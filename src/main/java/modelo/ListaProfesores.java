@@ -58,13 +58,17 @@ public class ListaProfesores {
 
         }
     }
-    
-    public int buscar(String pro){
-        for(int i=0; i<lista.size();i++){
+    public int tama(){
+        return lista.size();
+    }
+    public Profesor buscar(String pro){
+        for(int i=0; i<tama();i++){
             if(lista.get(i).getCodigo().equalsIgnoreCase(pro)){
-                return lista.indexOf(lista.get(i));
+                
+                return lista.get(i);
+                
             }
         }
-        return -1;
+        return null;
     }
 }

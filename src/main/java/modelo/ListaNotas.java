@@ -63,13 +63,16 @@ public class ListaNotas {
         return lista.size();
     }
     
-    public int buscar(String alu){
+        public int buscarHijo(String usu){
+        
         for(int i=0; i<tama();i++){
-            if(lista.get(i).getAlumno().equalsIgnoreCase(alu)){
-                return lista.indexOf(lista.get(i));
+            if(lista.get(i).getAlumno().equalsIgnoreCase(usu)){
+                return i;
             }
         }
+        
         return -1;
     }
+    
     
 }

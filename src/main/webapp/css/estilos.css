@@ -21,6 +21,7 @@ header:hover{
 
 section{
     min-height: 500px;
+    width: 100%;
     padding: 50px;
 }
 
@@ -32,11 +33,19 @@ footer{
     width: 100%;
     padding-top: 40px;
     bottom: 0;
+    position: relative;
 }
 
-#pie{
-    position: relative;
-    height: 100px;
-    margin-top: -100px;
-    clear: both;
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 640px;
+    height: 120px;
+    margin-left: -320px;
+    margin-top: -60px;
+    font-size: 24px;
+    color: gray;
+    opacity: 0.4;
 }
