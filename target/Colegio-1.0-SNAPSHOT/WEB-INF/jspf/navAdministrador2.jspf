@@ -20,6 +20,7 @@
                     <a href="registroProfesor.jsp" class="list-group-item text-dark" data-parent="#menu2">Registrar Profesor</a>
                     <a href="repoprofe.do" class="list-group-item text-dark" data-parent="#menu2">Reporte Profesor</a>
                 </div>
+                
             </div>
         </ul>
     </div> 

@@ -32,19 +32,17 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
         <%@include  file="WEB-INF/jspf/estilos.jspf" %>
     </head>
     <body>
-        <%@include  file="WEB-INF/jspf/cabecera.jspf" %>      
-        <%@include  file="WEB-INF/jspf/navAdministrador.jspf" %>  
-        <div class="container-fluid">
+        <%@include  file="WEB-INF/jspf/cabecera.jspf" %>  
+         <%@include file="WEB-INF/jspf/navAdministrador.jspf" %>
+        <%@include file="WEB-INF/jspf/navAdministrador2.jspf" %>
 
-            <section>
-                <div class="row justify-content-center">
-                    <div class="col-2">
-
-                    </div>
-
-                    <div class="col-12 justify-content-center">
+        <div id="page-content-wrapper container">
+       
+        
+        <div class="container-fluid bg-light">
+                <div class="col-12" style="height: 100%">
                         <section>
-                            <table class="table table-hover">
+                            <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Cod.Usuario</th>
@@ -82,20 +80,22 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 
                         </section>
                     </div>
-
-                    <div class="col-2">
-
-                    </div>
-
-                </div>
-
-        </div>
-        <div class="py-3" style="text-align: center;">
+         <div class="py-3" style="text-align: center;">
             <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
         </div>
-    </section>
-    <%@include file="WEB-INF/jspf/footer.jspf" %> 
+        </div>
+        
+        <%@include file="WEB-INF/jspf/footer.jspf" %>
+        </div>
+    </div>
+
     <%@include file="WEB-INF/jspf/jsfooter.jspf" %> 
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 
 </body>
 </html>
