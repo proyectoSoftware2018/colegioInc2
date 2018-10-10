@@ -30,21 +30,22 @@ public class ListaAlumnos {
                String dnih =rs.getString(4);
                String direh =rs.getString(5);
                String grado =rs.getString(6);
-               String sexoh =rs.getString(7);
-               String depa =rs.getString(8);
-               String dis =rs.getString(9);
-               String obs =rs.getString(10);
-               int edad = rs.getInt(11);
-               String nomp =rs.getString(12);
-               String apep =rs.getString(13);
-               String dnip =rs.getString(14);
-               String direp =rs.getString(15);
-               String estaCi =rs.getString(16);
-               String sexop =rs.getString(17);
-               int tel = rs.getInt(18);
-               String contra =rs.getString(19);
+               String seccion = rs.getString(7);
+               String sexoh =rs.getString(8);
+               String depa =rs.getString(9);
+               String dis =rs.getString(10);
+               String obs =rs.getString(11);
+               int edad = rs.getInt(12);
+               String nomp =rs.getString(13);
+               String apep =rs.getString(14);
+               String dnip =rs.getString(15);
+               String direp =rs.getString(16);
+               String estaCi =rs.getString(17);
+               String sexop =rs.getString(18);
+               int tel = rs.getInt(19);
+               String contra =rs.getString(20);
                
-               Alumno a = new Alumno(grado, sexoh, nomh, apeh, depa, direh, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip, direp, edad, tel);
+               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, direh, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip, direp, edad, tel);
                lista.add(a);
             }
             return lista;

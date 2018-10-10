@@ -13,7 +13,7 @@ public class Conexion {
     public static final String driver="com.mysql.jdbc.Driver";
     public static final String user="root";
     public static final String pass="12345678";
-    public static final String url = "jdbc:mysql://localhost:3306/colegio";
+    public static final String url = "jdbc:mysql://localhost:3306/colegio123";
    
     /*
    //conexion openshift

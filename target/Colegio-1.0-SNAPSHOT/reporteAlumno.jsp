@@ -39,17 +39,18 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
         <div id="page-content-wrapper container">
        
         
-        <div class="container-fluid bg-light">
+        <div class="row bg-light">
                 <div class="col-12" style="height: 100%">
                         <section>
                             <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Cod.Usuario</th>
-                                        <th>Nombre del alumno</th>
+                                        <th style="text-align: center;">Nombre del alumno</th>
                                         <th>Dirección</th>
                                         <th>Sexo</th>
                                         <th>Grado</th>
+                                        <th>Sección</th>
                                         <th>Edad</th>
                                         <th>Dni</th>
                                         <th>Padre</th>
@@ -66,6 +67,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                             <td>${lista.direccionh}</td>
                                             <td>${lista.sexoh}</td>
                                             <td>${lista.grado}</td>
+                                            <td>${lista.seccion}</td>
                                             <td>${lista.edadh}</td>
                                             <td>${lista.dnih}</td>
                                             <td>${lista.nombrep} ${lista.apellidop}</td>
@@ -80,9 +82,9 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 
                         </section>
                     </div>
-         <div class="py-3" style="text-align: center;">
-            <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
         </div>
+            <div class="py-3 bg-light" style="text-align: center;">
+            <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
         </div>
         
         <%@include file="WEB-INF/jspf/footer.jspf" %>

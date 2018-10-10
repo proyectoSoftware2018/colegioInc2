@@ -46,6 +46,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     <p class="card-text">Dirección: <% out.print(alu.getDireccionh());%></p>
                     <p class="card-text">edad: <% out.print(alu.getEdadh());%></p>
                     <p class="card-text">Grado: <% out.print(alu.getGrado());%></p>
+                    <p class="card-text">Sección: <% out.print(alu.getSeccion());%></p>
                     <p class="card-text">Sexo: <% out.print(alu.getSexoh());%></p>
                     <p class="card-text">---------------------------------------</p>
                     <p class="card-text">Padre: <% out.print(alu.getNombrep()+" "+alu.getApellidop());%></p>

@@ -4,6 +4,9 @@
     Author     : ALUMNO
 --%>
 
+<%@page import="modelo.Seccion"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="modelo.ListaSecciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -22,7 +25,8 @@
 
     }
 
-
+ ListaSecciones ls = new ListaSecciones();
+ LinkedList<Seccion> li = ls.select();
 %>
 <!DOCTYPE html>
 <html>
@@ -174,9 +178,10 @@
                                             <div class="form-group col-md-4 col-lg-4">
                                                 <label for="inputState">Sección:</label>
                                                 <select id="inputState" class="form-control" name="comboSe">
-                                                    <option selected value="0" >Seleccione:</option>
-                                                    <option value="A">Sección A</option>
-                                                    <option value="B">Sección B</option>
+                                                <% for(int i=0; i<li.size(); i++){ 
+                                                    out.print("<option value="+li.get(i).getNombre()+"> Sección "+li.get(i).getNombre()+"</option>");
+                                                }    
+                                                %>
                                                 </select>
                                             </div>
                                         </div>

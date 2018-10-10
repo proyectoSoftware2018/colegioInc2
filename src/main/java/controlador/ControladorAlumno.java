@@ -137,6 +137,13 @@ response.setContentType("text/html;charset=utf-8");
         String dish = request.getParameter("dish");
         String dnih = request.getParameter("dnih");
         String edadh = request.getParameter("edadh");
+        String secci = request.getParameter("comboSe");
+        if (secci.equalsIgnoreCase("0")) {
+            String error = "No selecciono ninguna Sección";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        }
+        
         String direh = request.getParameter("direh");
         String obseh = request.getParameter("obseh");
 
@@ -165,7 +172,7 @@ response.setContentType("text/html;charset=utf-8");
                     int te = Integer.parseInt(telef);
                     int ed = Integer.parseInt(edadh);
                     
-                    Alumno al = new Alumno(grado, sexoh, nomh, apeh, deph, dish, dnih, direh, obseh, usu, contra, estado, sexo, nombre, apellido, dnip, dire, ed, te);
+                    Alumno al = new Alumno(grado,secci ,sexoh, nomh, apeh, deph, dish, dnih, direh, obseh, usu, contra, estado, sexo, nombre, apellido, dnip, dire, ed, te);
                     if(al.insert()==true){
                     request.getSession().setAttribute("alumno", al);
                     request.getRequestDispatcher("inforAlumno.jsp").forward(request, response);
