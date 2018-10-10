@@ -91,7 +91,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     <p class="card-text">Modulo de las Secciones</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="repoprofe.do" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                            <a href="registroSeccion.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
+                                            <a href="reporteSeccion.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
                                         <small class="text-muted">Profesores</small>
                                     </div>

@@ -26,7 +26,8 @@
     }
 
  ListaSecciones ls = new ListaSecciones();
- LinkedList<Seccion> li = ls.select();
+ LinkedList<Seccion> li= ls.select();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -178,10 +179,17 @@
                                             <div class="form-group col-md-4 col-lg-4">
                                                 <label for="inputState">Sección:</label>
                                                 <select id="inputState" class="form-control" name="comboSe">
-                                                <% for(int i=0; i<li.size(); i++){ 
+                                                <% 
+                                                 if(li.size()==0){
+                                                   out.print("<option value="+0+">No Hay Sección </option>");  
+                                                 }else{
+                                                 for(int i=0; i<li.size(); i++){ 
                                                     out.print("<option value="+li.get(i).getNombre()+"> Sección "+li.get(i).getNombre()+"</option>");
-                                                }    
+                                                 } 
+                                                 }
+                                                 
                                                 %>
+                                                 
                                                 </select>
                                             </div>
                                         </div>

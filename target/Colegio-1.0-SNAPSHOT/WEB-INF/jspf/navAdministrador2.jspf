@@ -5,7 +5,7 @@
     <div id="sidebar-wrapper" class="bg-dark">
         <ul class="sidebar-nav navbar-nav mr-auto">
             <li class="sidebar-brand ">
-                <a href="#" class="text-white">
+                <a href="administrador.jsp" class="text-white">
                      INM. CONCEPCIÓN
                 </a>
             </li>

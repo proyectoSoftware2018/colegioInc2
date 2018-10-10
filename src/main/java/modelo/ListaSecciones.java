@@ -28,6 +28,8 @@ public class ListaSecciones {
                Seccion a = new Seccion(alu);
                lista.add(a);
             }
+            
+            
             return lista;
         } catch (Exception e) {
             System.out.println("error");

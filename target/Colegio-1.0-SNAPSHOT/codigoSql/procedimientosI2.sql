@@ -305,5 +305,12 @@ CREATE  PROCEDURE ConsultarSeccion ()  BEGIN
 select * from seccion;
 END$$
 
+DELIMITER $$
+CREATE  PROCEDURE InsertarSeccion (IN sec VARCHAR(20))  BEGIN
+insert into seccion values(sec);
+END$$
+
+
+
 
 

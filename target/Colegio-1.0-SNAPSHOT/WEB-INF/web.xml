@@ -53,6 +53,10 @@
         <servlet-name>repoNota</servlet-name>
         <servlet-class>controlador.repoNota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorSeccion</servlet-name>
+        <servlet-class>controlador.ControladorSeccion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -88,6 +92,10 @@
     <servlet-mapping>
         <servlet-name>repoNota</servlet-name>
         <url-pattern>/reponota.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorSeccion</servlet-name>
+        <url-pattern>/controladorseccion.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
