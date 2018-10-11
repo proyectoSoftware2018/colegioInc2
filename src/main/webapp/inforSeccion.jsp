@@ -39,7 +39,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
         <div class=" row justify-content-center py-3">
             <div class="card card-inverse col-12 col-lg-4 col-md-4 " style="background-color: #333; border-color: #333;">
                 <div class="card-block">
-                    <h3 class="card-title text-center">SECCION REGISTRADO CORRECTAMENTE:</h3><br>
+                    <h3 class="card-title text-center">SECCIÓN REGISTRADO CORRECTAMENTE:</h3><br>
                     <p class="card-text">Nombre de Sección: <% out.print(sec.getNombre());  %></p>
                     
                     <div style="text-align: center;">
@@ -48,6 +48,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                 </div>
             </div>
         </div>
+         <section></section>
         <%@include file="WEB-INF/jspf/footer.jspf" %>
         <%@include file="WEB-INF/jspf/jsfooter.jspf" %>
 

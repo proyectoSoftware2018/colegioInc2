@@ -4,6 +4,8 @@
     Author     : ALUMNO
 --%>
 
+<%@page import="modelo.Grado"%>
+<%@page import="modelo.ListaGrados"%>
 <%@page import="modelo.Seccion"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="modelo.ListaSecciones"%>
@@ -27,6 +29,8 @@
 
  ListaSecciones ls = new ListaSecciones();
  LinkedList<Seccion> li= ls.select();
+ ListaGrados ls2 = new ListaGrados();
+ LinkedList<Grado> li2 = ls2.select();
 
 %>
 <!DOCTYPE html>
@@ -125,13 +129,16 @@
                                             <div class="form-group col-md-4 col-lg-6">
                                                 <label for="inputState">Grado de estudio Primario:</label>
                                                 <select id="inputState" class="form-control" name="combo3">
-                                                    <option selected value="0" >Seleccione:</option>
-                                                    <option value="1">Primer Grado</option>
-                                                    <option value="2">Segundo Grado</option>
-                                                    <option value="3">Tercer Grado</option>
-                                                    <option value="4">Cuarto Grado</option>
-                                                    <option value="5">Quinto Grado</option>
-                                                    <option value="6">Sexto Grado</option>
+                                                 <% 
+                                                 if(li2.size()==0){
+                                                   out.print("<option value="+0+">No Hay Grados </option>");  
+                                                 }else{
+                                                 for(int i=0; i<li2.size(); i++){ 
+                                                    out.print("<option value="+li2.get(i).getNombre()+">"+li2.get(i).getNombre()+"</option>");
+                                                 } 
+                                                 }
+                                                 
+                                                %>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-4 col-lg-6">

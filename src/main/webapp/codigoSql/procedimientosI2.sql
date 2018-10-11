@@ -108,8 +108,8 @@ INTO
         apellidoh,
         dnih,
         direccionh,
-        grado,
-        seccion,
+        gradoa,
+        secciona,
         sexoh,
         departamento,
         distrito,
@@ -302,15 +302,54 @@ END$$
 
 DELIMITER $$
 CREATE  PROCEDURE ConsultarSeccion ()  BEGIN
-select * from seccion;
+select * from seccion
+where estado=0;
 END$$
 
 DELIMITER $$
 CREATE  PROCEDURE InsertarSeccion (IN sec VARCHAR(20))  BEGIN
-insert into seccion values(sec);
+insert into seccion values(sec,0);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarGrado (IN gra VARCHAR(20))  BEGIN
+insert into grado values(gra,0);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarGrado ()  BEGIN
+select * from grado
+where estado=0;
 END$$
 
 
+DELIMITER $$
+CREATE  PROCEDURE InsertarAula (
+IN gra VARCHAR(80),
+IN sec VARCHAR(20),
+IN pro VARCHAR(20),
+IN can int(11)
+)  BEGIN
+insert into aula(
+gradog,
+secciong,
+usuarioP,
+cantMax,
+estado
+) 
+values(
+gra,
+sec,
+pro,
+can,
+0
+);
+END$$
 
+DELIMITER $$
+CREATE  PROCEDURE ConsultarAula ()  BEGIN
+select * from aula
+where estado=0;
+END$$
 
 

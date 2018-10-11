@@ -4,7 +4,8 @@
     Author     : alumno
 --%>
 
-<%@page import="modelo.Seccion"%>
+
+<%@page import="modelo.Grado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 response.setHeader("Pragma", "no-cache");
@@ -25,7 +26,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 
 %>
 <!DOCTYPE html>
-<% Seccion sec = (Seccion) request.getSession().getAttribute("seccion");
+<% Grado gra = (Grado) request.getSession().getAttribute("grado");
 %>
 <html>
     <head>
@@ -39,8 +40,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
         <div class=" row justify-content-center py-3">
             <div class="card card-inverse col-12 col-lg-4 col-md-4 " style="background-color: #333; border-color: #333;">
                 <div class="card-block">
-                    <h3 class="card-title text-center">SECCIÓN REGISTRADO CORRECTAMENTE:</h3><br>
-                    <p class="card-text">Nombre de Sección: <% out.print(sec.getNombre());  %></p>
+                    <h3 class="card-title text-center">GRADO REGISTRADO CORRECTAMENTE:</h3><br>
+                    <p class="card-text">Nombre de Grado: <% out.print(gra.getNombre());  %></p>
                     
                     <div style="text-align: center;">
                         <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>

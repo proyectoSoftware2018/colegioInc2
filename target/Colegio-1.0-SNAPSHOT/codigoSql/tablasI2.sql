@@ -1,14 +1,17 @@
 create table seccion(
-seccion varchar(20) primary key
+seccion varchar(20) primary key,
+estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table grado(
-grado varchar(80) primary key
+grado varchar(80) primary key,
+estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table curso(
 codCurso varchar(20) primary key,
-nombre varchar(200)
+nombre varchar(200),
+estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -27,10 +30,11 @@ estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table aula(
-gradog varchar(80),
-secciong varchar(20),
+gradog varchar(80) UNIQUE,
+secciong varchar(20)UNIQUE,
 usuarioP varchar(20),
 cantMax int(11),
+estado int(11),
 CONSTRAINT profe_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT,
 CONSTRAINT secc_foreana2 FOREIGN KEY (secciong) REFERENCES seccion(seccion) ON DELETE RESTRICT,
 CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE RESTRICT
@@ -40,6 +44,7 @@ CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE
 create table asignacionCurso(
 cursod varchar(20) primary key,
 profesord varchar(20),
+estado int(11),
 CONSTRAINT curso_foreana1 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT,
 CONSTRAINT profesor_foreana1 FOREIGN KEY (profesord) REFERENCES profesor(usuario) ON DELETE RESTRICT
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

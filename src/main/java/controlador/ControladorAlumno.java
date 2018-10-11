@@ -82,38 +82,13 @@ response.setContentType("text/html;charset=utf-8");
         String dire = request.getParameter("direp");
 
         //ALUMNO
-        String combo3 = request.getParameter("combo3");
-        String grado = "";
-        if (combo3.equalsIgnoreCase("0")) {
+        String grado = request.getParameter("combo3");
+        if (grado.equalsIgnoreCase("0")) {
             String error = "No selecciono ningun Grado";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-        } else {
-            if (combo3.equalsIgnoreCase("1")) {
-                grado = "primerGrado";
-            } else {
-                if (combo3.equalsIgnoreCase("2")) {
-                    grado = "segundoGrado";
-                } else {
-                    if (combo3.equalsIgnoreCase("3")) {
-                        grado = "tercerGrado";
-                    } else {
-                        if (combo3.equalsIgnoreCase("4")) {
-                            grado = "cuartoGrado";
-                        } else {
-                            if (combo3.equalsIgnoreCase("5")) {
-                                grado = "quintoGrado";
-                            } else {
-                                if (combo3.equalsIgnoreCase("6")) {
-                                    grado = "sextoGrado";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
-
+        
         String combo4 = request.getParameter("combo4");
         String sexoh = "";
 

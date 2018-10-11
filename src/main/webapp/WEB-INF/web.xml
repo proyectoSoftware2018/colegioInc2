@@ -57,6 +57,14 @@
         <servlet-name>ControladorSeccion</servlet-name>
         <servlet-class>controlador.ControladorSeccion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorGrado</servlet-name>
+        <servlet-class>controlador.ControladorGrado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorAula</servlet-name>
+        <servlet-class>controlador.ControladorAula</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -96,6 +104,14 @@
     <servlet-mapping>
         <servlet-name>ControladorSeccion</servlet-name>
         <url-pattern>/controladorseccion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorGrado</servlet-name>
+        <url-pattern>/controladorgrado.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAula</servlet-name>
+        <url-pattern>/controladoraula.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
