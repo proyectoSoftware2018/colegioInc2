@@ -65,6 +65,10 @@
         <servlet-name>ControladorAula</servlet-name>
         <servlet-class>controlador.ControladorAula</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorCurso</servlet-name>
+        <servlet-class>controlador.ControladorCurso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -112,6 +116,10 @@
     <servlet-mapping>
         <servlet-name>ControladorAula</servlet-name>
         <url-pattern>/controladoraula.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorCurso</servlet-name>
+        <url-pattern>/controladorcurso.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

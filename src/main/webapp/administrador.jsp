@@ -109,7 +109,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                             <a href="registroGrado.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
                                             <a href="reporteGrado.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
-                                        <small class="text-muted">Profesores</small>
+                                        <small class="text-muted">Grados</small>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +124,36 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                             <a href="registroAulas.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
                                             <a href="reporteGrado.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
-                                        <small class="text-muted">Profesores</small>
+                                        <small class="text-muted">Aulas</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"  alt="cursos" style="height: 100%; width: 100%; display: block;" src="img/libro.png" data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Modulo de los Curso</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="registroCurso.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
+                                            <a href="reporteCurso.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                        </div>
+                                        <small class="text-muted">Curso</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"  alt="Asignacion de cursos" style="height: 100%; width: 100%; display: block;" src="img/asignacion.png" data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Modulo de los Asignación de Cursos</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="registroCurso.jsp" class="btn btn-sm btn-outline-secondary">Registrar Asignación</a>
+                                        </div>
+                                        <small class="text-muted">Asignación</small>
                                     </div>
                                 </div>
                             </div>

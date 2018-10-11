@@ -352,4 +352,11 @@ select * from aula
 where estado=0;
 END$$
 
+DELIMITER $$
+CREATE  PROCEDURE InsertarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  BEGIN
+insert into curso(codCurso, nombre, estado) values(cod,nom,0);
+END$$
+
+call InsertarCurso('A','MATE')
+
 
