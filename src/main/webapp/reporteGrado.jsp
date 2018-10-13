@@ -75,8 +75,9 @@
             </div>
             <div class="py-3 bg-light" style="text-align: center;">
                     <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
+                    <section></section>
             </div>
-
+                             
             <%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>
     </div>

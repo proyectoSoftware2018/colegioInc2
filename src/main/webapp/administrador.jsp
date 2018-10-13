@@ -3,7 +3,11 @@
     Created on : 09/10/2018, 12:56:16 AM
     Author     : KandL
 --%>
-
+<%@page import="modelo.Grado"%>
+<%@page import="modelo.ListaGrados"%>
+<%@page import="modelo.Seccion"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="modelo.ListaSecciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -22,7 +26,10 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
    
 }
 
-
+ ListaSecciones ls = new ListaSecciones();
+ LinkedList<Seccion> li= ls.select();
+ ListaGrados ls2 = new ListaGrados();
+ LinkedList<Grado> li2 = ls2.select();
 %>
 <html>
     <head>
@@ -61,7 +68,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                         <div class="btn-group">
 
                                             <a href="registroAlumno.jsp" class="btn btn-sm btn-outline-secondary" >Registrar</a>
-                                            <a href="repoalumno.do" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                            <a href="#ventana1" class="btn btn-sm btn-outline-secondary"  data-toggle="modal">Listar</a>
 
                                         </div>
                                         <small class="text-muted">alumnos</small>
@@ -122,7 +129,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="registroAulas.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
-                                            <a href="reporteGrado.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                            <a href="reporteAula.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
                                         <small class="text-muted">Aulas</small>
                                     </div>
@@ -175,11 +182,68 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     </div>
                 </div>
             </div>
-        
+         
         </main>
+            <div class="modal fade" id="ventana1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+                            <h4 class="modal-title text-center">SELECCIONE AULA</h4> 
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <form action="repoalumno.do" method="post">
+                        <div class="modal-body">
+                           <div class="form-row">
+                                    <div class="form-group col-md-6 col-lg-6">
+                                        <label for="inputState">Grado de estudio Primario:</label>
+                                        <select id="inputState" class="form-control" name="grado">
+                                            <%
+                                                if (li2.size() == 0) {
+                                                    out.print("<option value=" + 0 + ">No Hay Grados </option>");
+                                                } else {
+                                                    for (int i = 0; i < li2.size(); i++) {
+                                               %>
+                                                 <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option>
+                                                <%    }
+                                                }
+
+                                            %>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6 col-lg-6">
+                                        <label for="inputState">Sección:</label>
+                                        <select id="inputState" class="form-control" name="comboSe">
+                                            <%                                                    if (li.size() == 0) {
+                                                    out.print("<option value=" + 0 + ">No Hay Sección </option>");
+                                                } else {
+                                                    for (int i = 0; i < li.size(); i++) {
+                                                        out.print("<option value=" + li.get(i).getNombre() + "> Sección " + li.get(i).getNombre() + "</option>");
+                                                    }
+                                                }
+
+                                            %>
+
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" >Guardar</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
              <%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>
   
+        
+        
+        
+        
     </div>
 
     

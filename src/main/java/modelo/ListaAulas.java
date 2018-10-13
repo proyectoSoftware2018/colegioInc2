@@ -20,7 +20,7 @@ public class ListaAulas {
     
     public LinkedList<Aula> select() {
         try {
-            ps = conn.getConnection().prepareCall("call ConsultarGrado");
+            ps = conn.getConnection().prepareCall("call ConsultarAula");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) //Esta es la forma correcta de recorrer los valores obtenidos de una consulta
             {
@@ -32,8 +32,6 @@ public class ListaAulas {
                Aula a = new Aula(gra, sec, profe, cant);
                lista.add(a);
             }
-            
-            
             return lista;
         } catch (Exception e) {
             System.out.println("error");

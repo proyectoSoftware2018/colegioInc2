@@ -357,6 +357,12 @@ CREATE  PROCEDURE InsertarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  BEGIN
 insert into curso(codCurso, nombre, estado) values(cod,nom,0);
 END$$
 
-call InsertarCurso('A','MATE')
 
+DELIMITER $$
+CREATE  PROCEDURE ConsultarCurso ()  BEGIN
+select * from curso
+where estado=0;
+END$$
+
+call ConsultarCurso
 
