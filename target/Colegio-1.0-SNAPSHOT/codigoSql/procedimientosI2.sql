@@ -84,7 +84,7 @@ IN apeh VARCHAR(200),
 IN dnh VARCHAR(20), 
 IN direh VARCHAR(200), 
 IN grad varchar(80) ,
-IN sec varchar(10) ,
+IN sec varchar(20) ,
 IN sexh varchar(20) ,
 IN depa varchar(200) ,
 IN dis varchar(200),
@@ -100,8 +100,7 @@ IN tele int(11),
 IN pass varchar(60)
 )  
 BEGIN
-    INSERT
-INTO
+    INSERT INTO
     alumno(
         usuario,
         nombreh,
@@ -364,5 +363,5 @@ select * from curso
 where estado=0;
 END$$
 
-call ConsultarCurso
+
 

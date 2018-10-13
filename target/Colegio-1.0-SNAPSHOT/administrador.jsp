@@ -151,34 +151,6 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top"  alt="Asignacion de cursos" style="height: 100%; width: 100%; display: block;" src="img/asignacion.png" data-holder-rendered="true">
-                                <div class="card-body">
-                                    <p class="card-text">Modulo de los Asignación de Cursos</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="registroCurso.jsp" class="btn btn-sm btn-outline-secondary">Registrar Asignación</a>
-                                        </div>
-                                        <small class="text-muted">Asignación</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top"  alt="notas" style="height: 100%; width: 100%; display: block;" src="img/nota.png" data-holder-rendered="true">
-                                <div class="card-body">
-                                    <p class="card-text">Notas del Alumno</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="reponota.do" class="btn btn-sm btn-outline-secondary"  >Listar</a>
-                                        </div>
-                                        <small class="text-muted">notas</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
                     </div>
                 </div>
             </div>
@@ -213,7 +185,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Sección:</label>
-                                        <select id="inputState" class="form-control" name="comboSe">
+                                        <select id="inputState" class="form-control" name="sec">
                                             <%                                                    if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Sección </option>");
                                                 } else {
@@ -230,8 +202,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                         </div>
                         
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary" >Guardar</button>
+                             <button type="submit" class="btn btn-primary" >Ver</button>
+                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                         </form>
                     </div>

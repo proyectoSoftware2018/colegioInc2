@@ -134,8 +134,9 @@
                                                    out.print("<option value="+0+">No Hay Grados </option>");  
                                                  }else{
                                                  for(int i=0; i<li2.size(); i++){ 
-                                                    out.print("<option value="+li2.get(i).getNombre()+">"+li2.get(i).getNombre()+"</option>");
-                                                 } 
+                                                 %>
+                                                 <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option>
+                                                 <%} 
                                                  }
                                                  
                                                 %>

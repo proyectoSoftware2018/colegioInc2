@@ -83,4 +83,14 @@ public class ListaAlumnos {
         return null;
     }
     
+    public LinkedList<Alumno> reporteAlumno(String gra, String sec){
+        LinkedList<Alumno> lis = new LinkedList<>();
+        for(int i =0; i<tama();i++){
+         if(lista.get(i).getGrado().equalsIgnoreCase(gra) && lista.get(i).getSeccion().equalsIgnoreCase(sec) ){
+           lis.add(lista.get(i));
+        }   
+        }
+        
+        return lis;
+    }
 }

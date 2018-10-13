@@ -62,6 +62,7 @@
                             </div>
                             <form action="controladoraula.do" method="post">
                                 <div class="form-row">
+                                    
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Grado de estudio Primario:</label>
                                         <select id="inputState" class="form-control" name="grado">

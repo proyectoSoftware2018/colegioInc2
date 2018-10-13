@@ -33,9 +33,25 @@ public class repoAlumno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 response.setContentType("text/html;charset=UTF-8");
+
+        String grado = request.getParameter("grado");
+        if (grado.equalsIgnoreCase("0")) {
+            String error = "No selecciono ningun Grado";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        }
+        String secci = request.getParameter("sec");
+        if (secci.equalsIgnoreCase("0")) {
+            String error = "No selecciono ninguna Sección";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        }
+        
+        
         ListaAlumnos li = new ListaAlumnos();
-        LinkedList<Alumno> ve = li.select();
-        request.getSession().setAttribute("lista", ve);
+        LinkedList<Alumno> ve1 = li.select();
+        LinkedList<Alumno> ve2 = li.reporteAlumno(grado, secci);
+        request.getSession().setAttribute("lista", ve2);
         request.getRequestDispatcher("reporteAlumno.jsp").forward(request, response);
     }
 

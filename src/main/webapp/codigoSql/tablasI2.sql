@@ -30,8 +30,8 @@ estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table aula(
-gradog varchar(80) UNIQUE,
-secciong varchar(20)UNIQUE,
+gradog varchar(80),
+secciong varchar(20),
 usuarioP varchar(20),
 cantMax int(11),
 estado int(11),
