@@ -32,6 +32,7 @@ public class ControladorRN extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         String grado = request.getParameter("grado");
         String seccion = request.getParameter("seccion");
         String curso = request.getParameter("curso");
@@ -44,6 +45,7 @@ public class ControladorRN extends HttpServlet {
         request.getSession().setAttribute("cur", curso);
         request.getSession().setAttribute("lista", ve2);
         request.getRequestDispatcher("registroNota.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

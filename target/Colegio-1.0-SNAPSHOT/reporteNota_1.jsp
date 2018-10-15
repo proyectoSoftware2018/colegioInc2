@@ -1,3 +1,5 @@
+<%@page import="modelo.Curso"%>
+<%@page import="modelo.ListaCursos"%>
 <%@page import="modelo.Profesor"%>
 <%@page import="modelo.Alumno"%>
 <%@page import="modelo.Nota"%>
@@ -31,6 +33,12 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 }
 
 LinkedList<Nota> lis = (LinkedList<Nota>) request.getSession().getAttribute("notas");
+ListaCursos li1 = new ListaCursos();
+LinkedList<Curso> a = li1.select();
+ListaProfesores li2 = new ListaProfesores();
+LinkedList<Profesor> b = li2.select();
+ListaAlumnos li3 = new ListaAlumnos();
+LinkedList<Alumno> c = li3.select();
 %>
 <html>
 
@@ -57,7 +65,9 @@ LinkedList<Nota> lis = (LinkedList<Nota>) request.getSession().getAttribute("not
                                 <tr>
 
                                     <th>Alumno</th>
-                                    <th>profesor</th>
+                                    <th>Profesor</th>
+                                    <th>Curso</th>
+                                    <th>Bimestre</th>
                                     <th>Nota Oral</th>
                                     <th>Nota Prac</th>
                                     <th>Nota Trab</th>
@@ -72,8 +82,10 @@ LinkedList<Nota> lis = (LinkedList<Nota>) request.getSession().getAttribute("not
                            for(int i=0 ; i< lis.size(); i++){
                            %>
                            <tr>
-                               <td><%out.print(lis.get(i).getAlumno());%></td>
-                               <td><%out.print(lis.get(i).getProfesor());%></td>
+                               <td><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh()+" "+li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                               <td><%out.print(po.buscar(lis.get(i).getProfesor()).getNombre()+" "+po.buscar(lis.get(i).getProfesor()).getApellido());%></td>
+                               <td><%out.print(li1.buscar(lis.get(i).getCur()).getNombre());%></td>
+                               <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                <td><%out.print(lis.get(i).getNoral());%></td>
                                <td><%out.print(lis.get(i).getNprac());%></td>
                                <td><%out.print(lis.get(i).getNtrab());%></td>

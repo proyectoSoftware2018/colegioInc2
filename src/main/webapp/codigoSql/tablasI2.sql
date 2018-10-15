@@ -83,8 +83,12 @@ CONSTRAINT aula_fore2 FOREIGN KEY (secciona) REFERENCES aula(secciong) ON DELETE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table nota(
-usuarioA varchar(200),
-usuarioP varchar(200),
+usuarioA varchar(20),
+usuarioP varchar(20),
+cursod varchar(20),
+gradon varchar(80) ,
+seccionn varchar(10),
+bimestre varchar(10),
 noral int(11),
 nprac int(11),
 ntrab int(11),
@@ -93,6 +97,9 @@ exbi int(11),
 proce double,
 prome double,
 estado int(11),
+CONSTRAINT curso_forea2 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT,
 CONSTRAINT alumno_foreana1 FOREIGN KEY (usuarioA) REFERENCES alumno(usuario) ON DELETE RESTRICT,
-CONSTRAINT alumno_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT
+CONSTRAINT alumno_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT,
+CONSTRAINT aula_for1 FOREIGN KEY (gradon) REFERENCES aula(gradog) ON DELETE RESTRICT,
+CONSTRAINT aula_for2 FOREIGN KEY (seccionn) REFERENCES aula(secciong) ON DELETE RESTRICT
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

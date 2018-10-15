@@ -74,17 +74,17 @@
                                             </div>
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Grado:</label>
-                                        <input class="form-control text-center" readonly="readonly"  value="<%out.print(grado);%>" />
+                                        <input class="form-control text-center" readonly="readonly"  value="<%out.print(grado);%>" name="grado"/>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Area/Asignatura:</label>
-                                        <input style="visibility: hidden" value="<%out.print(curso);%>"  />
-                                        <input style="visibility: hidden" value="<%out.print(correo);%>"  />
+                                        <input style="visibility: hidden" value="<%out.print(curso);%>"  name="curso"/>
+                                        <input style="visibility: hidden" value="<%out.print(correo);%>" name="profe" />
                                         <input class="form-control text-center" readonly="readonly"  value="<%out.print(cur.buscar(curso).getNombre());%>"  />
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Sección:</label>
-                                        <input class="form-control text-center" readonly="readonly"  value="<%out.print(seccion);%>" />
+                                        <input class="form-control text-center" readonly="readonly"  value="<%out.print(seccion);%>" name="seccion"/>
                                     </div>
                                 </div>
                     
@@ -93,7 +93,7 @@
                         <a href="profesor.jsp" class="btn btn-danger">Cancelar</a>
                         <a href="profesor.jsp" class="btn btn-primary">ir al panel de control</a>
                     </div> 
-                    <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+                    <table class="table table-hover table-responsive">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Cod.Usuario</th>
@@ -113,15 +113,14 @@
                                     out.print("<tr>");
                             %>
                         <td><input class="alert alert-success" readonly="readonly" size="4" class="text-center" name="codi<%out.print(i);%>" type="text" value="<%out.print(l.get(i).getUsuario());%>" /></td>
-                        <td><input class="alert alert-success" readonly="readonly" size="30" class="text-center" name="alu<%out.print(i);%>" type="text" value="<%out.print(l.get(i).getNombreh() + " " + l.get(i).getApellidoh());%>"/></td>
-                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="ora<%out.print(i);%>" type="number" ng-model="a<%out.print(i);%>"/></td>
-                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="pra<%out.print(i);%>" type="number" ng-model="b<%out.print(i);%>"/></td>
-                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="tra<%out.print(i);%>" type="number" ng-model="c<%out.print(i);%>"/></td>
-                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="cua<%out.print(i);%>" type="number" ng-model="d<%out.print(i);%>"/></td>
+                        <td><input class="alert alert-success" readonly="readonly" size="30" class="text-center"  type="text" value="<%out.print(l.get(i).getNombreh() + " " + l.get(i).getApellidoh());%>"/></td>
+                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="ora<%out.print(i);%>" type="number" ng-model="a<%out.print(i);%>" ng-init="a<%out.print(i);%>=0"/></td>
+                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="pra<%out.print(i);%>" type="number" ng-model="b<%out.print(i);%>" ng-init="b<%out.print(i);%>=0"/></td>
+                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="tra<%out.print(i);%>" type="number" ng-model="c<%out.print(i);%>" ng-init="c<%out.print(i);%>=0"/></td>
+                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="cua<%out.print(i);%>" type="number" ng-model="d<%out.print(i);%>" ng-init="d<%out.print(i);%>=0"/></td>
                         <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="pro<%out.print(i);%>" type="number" value="{{(((a<%out.print(i);%>) + (b<%out.print(i);%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)}}"/></td>
-                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="bi<%out.print(i);%>" type="number"  ng-model="bi<%out.print(i);%>"/></td>
+                        <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="bi<%out.print(i);%>" type="number"  ng-model="bi<%out.print(i);%>" ng-init="bi<%out.print(i);%>=0"/></td>
                         <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="p<%out.print(i);%>" type="number" value="{{(((((a<%out.print(i);%>) + (b<%out.print(i);%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)) + bi<%out.print(i);%>) / 2}}" ng-init="0"/></td>
-                        <input style="visibility: hidden" name="profe<%out.print(i);%>" value="<%out.print(correo);%>">   
                         <%
                                 out.print("</tr>");
                             }

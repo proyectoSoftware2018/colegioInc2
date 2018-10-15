@@ -207,11 +207,14 @@ set estado = 1
 where usuario = usu;
 END$$
 
-
 DELIMITER $$
 CREATE PROCEDURE `InsertarNota` (
-IN alu VARCHAR(200), 
-IN profe VARCHAR(200), 
+IN alu VARCHAR(20), 
+IN profe VARCHAR(20),
+IN cur varchar(20),
+IN gra varchar(80) ,
+IN sec varchar(10), 
+IN bim varchar(10),
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -223,7 +226,11 @@ IN prom double
 insert into 
 nota(
 usuarioA, 
-usuarioP, 
+usuarioP,
+cursod,
+gradon,
+seccionn,
+bimestre, 
 noral, 
 nprac, 
 ntrab,
@@ -235,7 +242,11 @@ estado
 )
 values(
 alu,
-profe,  
+profe,
+cur,
+gra,
+sec,
+bim,  
 nor, 
 npra, 
 ntra,

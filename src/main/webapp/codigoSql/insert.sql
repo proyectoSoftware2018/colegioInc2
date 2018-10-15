@@ -19,11 +19,12 @@ INSERT INTO seccion (seccion, estado) VALUES
 ('B', 0);
 
 
-INSERT INTO asignacion (cursod, profesord, grad, seccio, estado) VALUES
-('COM', 'pro1', '1 Grado', 'A', 0);
 
 INSERT INTO aula (gradog, secciong, usuarioP, cantMax, estado) VALUES
 ('1 Grado', 'A', 'pro1', 26, 0),
 ('2 Grado', 'A', 'pro1', 34, 0);
+
+INSERT INTO asignacion (cursod, profesord, grad, seccio, estado) VALUES
+('COM', 'pro1', '1 Grado', 'A', 0);
 
 

@@ -60,7 +60,7 @@
             <div class="col-2"></div>
             <div class="col-8 justify-content-center">
                 <section>
-                    <form action="controladorrn.do" method="post">
+                    <form action="controladorrn.do" method="get">
                         <table class="table table-hover table-responsive-lg table-responsive-md">
                             <thead class="thead-dark">
                                 <tr>

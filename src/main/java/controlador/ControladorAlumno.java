@@ -32,7 +32,7 @@ public class ControladorAlumno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 response.setContentType("text/html;charset=utf-8");
-        // EL PADRE ISO-8859-1
+    
         String combo1 = request.getParameter("combo1");
         String estado = "";
 

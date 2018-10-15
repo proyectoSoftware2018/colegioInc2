@@ -26,15 +26,19 @@ public class ListaNotas {
             {
                String alu =rs.getString(1);
                String profe =rs.getString(2);
-               int nor = rs.getInt(3);
-               int nop = rs.getInt(4);
-               int not = rs.getInt(5);
-               int noc = rs.getInt(6);
-               int nob = rs.getInt(7);
-               double pro = rs.getDouble(8);
-               double prom = rs.getDouble(9);
+               String cur =rs.getString(3);
+               String gra =rs.getString(4);
+               String sec =rs.getString(5);
+               String bim =rs.getString(6);
+               int nor = rs.getInt(7);
+               int nop = rs.getInt(8);
+               int not = rs.getInt(9);
+               int noc = rs.getInt(10);
+               int nob = rs.getInt(11);
+               double pro = rs.getDouble(12);
+               double prom = rs.getDouble(13);
                         
-               Nota a = new Nota(alu, profe, nor, nop, not, noc, nob, pro, prom);
+               Nota a = new Nota(alu, profe, cur, gra, sec,bim, nor, nop, not, noc, nob, pro, prom);
                lista.add(a);
             }
             return lista;

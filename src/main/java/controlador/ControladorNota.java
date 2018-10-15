@@ -6,7 +6,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,12 +36,26 @@ public class ControladorNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        
         ListaAlumnos li = new ListaAlumnos();
         LinkedList<Alumno> ve = li.select();
         int tam = ve.size();
         boolean si=false;
+        
+        String profe = request.getParameter("profe");
+        String grado = request.getParameter("grado");
+        String secc = request.getParameter("seccion");
+        String curso = request.getParameter("curso");
+        String bimestre = request.getParameter("bimestre");
+        
+        if(bimestre.equals("0")){
+         String error = "No selecciono el Bimestre";
+         request.getSession().setAttribute("error", error);
+         request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
+        }
+        
         String alu[] = new String[tam];
-        String profe[] = new String[tam];
         String oral[] = new String[tam];
         String prac[] = new String[tam];
         String trab[] = new String[tam];
@@ -53,9 +66,8 @@ public class ControladorNota extends HttpServlet {
         ListaNotas no = new ListaNotas();
         
         for (int i = 0; i < tam; i++) {
-            
+ 
             alu[i] = request.getParameter("codi"+i);
-            profe[i] = request.getParameter("profe"+i);
             oral[i] = request.getParameter("ora"+i);
             prac[i] = request.getParameter("pra"+i);
             trab[i] = request.getParameter("tra"+i);
@@ -63,6 +75,28 @@ public class ControladorNota extends HttpServlet {
             proc[i] = request.getParameter("pro"+i);
             bime[i] = request.getParameter("bi"+i);
             prome[i] = request.getParameter("p"+i);
+           
+            if(oral[i].equals("")){
+              oral[i] = "0";  
+            }
+            if(prac[i].equals("")){
+              prac[i] = "0";  
+            }
+            if(trab[i].equals("")){
+              trab[i] = "0";  
+            }
+            if(cuad[i].equals("")){
+              cuad[i] = "0";  
+            }
+            if(proc[i].equals("")){
+              proc[i] = "0";  
+            }
+            if(bime[i].equals("")){
+              bime[i] = "0";  
+            }
+            if(prome[i].equals("")){
+              prome[i] = "0";  
+            }
 
           // ya mira te acuerdas de esto
             
@@ -74,8 +108,8 @@ public class ControladorNota extends HttpServlet {
                 request.getSession().setAttribute("error", error);
                 request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
                 }else{ 
-                 
-                  Nota not = new Nota(alu[i], profe[i], Integer.parseInt(oral[i]), Integer.parseInt(prac[i]), Integer.parseInt(trab[i]), Integer.parseInt(cuad[i]), Integer.parseInt(bime[i]), Math.round(Double.parseDouble(proc[i])),Math.round(Double.parseDouble(prome[i])));
+                
+                  Nota not = new Nota(alu[i], profe,curso,grado,secc,bimestre,Integer.parseInt(oral[i]), Integer.parseInt(prac[i]), Integer.parseInt(trab[i]), Integer.parseInt(cuad[i]), Integer.parseInt(bime[i]), Math.round(Double.parseDouble(proc[i])),Math.round(Double.parseDouble(prome[i])));
                   //esto no insertaba te acuerdas responde Si
                   //ya mira parece que el problema era en esto lo he puesto afuera del for
                   //parece que no lo reconocia y me mandaba error pero ahora si mira
