@@ -1,8 +1,10 @@
 
+<%@page import="modelo.Curso"%>
+<%@page import="modelo.ListaCursos"%>
 <%@page import="modelo.Profesor"%>
 <%@page import="modelo.ListaProfesores"%>
-<%@page import="modelo.Aula"%>
-<%@page import="modelo.ListaAulas"%>
+<%@page import="modelo.Asignacion"%>
+<%@page import="modelo.ListaAsignaciones"%>
 <%@page import="java.util.LinkedList"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -29,12 +31,15 @@
 
     }
 
- ListaAulas ls = new ListaAulas();
- LinkedList<Aula> li= ls.select();
-  ListaProfesores po = new ListaProfesores();
+ ListaAsignaciones ls = new ListaAsignaciones();
+ LinkedList<Asignacion> li= ls.select();
+ ListaProfesores po = new ListaProfesores();
 LinkedList<Profesor> po1 = po.select();
+ListaCursos cur = new ListaCursos();
+LinkedList<Curso> cur1 = cur.select();
+ 
  if(li==null){
-     String error = "No hay ningun dato de secciones";
+     String error = "No hay ningun dato de asignaciones";
      request.getSession().setAttribute("error", error);
      request.getRequestDispatcher("errorAdmi").forward(request, response);
  }
@@ -60,8 +65,8 @@ LinkedList<Profesor> po1 = po.select();
                                 <tr>
                                     <th style="text-align: center">Nombre de Grado</th>
                                     <th style="text-align: center">Nombre de Sección</th>
-                                    <th style="text-align: center">Tutor</th>
-                                    <th style="text-align: center">Cantidad Maxima</th>
+                                    <th style="text-align: center">Profesor</th>
+                                    <th style="text-align: center">Curso</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,8 +77,8 @@ LinkedList<Profesor> po1 = po.select();
                                  %>
                             <td style="text-align: center"><%out.print(li.get(i).getGrado());%> </td>
                             <td style="text-align: center"><%out.print(li.get(i).getSeccion());%> </td>
-                            <td style="text-align: center"><%out.print(po.buscar(li.get(i).getProfesor()).getNombre()+" "+po.buscar(li.get(i).getProfesor()).getApellido());%>  </td>
-                            <td style="text-align: center"><%out.print(li.get(i).getCantMax());%> </td>
+                            <td style="text-align: center"><%out.print(po.buscar(li.get(i).getProfesor()).getNombre()+" "+po.buscar(li.get(i).getProfesor()).getApellido());%> </td>
+                            <td style="text-align: center"><%out.print(cur.buscar(li.get(i).getCurso()).getNombre());%></td>
                             <%
                               out.print("</tr>");    
                              }%>

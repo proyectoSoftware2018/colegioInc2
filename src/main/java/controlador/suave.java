@@ -7,19 +7,16 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.ListaNotas;
-import modelo.Nota;
 
 /**
  *
  * @author KandL
  */
-public class repoNota extends HttpServlet {
+public class suave extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +30,13 @@ public class repoNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ListaNotas li = new ListaNotas();
-        LinkedList<Nota> ve = li.select();
-        request.getSession().setAttribute("notas", ve);
-        request.getRequestDispatcher("reporteNota_1.jsp").forward(request, response);
+        
+        String va = request.getParameter("as");
+        if(va.equals("")){
+           va ="jaja"; 
+        }
+        request.getSession().setAttribute("error", va);
+          request.getRequestDispatcher("errorLogin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

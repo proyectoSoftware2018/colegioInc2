@@ -49,7 +49,7 @@ LinkedList<Profesor> po1 = po.select();
                 <div class="card-block">
                     <h3 class="card-title text-center">AULA REGISTRADO CORRECTAMENTE:</h3><br>
                     <p class="card-text">Grado y Sección: <% out.print(au.getGrado()+" "+au.getSeccion());  %></p>
-                    <p class="card-text">Profesor: <%out.print(po.buscar(au.getProfesor()).getNombre()+" "+po.buscar(au.getProfesor()).getApellido());%></p>
+                    <p class="card-text">Tutor: <%out.print(po.buscar(au.getProfesor()).getNombre()+" "+po.buscar(au.getProfesor()).getApellido());%></p>
                     <p class="card-text">Cantidad Maxima: <%out.print(au.getCantMax());%></p>
                     <div style="text-align: center;">
                         <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>

@@ -6,28 +6,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class ListaCursos {
+public class ListaAsignaciones {
     
-    public LinkedList<Curso> lista;
+    public LinkedList<Asignacion> lista;
     private Conexion conn;
     private PreparedStatement ps;
     
-    public ListaCursos(){
-        lista = new LinkedList<Curso>();
+    public ListaAsignaciones(){
+        lista = new LinkedList<Asignacion>();
         conn = new Conexion();
         ps = null;
     }
     
-    public LinkedList<Curso> select() {
+    public LinkedList<Asignacion> select() {
         try {
-            ps = conn.getConnection().prepareCall("call ConsultarCurso");
+            ps = conn.getConnection().prepareCall("call ConsultarAsignacion");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) //Esta es la forma correcta de recorrer los valores obtenidos de una consulta
             {
-               String cod =rs.getString(1);
-               String cur =rs.getString(2);
+               String cur =rs.getString(1);
+               String pro =rs.getString(2);
+               String gra =rs.getString(3);
+               String sec =rs.getString(4);
                
-               Curso a = new Curso(cod, cur);
+               Asignacion a = new Asignacion(gra, sec, pro, cur);
                lista.add(a);
             }
             return lista;
@@ -56,15 +58,15 @@ public class ListaCursos {
         return lista.size();
     }
     
-    public Curso buscar(String cur){
-        for(int i=0; i<tama();i++){
-            if(lista.get(i).getCodigo().equalsIgnoreCase(cur)){
-                
-                return lista.get(i);
-                
-            }
+        public LinkedList<Asignacion> registro(String profe){
+        LinkedList<Asignacion> lis = new LinkedList<>();
+        for(int i =0; i<tama();i++){
+         if(lista.get(i).getProfesor().equalsIgnoreCase(profe)){
+           lis.add(lista.get(i));
+        }   
         }
-        return null;
+        
+        return lis;
     }
     
     

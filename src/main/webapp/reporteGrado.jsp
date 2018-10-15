@@ -50,7 +50,7 @@
                 <div class="col-4"></div>
                 <div class="col-4">
                     <section>
-                        <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+                        <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Nombre del Grado</th>

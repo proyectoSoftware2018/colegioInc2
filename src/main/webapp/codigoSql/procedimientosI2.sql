@@ -207,11 +207,11 @@ set estado = 1
 where usuario = usu;
 END$$
 
+
 DELIMITER $$
 CREATE PROCEDURE `InsertarNota` (
-IN usu VARCHAR(20), 
-IN nom VARCHAR(200), 
-IN ape VARCHAR(200), 
+IN alu VARCHAR(200), 
+IN profe VARCHAR(200), 
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -223,8 +223,7 @@ IN prom double
 insert into 
 nota(
 usuarioA, 
-nombre, 
-apellido, 
+usuarioP, 
 noral, 
 nprac, 
 ntrab,
@@ -235,9 +234,8 @@ prome,
 estado
 )
 values(
-usu,
-nom, 
-ape, 
+alu,
+profe,  
 nor, 
 npra, 
 ntra,
@@ -252,9 +250,8 @@ END$$
 
 DELIMITER $$
 CREATE  PROCEDURE `ModificarNota` (
-IN usu VARCHAR(20), 
-IN nom VARCHAR(200), 
-IN ape VARCHAR(200), 
+IN alu VARCHAR(200), 
+IN profe VARCHAR(200), 
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -265,9 +262,7 @@ IN prom double
 )  BEGIN
 
 UPDATE nota
-SET  
-nombre=nom, 
-apellido=ape, 
+SET   
 noral=nor, 
 nprac=npra, 
 ntrab=ntra,
@@ -362,6 +357,30 @@ CREATE  PROCEDURE ConsultarCurso ()  BEGIN
 select * from curso
 where estado=0;
 END$$
+
+
+
+
+
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarAsignacion (
+IN cur VARCHAR(20),
+IN pro VARCHAR(200),
+IN gra VARCHAR(80),
+IN sec VARCHAR(20)
+)  BEGIN
+insert into asignacion(cursod, profesord, grad,seccio,estado) 
+values(cur,pro,gra,sec,0);
+END$$
+
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarAsignacion ()  BEGIN
+select * from asignacion
+where estado=0;
+END$$
+
 
 
 

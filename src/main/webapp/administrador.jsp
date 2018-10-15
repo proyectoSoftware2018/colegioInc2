@@ -101,7 +101,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                             <a href="registroSeccion.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
                                             <a href="reporteSeccion.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
-                                        <small class="text-muted">Profesores</small>
+                                        <small class="text-muted">Secciones</small>
                                     </div>
                                 </div>
                             </div>
@@ -147,6 +147,21 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                             <a href="reporteCurso.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
                                         </div>
                                         <small class="text-muted">Curso</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"  alt="Asignacion" style="height: 100%; width: 100%; display: block;" src="img/asignacion.png" data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Modulo de los Asignaciones</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="registroAsignacion.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
+                                            <a href="reporteAsignacion.jsp" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                        </div>
+                                        <small class="text-muted">Asignacion</small>
                                     </div>
                                 </div>
                             </div>

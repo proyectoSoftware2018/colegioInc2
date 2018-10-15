@@ -24,15 +24,15 @@ public class ListaNotas {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) //Esta es la forma correcta de recorrer los valores obtenidos de una consulta
             {
-               String alu =rs.getString(2);
-               String profe =rs.getString(3);
-               int nor = rs.getInt(4);
-               int nop = rs.getInt(5);
-               int not = rs.getInt(6);
-               int noc = rs.getInt(7);
-               int nob = rs.getInt(8);
-               double pro = rs.getDouble(9);
-               double prom = rs.getDouble(10);
+               String alu =rs.getString(1);
+               String profe =rs.getString(2);
+               int nor = rs.getInt(3);
+               int nop = rs.getInt(4);
+               int not = rs.getInt(5);
+               int noc = rs.getInt(6);
+               int nob = rs.getInt(7);
+               double pro = rs.getDouble(8);
+               double prom = rs.getDouble(9);
                         
                Nota a = new Nota(alu, profe, nor, nop, not, noc, nob, pro, prom);
                lista.add(a);

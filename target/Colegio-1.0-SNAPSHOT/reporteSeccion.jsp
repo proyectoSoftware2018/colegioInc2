@@ -48,9 +48,9 @@
         <div id="page-content-wrapper container">
             <div class="row bg-light">
                 <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-4 justify-content-center">
                     <section>
-                        <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+                        <table class="table table-hover ">
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Nombre de la Sección</th>

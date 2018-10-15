@@ -43,8 +43,6 @@ public class ControladorNota extends HttpServlet {
         boolean si=false;
         String alu[] = new String[tam];
         String profe[] = new String[tam];
-        String nom[] = new String[tam];
-        String ape[] = new String[tam];
         String oral[] = new String[tam];
         String prac[] = new String[tam];
         String trab[] = new String[tam];
@@ -58,8 +56,6 @@ public class ControladorNota extends HttpServlet {
             
             alu[i] = request.getParameter("codi"+i);
             profe[i] = request.getParameter("profe"+i);
-            nom[i] = request.getParameter("nom"+i);
-            ape[i] = request.getParameter("ape"+i);
             oral[i] = request.getParameter("ora"+i);
             prac[i] = request.getParameter("pra"+i);
             trab[i] = request.getParameter("tra"+i);
@@ -69,13 +65,7 @@ public class ControladorNota extends HttpServlet {
             prome[i] = request.getParameter("p"+i);
 
           // ya mira te acuerdas de esto
-            if (alu[i].equals("") || nom[i].equals("") || ape[i].equals("") || oral[i].equals("") || prac[i].equals("") || trab[i].equals("")
-                    || cuad[i].equals("") || proc[i].equals("") || bime[i].equals("") || prome[i].equals("")) {
-                
-                String error = "Debera de completar todos los campos";
-                request.getSession().setAttribute("error", error);
-                request.getRequestDispatcher("errorProfe.jsp").forward(request, response);
-            }else{
+            
                 
             
                 if(EsNumero.validar(oral[i])==false || EsNumero.validar(prac[i])==false || EsNumero.validar(trab[i])==false
@@ -96,14 +86,14 @@ public class ControladorNota extends HttpServlet {
                   si = true;
                   }
                }
-           }
+           
     }
         
         
         if(si==true){
           LinkedList<Nota> lis = no.select();
           request.getSession().setAttribute("notas", lis);
-          request.getRequestDispatcher("reporteNota.jsp").forward(request, response);  
+          request.getRequestDispatcher("reporteNota_1.jsp").forward(request, response);  
         }else{
           request.getRequestDispatcher("errorProfe.jsp").forward(request, response);  
         }

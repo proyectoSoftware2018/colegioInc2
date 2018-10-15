@@ -1,4 +1,6 @@
 
+<%@page import="modelo.Profesor"%>
+<%@page import="modelo.ListaProfesores"%>
 <%@page import="modelo.Aula"%>
 <%@page import="modelo.ListaAulas"%>
 <%@page import="java.util.LinkedList"%>
@@ -29,7 +31,8 @@
 
  ListaAulas ls = new ListaAulas();
  LinkedList<Aula> li= ls.select();
- 
+  ListaProfesores po = new ListaProfesores();
+LinkedList<Profesor> po1 = po.select();
  if(li==null){
      String error = "No hay ningun dato de secciones";
      request.getSession().setAttribute("error", error);
@@ -49,15 +52,15 @@
 
         <div id="page-content-wrapper container">
             <div class="row bg-light">
-                <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-2"></div>
+                <div class="col-8 justify-content-center">
                     <section>
-                        <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+                        <table class="table table-hover table-responsive-lg table-responsive-md">
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Nombre de Grado</th>
                                     <th style="text-align: center">Nombre de Sección</th>
-                                    <th style="text-align: center">Profesor</th>
+                                    <th style="text-align: center">Tutor</th>
                                     <th style="text-align: center">Cantidad Maxima</th>
                                 </tr>
                             </thead>
@@ -69,7 +72,7 @@
                                  %>
                             <td style="text-align: center"><%out.print(li.get(i).getGrado());%> </td>
                             <td style="text-align: center"><%out.print(li.get(i).getSeccion());%> </td>
-                            <td style="text-align: center"><%out.print(li.get(i).getProfesor());%> </td>
+                            <td style="text-align: center"><%out.print(po.buscar(li.get(i).getProfesor()).getNombre()+" "+po.buscar(li.get(i).getProfesor()).getApellido());%>  </td>
                             <td style="text-align: center"><%out.print(li.get(i).getCantMax());%> </td>
                             <%
                               out.print("</tr>");    
@@ -79,7 +82,7 @@
                         </table>
                     </section>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-2"></div>
             </div>
             <div class="py-3 bg-light" style="text-align: center;">
                     <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>

@@ -69,6 +69,18 @@
         <servlet-name>ControladorCurso</servlet-name>
         <servlet-class>controlador.ControladorCurso</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorAsignacion</servlet-name>
+        <servlet-class>controlador.ControladorAsignacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorRN</servlet-name>
+        <servlet-class>controlador.ControladorRN</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>suave</servlet-name>
+        <servlet-class>controlador.suave</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -120,6 +132,18 @@
     <servlet-mapping>
         <servlet-name>ControladorCurso</servlet-name>
         <url-pattern>/controladorcurso.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorAsignacion</servlet-name>
+        <url-pattern>/controladorasignacion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorRN</servlet-name>
+        <url-pattern>/controladorrn.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>suave</servlet-name>
+        <url-pattern>/suave.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

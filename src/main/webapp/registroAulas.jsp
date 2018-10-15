@@ -98,7 +98,7 @@
 
                                 <div class="form-row">
                                   <div class="form-group col-md-9 col-lg-9">
-                                        <label for="inputState">Lista de Profesores:</label>
+                                        <label for="inputState">Tutor:</label>
                                         <select id="inputState" class="form-control" name="comboPro">
                                             <%     if (li3.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Profesores </option>");

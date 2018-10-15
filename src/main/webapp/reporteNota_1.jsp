@@ -30,12 +30,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
    
 }
 
-LinkedList<Nota> li = (LinkedList<Nota>) request.getSession().getAttribute("notas");
-ListaAlumnos al = new ListaAlumnos();
-LinkedList<Alumno> alu = al.select();
-
-ListaProfesores po = new ListaProfesores();
-LinkedList<Profesor> po1 = po.select();
+LinkedList<Nota> lis = (LinkedList<Nota>) request.getSession().getAttribute("notas");
 %>
 <html>
 
@@ -73,22 +68,22 @@ LinkedList<Profesor> po1 = po.select();
                                 </tr>
                             </thead>
                             <tbody>
+                           <%
+                           for(int i=0 ; i< lis.size(); i++){
+                           %>
+                           <tr>
+                               <td><%out.print(lis.get(i).getAlumno());%></td>
+                               <td><%out.print(lis.get(i).getProfesor());%></td>
+                               <td><%out.print(lis.get(i).getNoral());%></td>
+                               <td><%out.print(lis.get(i).getNprac());%></td>
+                               <td><%out.print(lis.get(i).getNtrab());%></td>
+                               <td><%out.print(lis.get(i).getNcuad());%></td>
+                               <td><%out.print(lis.get(i).getProce());%></td>
+                               <td><%out.print(lis.get(i).getExabi());%></td>
+                               <td><%out.print(lis.get(i).getPromedio());%></td>
+                           </tr>
+                           <%}%>
 
-                                <c:forEach var="lista" items="${sessionScope.notas}">
-                                    <tr>
-                                        <%for(int i=0; i<li.size(); i++){%>
-                                        <td><%out.print(al.buscar(li.get(i).getAlumno()).getNombreh()+" "+al.buscar(li.get(i).getAlumno()).getApellidoh());%> </td>
-                                        <td><%out.print(po.buscar(li.get(i).getProfesor()).getNombre()+" "+po.buscar(li.get(i).getProfesor()).getApellido());%> </td>
-                                        <%}%>
-                                        <td>${lista.noral}</td>
-                                        <td>${lista.nprac}</td>
-                                        <td>${lista.ntrab}</td>
-                                        <td>${lista.ncuad}</td>
-                                        <td>${lista.proce}</td>
-                                        <td>${lista.exabi}</td>
-                                        <td>${lista.promedio}</td>
-                                    </tr>
-                                </c:forEach>
 
                             </tbody>
                         </table>
@@ -99,12 +94,12 @@ LinkedList<Profesor> po1 = po.select();
                     </div>
 
                 </div>
-
+           </section>
         </div>
         <div class="py-3" style="text-align: center;">
             <a href="profesor.jsp" class="btn btn-primary">ir al panel de control</a>
         </div>
-    </section>
+  
     <%@include file="WEB-INF/jspf/footer.jspf" %> 
     <%@include file="WEB-INF/jspf/jsfooter.jspf" %> 
 

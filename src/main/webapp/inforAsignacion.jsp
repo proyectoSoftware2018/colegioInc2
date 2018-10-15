@@ -5,6 +5,9 @@
 --%>
 
 
+<%@page import="modelo.Asignacion"%>
+<%@page import="modelo.Curso"%>
+<%@page import="modelo.ListaCursos"%>
 <%@page import="modelo.Profesor"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.util.LinkedList"%>
@@ -31,9 +34,11 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 %>
 <!DOCTYPE html>
 <% 
-Aula au = (Aula) request.getSession().getAttribute("aula");
+Asignacion au = (Asignacion) request.getSession().getAttribute("asignacion");
 ListaProfesores po = new ListaProfesores();
 LinkedList<Profesor> po1 = po.select();
+ListaCursos cur = new ListaCursos();
+LinkedList<Curso> cur1 = cur.select();
 %>
 <html>
     <head>
@@ -47,10 +52,10 @@ LinkedList<Profesor> po1 = po.select();
         <div class=" row justify-content-center py-3">
             <div class="card card-inverse col-12 col-lg-4 col-md-4 " style="background-color: #333; border-color: #333;">
                 <div class="card-block">
-                    <h3 class="card-title text-center">AULA REGISTRADO CORRECTAMENTE:</h3><br>
+                    <h3 class="card-title text-center">ASIGNACIÓN REGISTRADO CORRECTAMENTE:</h3><br>
                     <p class="card-text">Grado y Sección: <% out.print(au.getGrado()+" "+au.getSeccion());  %></p>
-                    <p class="card-text">Tutor: <%out.print(po.buscar(au.getProfesor()).getNombre()+" "+po.buscar(au.getProfesor()).getApellido());%></p>
-                    <p class="card-text">Cantidad Maxima: <%out.print(au.getCantMax());%></p>
+                    <p class="card-text">Profesor: <%out.print(po.buscar(au.getProfesor()).getNombre()+" "+po.buscar(au.getProfesor()).getApellido());%></p>
+                    <p class="card-text">Curso: <%out.print(cur.buscar(au.getCurso()).getNombre());%></p>
                     <div style="text-align: center;">
                         <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
                     </div>

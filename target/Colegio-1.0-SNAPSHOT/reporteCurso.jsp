@@ -49,10 +49,10 @@
 
         <div id="page-content-wrapper container">
             <div class="row bg-light">
-                <div class="col-4"></div>
-                <div class="col-4">
+                <div class="col-2"></div>
+                <div class="col-8 justify-content-center">
                     <section>
-                        <table class="table table-hover table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xl">
+                        <table class="table table-hover table-responsive-lg table-responsive-md">
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Código del Curso</th>
@@ -75,7 +75,7 @@
                         </table>
                     </section>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-2"></div>
             </div>
             <div class="py-3 bg-light" style="text-align: center;">
                     <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
