@@ -60,7 +60,7 @@
             <div class="col-2"></div>
             <div class="col-8 justify-content-center">
                 <section>
-                    <form action="controladorrn.do" method="get">
+                    
                         <table class="table table-hover table-responsive-lg table-responsive-md">
                             <thead class="thead-dark">
                                 <tr>
@@ -76,6 +76,7 @@
                                     if(lis.size()==0){
                                 %>
                                 <tr>
+                            
                                     <td style="text-align: center">VACIO</td>
                                     <td style="text-align: center">VACIO</td>
                                     <td style="text-align: center">NADA</td>
@@ -90,11 +91,15 @@
                                 %>
                             <td style="text-align: center"><%out.print(lis.get(i).getGrado() + "  " + li.get(i).getSeccion());%> </td>
                             <td style="text-align: center"><%out.print(cur.buscar(lis.get(i).getCurso()).getNombre());%></td>
-                            <input style="visibility: hidden" name="grado" value="<%out.print(lis.get(i).getGrado());%>">
-                            <input style="visibility: hidden" name="seccion" value="<%out.print(lis.get(i).getSeccion());%>">
-                            <input style="visibility: hidden" name="curso" value="<%out.print(lis.get(i).getCurso());%>">
+                            
+                            
                             <td style="text-align: center">
+                                <form action="controladorrn.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(lis.get(i).getGrado());%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(lis.get(i).getSeccion());%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(lis.get(i).getCurso());%>">   
                                 <button type="submit" class="btn btn-success">Registrar</button>
+                                </form>
                             </td>
                             <td style="text-align: center">
                                <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -109,7 +114,7 @@
 
                             </tbody>
                         </table>
-                    </form>
+                   
                 </section>
             </div>
             <div class="col-2"></div>

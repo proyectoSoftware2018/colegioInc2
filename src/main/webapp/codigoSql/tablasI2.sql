@@ -51,7 +51,8 @@ estado int(11),
 CONSTRAINT curso_foreana1 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT,
 CONSTRAINT profesor_foreana1 FOREIGN KEY (profesord) REFERENCES profesor(usuario) ON DELETE RESTRICT,
 CONSTRAINT aula_fo3 FOREIGN KEY (grad) REFERENCES aula(gradog) ON DELETE RESTRICT,
-CONSTRAINT aula_fo4 FOREIGN KEY (seccio) REFERENCES aula(secciong) ON DELETE RESTRICT
+CONSTRAINT aula_fo4 FOREIGN KEY (seccio) REFERENCES aula(secciong) ON DELETE RESTRICT,
+PRIMARY KEY (cursod,grad, seccio)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
