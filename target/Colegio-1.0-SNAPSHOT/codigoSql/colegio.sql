@@ -1,6 +1,5 @@
 create database colegio;
-delete from nota
-call consultarnotas
+
 use colegio;
 
 CREATE TABLE alumno (

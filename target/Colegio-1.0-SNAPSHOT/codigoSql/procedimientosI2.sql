@@ -1,59 +1,3 @@
-create database colegio;
-delete from nota
-call consultarnotas
-use colegio;
-
-CREATE TABLE alumno (
-  usuario varchar(20) NOT NULL PRIMARY KEY,
-  nombreh varchar(200) ,
-  apellidoh varchar(200) ,
-  dnih varchar(20),
-  direccionh varchar(200),
-  grado varchar(80) ,
-  sexoh varchar(20) ,
-  departamento varchar(200) ,
-  distrito varchar(200),
-  obser text,
-  edad int(11),
-  nombrep varchar(200) ,
-  apellidop varchar(200) ,
-  dnip varchar(20),
-  direccionp varchar(200),
-  estadoCi varchar(80) ,
-  sexop varchar(20) ,
-  telefono int(11),
-  contra varchar(60),
-  estado int(11) 
-);
-
-create table profesor(
-usuario varchar(20) NOT NULL PRIMARY KEY,
-nombre varchar(200) ,
-apellido varchar(200),
-direccion varchar(200) ,
-ciudad varchar(40),
-edad int(11),
-telefonoCasa int(20),
-telefonoMovil int(20),
-correo varchar(100),
-contraseña varchar(20),
-estado int(11)
-);
-
-create table nota(
-usuarioA varchar(20) primary key,
-nombre varchar(200),
-apellido varchar(200),
-noral int(11),
-nprac int(11),
-ntrab int(11),
-ncuad int(11),
-exbi int(11),
-proce double,
-prome double,
-estado int(11)
-);
-
 DELIMITER $$
 CREATE PROCEDURE `InsertarProfesor` (
 IN `codigo` VARCHAR(20), 
@@ -140,6 +84,7 @@ IN apeh VARCHAR(200),
 IN dnh VARCHAR(20), 
 IN direh VARCHAR(200), 
 IN grad varchar(80) ,
+IN sec varchar(20) ,
 IN sexh varchar(20) ,
 IN depa varchar(200) ,
 IN dis varchar(200),
@@ -155,15 +100,15 @@ IN tele int(11),
 IN pass varchar(60)
 )  
 BEGIN
-    INSERT
-INTO
+    INSERT INTO
     alumno(
         usuario,
         nombreh,
         apellidoh,
         dnih,
         direccionh,
-        grado,
+        gradoa,
+        secciona,
         sexoh,
         departamento,
         distrito,
@@ -186,6 +131,7 @@ apeh,
 dnh, 
 direh, 
 grad  ,
+sec  ,
 sexh  ,
 depa  ,
 dis ,
@@ -263,9 +209,12 @@ END$$
 
 DELIMITER $$
 CREATE PROCEDURE `InsertarNota` (
-IN usu VARCHAR(20), 
-IN nom VARCHAR(200), 
-IN ape VARCHAR(200), 
+IN alu VARCHAR(20), 
+IN profe VARCHAR(20),
+IN cur varchar(20),
+IN gra varchar(80) ,
+IN sec varchar(10), 
+IN bim varchar(10),
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -277,8 +226,11 @@ IN prom double
 insert into 
 nota(
 usuarioA, 
-nombre, 
-apellido, 
+usuarioP,
+cursod,
+gradon,
+seccionn,
+bimestre, 
 noral, 
 nprac, 
 ntrab,
@@ -289,9 +241,12 @@ prome,
 estado
 )
 values(
-usu,
-nom, 
-ape, 
+alu,
+profe,
+cur,
+gra,
+sec,
+bim,  
 nor, 
 npra, 
 ntra,
@@ -306,9 +261,8 @@ END$$
 
 DELIMITER $$
 CREATE  PROCEDURE `ModificarNota` (
-IN usu VARCHAR(20), 
-IN nom VARCHAR(200), 
-IN ape VARCHAR(200), 
+IN alu VARCHAR(200), 
+IN profe VARCHAR(200), 
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -319,9 +273,7 @@ IN prom double
 )  BEGIN
 
 UPDATE nota
-SET  
-nombre=nom, 
-apellido=ape, 
+SET   
 noral=nor, 
 nprac=npra, 
 ntrab=ntra,
@@ -353,6 +305,92 @@ LIMIT 1;
 END$$
 
 
+DELIMITER $$
+CREATE  PROCEDURE ConsultarSeccion ()  BEGIN
+select * from seccion
+where estado=0;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarSeccion (IN sec VARCHAR(20))  BEGIN
+insert into seccion values(sec,0);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarGrado (IN gra VARCHAR(20))  BEGIN
+insert into grado values(gra,0);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarGrado ()  BEGIN
+select * from grado
+where estado=0;
+END$$
+
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarAula (
+IN gra VARCHAR(80),
+IN sec VARCHAR(20),
+IN pro VARCHAR(20),
+IN can int(11)
+)  BEGIN
+insert into aula(
+gradog,
+secciong,
+usuarioP,
+cantMax,
+estado
+) 
+values(
+gra,
+sec,
+pro,
+can,
+0
+);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarAula ()  BEGIN
+select * from aula
+where estado=0;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  BEGIN
+insert into curso(codCurso, nombre, estado) values(cod,nom,0);
+END$$
+
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarCurso ()  BEGIN
+select * from curso
+where estado=0;
+END$$
+
+
+
+
+
+
+DELIMITER $$
+CREATE  PROCEDURE InsertarAsignacion (
+IN cur VARCHAR(20),
+IN pro VARCHAR(200),
+IN gra VARCHAR(80),
+IN sec VARCHAR(20)
+)  BEGIN
+insert into asignacion(cursod, profesord, grad,seccio,estado) 
+values(cur,pro,gra,sec,0);
+END$$
+
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarAsignacion ()  BEGIN
+select * from asignacion
+where estado=0;
+END$$
 
 
 

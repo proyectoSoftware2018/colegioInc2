@@ -40,7 +40,7 @@ public class ControladorNota extends HttpServlet {
         
         ListaAlumnos li = new ListaAlumnos();
         LinkedList<Alumno> ve = li.select();
-        int tam = ve.size();
+        
         boolean si=false;
         
         String profe = request.getParameter("profe");
@@ -48,13 +48,9 @@ public class ControladorNota extends HttpServlet {
         String secc = request.getParameter("seccion");
         String curso = request.getParameter("curso");
         String bimestre = request.getParameter("bimestre");
-        
-        if(bimestre.equals("0")){
-         String error = "No selecciono el Bimestre";
-         request.getSession().setAttribute("error", error);
-         request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
-        }
-        
+        LinkedList<Alumno> listadea = li.reporteAlumno(grado, secc);
+        int tam = listadea.size();
+                
         String alu[] = new String[tam];
         String oral[] = new String[tam];
         String prac[] = new String[tam];
@@ -63,8 +59,13 @@ public class ControladorNota extends HttpServlet {
         String proc[] = new String[tam];
         String bime[] = new String[tam];
         String prome[] = new String[tam];
-        ListaNotas no = new ListaNotas();
-        
+
+        if(bimestre.equals("0")){
+         String error = "No selecciono el Bimestre";
+         request.getSession().setAttribute("error", error);
+         request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
+        }else{
+
         for (int i = 0; i < tam; i++) {
  
             alu[i] = request.getParameter("codi"+i);
@@ -75,33 +76,7 @@ public class ControladorNota extends HttpServlet {
             proc[i] = request.getParameter("pro"+i);
             bime[i] = request.getParameter("bi"+i);
             prome[i] = request.getParameter("p"+i);
-           
-            if(oral[i].equals("")){
-              oral[i] = "0";  
-            }
-            if(prac[i].equals("")){
-              prac[i] = "0";  
-            }
-            if(trab[i].equals("")){
-              trab[i] = "0";  
-            }
-            if(cuad[i].equals("")){
-              cuad[i] = "0";  
-            }
-            if(proc[i].equals("")){
-              proc[i] = "0";  
-            }
-            if(bime[i].equals("")){
-              bime[i] = "0";  
-            }
-            if(prome[i].equals("")){
-              prome[i] = "0";  
-            }
 
-          // ya mira te acuerdas de esto
-            
-                
-            
                 if(EsNumero.validar(oral[i])==false || EsNumero.validar(prac[i])==false || EsNumero.validar(trab[i])==false
                       || EsNumero.validar(cuad[i])==false || EsNumero.validar(bime[i])==false || EsDouble.validar(proc[i])==false || EsDouble.validar(prome[i])==false){
                 String error = "Error en uno de las notas";
@@ -110,11 +85,9 @@ public class ControladorNota extends HttpServlet {
                 }else{ 
                 
                   Nota not = new Nota(alu[i], profe,curso,grado,secc,bimestre,Integer.parseInt(oral[i]), Integer.parseInt(prac[i]), Integer.parseInt(trab[i]), Integer.parseInt(cuad[i]), Integer.parseInt(bime[i]), Math.round(Double.parseDouble(proc[i])),Math.round(Double.parseDouble(prome[i])));
-                  //esto no insertaba te acuerdas responde Si
-                  //ya mira parece que el problema era en esto lo he puesto afuera del for
-                  //parece que no lo reconocia y me mandaba error pero ahora si mira
+                  
                   if(not.insert()==false){
-                   String error = "Las notas ya han sido registradas no se puede volver a registrar";
+                  String error = "Las notas ya han sido registradas no se puede volver a registrar";
                   request.getSession().setAttribute("error", error);   
                   }else{
                   si = true;
@@ -123,16 +96,18 @@ public class ControladorNota extends HttpServlet {
            
     }
         
-        
+      }  
         if(si==true){
+          ListaNotas no = new ListaNotas();
           LinkedList<Nota> lis = no.select();
-          request.getSession().setAttribute("notas", lis);
+          LinkedList<Nota> listaOficial = no.reporteNotaAlumno(grado, secc);
+          request.getSession().setAttribute("notas", listaOficial);
           request.getRequestDispatcher("reporteNota_1.jsp").forward(request, response);  
         }else{
           request.getRequestDispatcher("errorProfe.jsp").forward(request, response);  
         }
         
-         
+           
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

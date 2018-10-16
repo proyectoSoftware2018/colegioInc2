@@ -20,7 +20,7 @@ public class ListaNotas {
     
     public LinkedList<Nota> select() {
         try {
-            ps = conn.getConnection().prepareCall("call ConsultarNotas");
+            ps = conn.getConnection().prepareCall("call consultarNotas");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) //Esta es la forma correcta de recorrer los valores obtenidos de una consulta
             {
@@ -78,5 +78,15 @@ public class ListaNotas {
         return -1;
     }
     
+        public LinkedList<Nota> reporteNotaAlumno(String gra, String sec){
+        LinkedList<Nota> lis = new LinkedList<>();
+        for(int i =0; i<tama();i++){
+         if(lista.get(i).getGra().equalsIgnoreCase(gra) && lista.get(i).getSec().equalsIgnoreCase(sec) ){
+           lis.add(lista.get(i));
+        }   
+        }
+        
+        return lis;
+    }
     
 }
