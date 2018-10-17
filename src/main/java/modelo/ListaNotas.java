@@ -78,10 +78,11 @@ public class ListaNotas {
         return -1;
     }
     
-        public LinkedList<Nota> reporteNotaAlumno(String gra, String sec){
+        public LinkedList<Nota> reporteNotaAlumno(String gra, String sec,String curso){
         LinkedList<Nota> lis = new LinkedList<>();
         for(int i =0; i<tama();i++){
-         if(lista.get(i).getGra().equalsIgnoreCase(gra) && lista.get(i).getSec().equalsIgnoreCase(sec) ){
+         if(lista.get(i).getGra().equalsIgnoreCase(gra) && lista.get(i).getSec().equalsIgnoreCase(sec) 
+                 && lista.get(i).getCur().equals(curso)){
            lis.add(lista.get(i));
         }   
         }

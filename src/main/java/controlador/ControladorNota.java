@@ -100,7 +100,11 @@ public class ControladorNota extends HttpServlet {
         if(si==true){
           ListaNotas no = new ListaNotas();
           LinkedList<Nota> lis = no.select();
-          LinkedList<Nota> listaOficial = no.reporteNotaAlumno(grado, secc);
+          LinkedList<Nota> listaOficial = no.reporteNotaAlumno(grado, secc, curso);
+          request.getSession().setAttribute("gra", grado);
+          request.getSession().setAttribute("cur", curso);
+          request.getSession().setAttribute("sec", secc);
+          request.getSession().setAttribute("pro", profe);
           request.getSession().setAttribute("notas", listaOficial);
           request.getRequestDispatcher("reporteNota_1.jsp").forward(request, response);  
         }else{

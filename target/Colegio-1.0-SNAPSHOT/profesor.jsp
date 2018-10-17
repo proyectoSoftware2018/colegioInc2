@@ -66,7 +66,7 @@
                                 <tr>
                                     <th style="text-align: center">Aula</th>
                                     <th style="text-align: center">Curso</th>
-                                    <th style="text-align: center" colspan="3">Acciones</th>
+                                    <th style="text-align: center" colspan="2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,7 +79,6 @@
                             
                                     <td style="text-align: center">VACIO</td>
                                     <td style="text-align: center">VACIO</td>
-                                    <td style="text-align: center">NADA</td>
                                     <td style="text-align: center">NADA</td>
                                     <td style="text-align: center">NADA</td>
                                 </tr>
@@ -101,11 +100,15 @@
                                 <button type="submit" class="btn btn-success">Registrar</button>
                                 </form>
                             </td>
+                            
                             <td style="text-align: center">
-                               <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </td>
-                            <td style="text-align: center">
-                                <a href="reponota.do" class="btn btn-primary">Listar</a>
+                                <form action="reponota.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(lis.get(i).getGrado());%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(lis.get(i).getSeccion());%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(lis.get(i).getCurso());%>">   
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(correo);%>">   
+                            <button type="submit" class="btn btn-primary">Listar</button>
+                                </form>
                             </td>
 
                             <%
