@@ -67,7 +67,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
 
-                                            <a href="registroAlumno.jsp" class="btn btn-sm btn-outline-secondary" >Registrar</a>
+                                            <a href="#ventana2" class="btn btn-sm btn-outline-secondary" data-toggle="modal">Registrar</a>
                                             <a href="#ventana1" class="btn btn-sm btn-outline-secondary"  data-toggle="modal">Listar</a>
 
                                         </div>
@@ -224,6 +224,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     </div>
                 </div>
             </div>
+                                            
+             <%@include file="WEB-INF/jspf/venRe.jspf" %>                               
              <%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>
   

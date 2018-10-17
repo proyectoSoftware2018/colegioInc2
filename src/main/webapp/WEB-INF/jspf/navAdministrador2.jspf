@@ -13,8 +13,8 @@
             <div class="list-group border-0 text-center text-md-left bg-dark">
                 <a href="#menu1" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-user-graduate"></i>&nbsp; <span>Alumnos</span> </a>
                 <div class="collapse" id="menu1">
-                    <a href="registroAlumno.jsp" class="list-group-item text-dark" data-parent="#menu1">Registrar Alumno</a>
-                    <a href="#ventana1" class="list-group-item text-dark" data-parent="#menu1">Reporte Alumno</a>
+                    <a href="#ventana2" class="list-group-item text-dark" data-toggle="modal">Registrar Alumno</a>
+                    <a href="#ventana1" class="list-group-item text-dark" data-toggle="modal">Reporte Alumno</a>
                 </div>
                 <a href="#menu2" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-chalkboard-teacher"></i>&nbsp;<span>Profesores</span> </a>
                 <div class="collapse" id="menu2">

@@ -81,6 +81,10 @@
         <servlet-name>suave</servlet-name>
         <servlet-class>controlador.suave</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>validarDni</servlet-name>
+        <servlet-class>controlador.validarDni</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -144,6 +148,10 @@
     <servlet-mapping>
         <servlet-name>suave</servlet-name>
         <url-pattern>/suave.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validarDni</servlet-name>
+        <url-pattern>/validardni.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

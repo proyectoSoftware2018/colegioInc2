@@ -32,6 +32,9 @@
  ListaGrados ls2 = new ListaGrados();
  LinkedList<Grado> li2 = ls2.select();
 
+ String ape1 = (String) request.getSession().getAttribute("ape1");
+ String ape2 = (String) request.getSession().getAttribute("ape2");
+ String nom = (String) request.getSession().getAttribute("nom");
 %>
 <!DOCTYPE html>
 <html>
@@ -82,11 +85,11 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="validationCustom01">Nombre</label>
-                                                <input type="text" name="nomp" class="form-control" id="validationCustom01" placeholder="Ej: Mario" required>
+                                                <input type="text" name="nomp" class="form-control" readonly="readonly" value="<%out.print(nom);%>">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="validationCustom02">Apellidos</label>
-                                                <input type="text" name="apep" class="form-control" id="validationCustom02" placeholder="Ej: Vargas" required>
+                                                <input type="text" name="apep" class="form-control" readonly="readonly" value="<%out.print(ape1+" "+ape2);%>">
                                             </div>
                                         </div>
                                         <div class="row">
