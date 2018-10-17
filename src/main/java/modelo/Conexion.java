@@ -8,20 +8,20 @@ import java.sql.SQLException;
 public class Conexion {
     private static Connection conn;
     
-   
+   /*
    //conexion localhost
     public static final String driver="com.mysql.jdbc.Driver";
     public static final String user="root";
     public static final String pass="12345678";
     public static final String url = "jdbc:mysql://localhost:3306/colegio123";
-  
-    /*
+    */ 
+    
    //conexion openshift
     public static final String driver="com.mysql.jdbc.Driver";
     public static final String user="root";
     public static final String pass="root";
     public static final String url = "jdbc:mysql://mysql:3306/colegio";
-     */ 
+     
 
     public Conexion() {
         conn=null;
