@@ -58,7 +58,15 @@ public class ListaAulas {
         return lista.size();
     }
     
-
+    public Aula verAula(String gra, String sec){
+       Aula au = null;
+       for(int i = 0 ; i<tama(); i++){
+       if(lista.get(i).getGrado().equals(gra) && lista.get(i).getSeccion().equals(sec)){
+           au = lista.get(i);
+       }    
+       }
+       return au;
+    }
     
     
 }

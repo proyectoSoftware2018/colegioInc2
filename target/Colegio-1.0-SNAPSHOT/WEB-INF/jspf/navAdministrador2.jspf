@@ -19,7 +19,7 @@
                 <a href="#menu2" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-chalkboard-teacher"></i>&nbsp;<span>Profesores</span> </a>
                 <div class="collapse" id="menu2">
                     <a href="registroProfesor.jsp" class="list-group-item text-dark" data-parent="#menu2">Registrar Profesor</a>
-                    <a href="reporteSeccion.jsp" class="list-group-item text-dark" data-parent="#menu2">Reporte Profesor</a>
+                    <a href="repoprofe.do" class="list-group-item text-dark" data-parent="#menu2">Reporte Profesor</a>
                 </div>
                 <a href="#menu3" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-puzzle-piece"></i>&nbsp;<span>Secciones</span> </a>
                 <div class="collapse" id="menu3">

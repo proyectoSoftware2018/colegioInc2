@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Alumno;
 import modelo.EsNumero;
+import modelo.ListaAlumnos;
+import modelo.ListaAulas;
 
 /**
  *
@@ -148,6 +150,11 @@ response.setContentType("text/html;charset=utf-8");
                     int ed = Integer.parseInt(edadh);
                     
                     Alumno al = new Alumno(grado,secci ,sexoh, nomh, apeh, deph, dish, dnih, direh, obseh, usu, contra, estado, sexo, nombre, apellido, dnip, dire, ed, te);
+                    ListaAulas aulas = new ListaAulas();
+                    aulas.select();
+                    ListaAlumnos alumnos = new ListaAlumnos();
+                    alumnos.select();
+                    if(alumnos.reporteAlumno(grado, secci).size()!=aulas.verAula(grado, secci).getCantMax()){  
                     if(al.insert()==true){
                     request.getSession().setAttribute("alumno", al);
                     request.getRequestDispatcher("inforAlumno.jsp").forward(request, response);
@@ -155,7 +162,13 @@ response.setContentType("text/html;charset=utf-8");
                     String error = "no se inserto correctamente vuelva a intentar";
                     request.getSession().setAttribute("error", error);
                     request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-                }
+                }   
+                    }else{
+                    String error = "Ya se lleno el aula";
+                    request.getSession().setAttribute("error", error);
+                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
+                    }
+                
                 }
             }
         }

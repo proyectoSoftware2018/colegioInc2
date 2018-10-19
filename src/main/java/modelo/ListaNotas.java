@@ -89,5 +89,17 @@ public class ListaNotas {
         
         return lis;
     }
+        
+    public LinkedList<Nota> NotaPadre(String alumno){
+        LinkedList<Nota> lis = new LinkedList<>();
+        for(int i =0; i<tama();i++){
+         if(lista.get(i).getAlumno().equalsIgnoreCase(alumno)){
+           lis.add(lista.get(i));
+        }   
+        }
+        
+        return lis;
+    }
+    
     
 }

@@ -86,9 +86,12 @@
                                 <%        
                                     }else{
                                     for (int i = 0; i < lis.size(); i++) {
-                                        out.print("<tr>");
+                                    
                                 %>
-                            <td style="text-align: center"><%out.print(lis.get(i).getGrado() + "  " + li.get(i).getSeccion());%> </td>
+                                <tr>
+                            <td style="text-align: center">
+                                <%out.print(li.get(i).getGrado()+" "+li.get(i).getSeccion());%> 
+                            </td>
                             <td style="text-align: center"><%out.print(cur.buscar(lis.get(i).getCurso()).getNombre());%></td>
                             
                             
@@ -110,9 +113,9 @@
                             <button type="submit" class="btn btn-primary">Listar</button>
                                 </form>
                             </td>
-
+                                </tr>
                             <%
-                                    out.print("</tr>");
+                                   
                                 } }%>
 
                             </tbody>
