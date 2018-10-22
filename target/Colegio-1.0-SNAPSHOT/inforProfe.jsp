@@ -52,7 +52,9 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     </div>
                 </div>
             </div>
+              <section></section>       
         </div>
+                   
         <%@include file="WEB-INF/jspf/footer.jspf" %>
         <%@include file="WEB-INF/jspf/jsfooter.jspf" %>
 

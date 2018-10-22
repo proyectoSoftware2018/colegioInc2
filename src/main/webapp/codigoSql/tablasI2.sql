@@ -9,7 +9,7 @@ estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table curso(
-codCurso varchar(20) primary key,
+codCurso varchar(100) primary key,
 nombre varchar(200),
 estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

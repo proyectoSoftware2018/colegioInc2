@@ -51,9 +51,9 @@
                                     <div class="card card-inverse bg-dark" >
                                         <div class="card-block">
                                             <h3 class="card-title text-center">EDICIÓN DE SECCIONES:</h3><br>
-                                            <label for="gradoanti">Nombre de Grado Actual:</label>
+                                            <label for="gradoanti">Nombre de Seccion Actual:</label>
                                             <input type="text" class="form-control" id="grado" name="seca" value="<%out.print(sec);%>" readonly="readonly"><br>
-                                            <label for="gradonu">Nuevo Nombre de Grado:</label>
+                                            <label for="gradonu">Nuevo Nombre de Seccion:</label>
                                             <input type="text" class="form-control" id="grado" name="secn"><br>
                                             <div style="text-align: center;">
                                                 <button type="submit" class="btn btn-primary">Editar</button> <a href="administrador.jsp" class="btn btn-danger">Cancelar</a>
@@ -68,6 +68,7 @@
                         </div>
                     </div>
                 </section>
+                                            <section></section>
             </div>
             <%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>

@@ -34,6 +34,7 @@ public class ControladorAlumno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
+      try{
         ListaAulas aulas = new ListaAulas();
         aulas.select();
         ListaAlumnos alumnos = new ListaAlumnos();
@@ -176,8 +177,15 @@ public class ControladorAlumno extends HttpServlet {
                 }
             }
         }
+ 
+        }catch(Exception a){
+         String error = "Error el aula no existe";
+         request.getSession().setAttribute("error", error);
+         request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);       
+        }
 
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
