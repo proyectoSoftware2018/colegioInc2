@@ -81,7 +81,7 @@
                                 </form>   
                             </td>
                             <td>
-                                <form method="post" action="eliminargrado.do">
+                                <form method="post" action="eliminarprofesor.do">
                                     <input name="profe" value="<%out.print(profesores.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <button type="submit" class="btn btn-danger">ELIMINAR</button>
                                 </form>   

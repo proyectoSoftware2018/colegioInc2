@@ -57,19 +57,29 @@
                                 <tr>
                                     <th style="text-align: center">Código del Curso</th>
                                     <th style="text-align: center">Nombre del Curso</th>
+                                    <th style="text-align: center" colspan="2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                <% 
                                   for(int i=0; i<li.size(); i++){ 
-                                      out.print("<tr>");
                                  %>
                             <td style="text-align: center"><%out.print(li.get(i).getCodigo());%> </td>
                             <td style="text-align: center"><%out.print(li.get(i).getNombre());%> </td>
-                            <%
-                              out.print("</tr>");    
-                             }%>
+                                   <td>
+                                <form method="post" action="editarcurso.do">
+                                    <input name="curso" value="<%out.print(li.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                </form>   
+                            </td>
+                            <td>
+                                <form method="post" action="eliminarcurso.do">
+                                    <input name="curso" value="<%out.print(li.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                </form>   
+                            </td>
+                            <% }%>
 
                             </tbody>
                         </table>

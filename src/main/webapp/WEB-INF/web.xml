@@ -113,6 +113,22 @@
         <servlet-name>ControladorEditarProfe</servlet-name>
         <servlet-class>controlador.ControladorEditarProfe</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editarCurso</servlet-name>
+        <servlet-class>controlador.editarCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarCurso</servlet-name>
+        <servlet-class>controlador.ControladorEditarCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarProfesor</servlet-name>
+        <servlet-class>controlador.EliminarProfesor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCurso</servlet-name>
+        <servlet-class>controlador.EliminarCurso</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -208,6 +224,22 @@
     <servlet-mapping>
         <servlet-name>ControladorEditarProfe</servlet-name>
         <url-pattern>/controladoreditarprofe.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarCurso</servlet-name>
+        <url-pattern>/editarcurso.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarCurso</servlet-name>
+        <url-pattern>/controladoreditarcurso.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarProfesor</servlet-name>
+        <url-pattern>/eliminarprofesor.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCurso</servlet-name>
+        <url-pattern>/eliminarcurso.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

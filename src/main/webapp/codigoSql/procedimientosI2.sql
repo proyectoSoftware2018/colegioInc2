@@ -60,9 +60,10 @@ where estado = 0;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `EliminarProfesor` (IN usu VARCHAR(20))  BEGIN
+CREATE  PROCEDURE EliminarProfesor (IN usu VARCHAR(20))  BEGIN
 update profesor
-set estado = 1
+set usuario = concat(usuario,'i'),
+estado = 1
 where usuario = usu;
 END$$
 
@@ -403,8 +404,22 @@ select * from curso
 where estado=0;
 END$$
 
+DELIMITER $$
+CREATE  PROCEDURE EditarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  
+BEGIN
+update curso
+set nombre = nom
+where `codCurso` = cod;
+END$$
 
-
+DELIMITER $$
+CREATE  PROCEDURE EliminarCurso (IN cod VARCHAR(20))  
+BEGIN
+update curso
+set codCurso = concat(codCurso,'i'),
+estado =1
+where `codCurso` = cod;
+END$$
 
 
 

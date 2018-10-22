@@ -32,6 +32,12 @@ public class Profesor {
         conn = new Conexion();
         ps = null;
     }
+    
+    public Profesor(String codigo){
+      this.codigo = codigo;  
+      conn = new Conexion();
+      ps = null;
+    }
 
     public boolean insert() {
         try {
@@ -100,6 +106,39 @@ public class Profesor {
             return true;
         } catch (Exception e) {
             System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean eliminar(String codigo) {
+        try {
+            ps = conn.getConnection().prepareCall("call EliminarProfesor(?)");
+            ps.setString(1, codigo);
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErroasdsadsadreE"+e);
             return false;
         }
         finally {
