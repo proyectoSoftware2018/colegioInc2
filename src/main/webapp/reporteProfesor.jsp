@@ -1,3 +1,5 @@
+<%@page import="modelo.Profesor"%>
+<%@page import="java.util.LinkedList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : reporteAlumno
@@ -22,6 +24,7 @@
 
     }
 
+    LinkedList<Profesor> profesores = (LinkedList<Profesor>) request.getSession().getAttribute("lista");
 
 %>
 <!DOCTYPE html>
@@ -52,26 +55,39 @@
                                     <th>Tel. Movil</th>
                                     <th>Correo</th>
                                     <th>Contraseña</th>
+                                    <th colspan="2" style="text-align: center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                <c:forEach var="lista" items="${sessionScope.lista}">
+                            <%
+                                for(int i=0; i<profesores.size(); i++){
+                                    
+                                %>
                                     <tr>
-                                        <td>${lista.codigo}</td>
-                                        <td>${lista.nombre}</td>
-                                        <td>${lista.apellido}</td>
-                                        <td>${lista.direccion}</td>
-                                        <td>${lista.ciudad}</td>
-                                        <td>${lista.edad}</td>
-                                        <td>${lista.tcasa}</td>
-                                        <td>${lista.tmovil}</td>
-                                        <td>${lista.correo}</td>
-                                        <td>${lista.contraseña}</td>
-
+                                        <td><%out.print(profesores.get(i).getCodigo());%></td>
+                                        <td><%out.print(profesores.get(i).getNombre());%></td>
+                                        <td><%out.print(profesores.get(i).getApellido());%></td>
+                                        <td><%out.print(profesores.get(i).getDireccion());%></td>
+                                        <td><%out.print(profesores.get(i).getCiudad());%></td>
+                                        <td><%out.print(profesores.get(i).getEdad());%></td>
+                                        <td><%out.print(profesores.get(i).getTcasa());%></td>
+                                        <td><%out.print(profesores.get(i).getTmovil());%></td>
+                                        <td><%out.print(profesores.get(i).getCorreo());%></td>
+                                        <td><%out.print(profesores.get(i).getContraseña());%></td>
+                                       <td>
+                                <form method="post" action="editarprofe.do">
+                                    <input name="profe" value="<%out.print(profesores.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                </form>   
+                            </td>
+                            <td>
+                                <form method="post" action="eliminargrado.do">
+                                    <input name="profe" value="<%out.print(profesores.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                </form>   
+                            </td>
                                     </tr>
-
-                                </c:forEach>
+                                <%}%>
 
                             </tbody>
                         </table>

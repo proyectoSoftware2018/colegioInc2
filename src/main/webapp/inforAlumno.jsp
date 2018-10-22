@@ -50,8 +50,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     <p class="card-text">Sexo: <% out.print(alu.getSexoh());%></p>
                     <p class="card-text">---------------------------------------</p>
                     <p class="card-text">Padre: <% out.print(alu.getNombrep()+" "+alu.getApellidop());%></p>
-                    <p class="card-text">telefono: <% out.print(alu.getTelefonoh());%></p>
-                    <p class="card-text">Contra: <% out.print(alu.getContra());%></p>
+                    <p class="card-text">Telefono: <% out.print(alu.getTelefonoh());%></p>
+                    <p class="card-text">Contraseña: <% out.print(alu.getContra());%></p>
                     <div style="text-align: center;">
                         <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
                     </div>

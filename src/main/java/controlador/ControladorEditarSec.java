@@ -7,18 +7,17 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.reniec;
+import modelo.Seccion;
 
 /**
  *
- * @author alumno
+ * @author KandL
  */
-public class validarDni extends HttpServlet {
+public class ControladorEditarSec extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,33 +31,24 @@ public class validarDni extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String dni = request.getParameter("dni");
-        
-        if(dni.equals("")){
-            String error = "No hay ningun dni";
+       String seca = request.getParameter("seca");
+       String secn = request.getParameter("secn");
+       if(secn.equals("")){
+          String error = "Debe llenar la sección";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+       }else{
+           Seccion se = new Seccion(seca); 
+         if(se.editar(secn)==false){
+            String error = "No se Edito la sección";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);   
-        }else{
-        try{
-        reniec re = new reniec();
-        String recivido = re.getNombre("http://aplicaciones007.jne.gob.pe/srop_publico/consulta/afiliado/getNombresCiudadano?DNI="+dni);
-        StringTokenizer st= new StringTokenizer(recivido,"|");
-        String apeP = st.nextToken();
-        String apeM = st.nextToken();
-        String Nombre = st.nextToken();
-        request.getSession().setAttribute("ape1", apeP);
-        request.getSession().setAttribute("ape2", apeM);
-        request.getSession().setAttribute("nom", Nombre);
-        request.getSession().setAttribute("dni", dni);
-        request.getRequestDispatcher("registroAlumno.jsp").forward(request, response);   
-        }catch(Exception e){
-        String error = "No se pudo validar el dni del padre";
-        request.getSession().setAttribute("error", error);
-        request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
-        }
-        
-        }
+            }else{
+            Seccion sec = new Seccion(secn);
+            request.getSession().setAttribute("seccion", sec);
+            request.getRequestDispatcher("inforSeccion.jsp").forward(request, response);  
+            }
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

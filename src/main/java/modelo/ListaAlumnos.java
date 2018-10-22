@@ -39,13 +39,12 @@ public class ListaAlumnos {
                String nomp =rs.getString(13);
                String apep =rs.getString(14);
                String dnip =rs.getString(15);
-               String direp =rs.getString(16);
-               String estaCi =rs.getString(17);
-               String sexop =rs.getString(18);
-               int tel = rs.getInt(19);
-               String contra =rs.getString(20);
+               String estaCi =rs.getString(16);
+               String sexop =rs.getString(17);
+               int tel = rs.getInt(18);
+               String contra =rs.getString(19);
                
-               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, direh, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip, direp, edad, tel);
+               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, direh, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip,edad, tel);
                lista.add(a);
             }
             return lista;

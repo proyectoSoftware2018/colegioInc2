@@ -33,8 +33,15 @@ public class ControladorAlumno extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-response.setContentType("text/html;charset=utf-8");
-    
+        response.setContentType("text/html;charset=utf-8");
+        ListaAulas aulas = new ListaAulas();
+        aulas.select();
+        ListaAlumnos alumnos = new ListaAlumnos();
+        alumnos.select();
+        int valor1 = 0,valor2 = 0;
+               
+        
+        
         String combo1 = request.getParameter("combo1");
         String estado = "";
 
@@ -81,7 +88,6 @@ response.setContentType("text/html;charset=utf-8");
         String apellido = request.getParameter("apep");
         String dnip = request.getParameter("dnip");
         String telef = request.getParameter("fonop");
-        String dire = request.getParameter("direp");
 
         //ALUMNO
         String grado = request.getParameter("combo3");
@@ -90,7 +96,7 @@ response.setContentType("text/html;charset=utf-8");
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
         }
-        
+
         String combo4 = request.getParameter("combo4");
         String sexoh = "";
 
@@ -120,7 +126,7 @@ response.setContentType("text/html;charset=utf-8");
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
         }
-        
+
         String direh = request.getParameter("direh");
         String obseh = request.getParameter("obseh");
 
@@ -128,7 +134,7 @@ response.setContentType("text/html;charset=utf-8");
         String contra = request.getParameter("contra");
 
         if (estado.equals("") || sexo.equals("") || nombre.equals("") || apellido.equals("")
-                || dnip.equals("") || telef.equals("") || dire.equals("")) {
+                || dnip.equals("") || telef.equals("")) {
             String error = "Debera de completar todos los campos del padre o apoderado";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
@@ -140,35 +146,33 @@ response.setContentType("text/html;charset=utf-8");
                 String error = "Debera de completar todos los campos del Alumno";
                 request.getSession().setAttribute("error", error);
                 request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-            }else{
-                if(EsNumero.validar(telef)==false || EsNumero.validar(edadh)==false){
-                   String error = "Error No es numero el telefono o la edad";
-                request.getSession().setAttribute("error", error);
-                request.getRequestDispatcher("errorAdmi.jsp").forward(request, response); 
-                }else{
-                    int te = Integer.parseInt(telef);
-                    int ed = Integer.parseInt(edadh);
-                    
-                    Alumno al = new Alumno(grado,secci ,sexoh, nomh, apeh, deph, dish, dnih, direh, obseh, usu, contra, estado, sexo, nombre, apellido, dnip, dire, ed, te);
-                    ListaAulas aulas = new ListaAulas();
-                    aulas.select();
-                    ListaAlumnos alumnos = new ListaAlumnos();
-                    alumnos.select();
-                    if(alumnos.reporteAlumno(grado, secci).size()!=aulas.verAula(grado, secci).getCantMax()){  
-                    if(al.insert()==true){
-                    request.getSession().setAttribute("alumno", al);
-                    request.getRequestDispatcher("inforAlumno.jsp").forward(request, response);
-                } else {
-                    String error = "no se inserto correctamente vuelva a intentar";
+            } else {
+                if (EsNumero.validar(telef) == false || EsNumero.validar(edadh) == false) {
+                    String error = "Error No es numero el telefono o la edad";
                     request.getSession().setAttribute("error", error);
                     request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-                }   
+                } else {
+                    int te = Integer.parseInt(telef);
+                    int ed = Integer.parseInt(edadh);
+
+                    Alumno al = new Alumno(grado, secci, sexoh, nomh, apeh, deph, dish, dnih, direh, obseh, usu, contra, estado, sexo, nombre, apellido, dnip,ed, te);
+                    valor1 =alumnos.reporteAlumno(grado, secci).size();
+                    valor2 = aulas.verAula(grado, secci).getCantMax();
+                    if(valor1==valor2){
+                     String error = "Aula llena no se puede insertar";
+                     request.getSession().setAttribute("error", error);
+                     request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);   
                     }else{
-                    String error = "Ya se lleno el aula";
-                    request.getSession().setAttribute("error", error);
-                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
+                     boolean insertar= al.insert();
+                     if (insertar == true) {
+                        request.getSession().setAttribute("alumno", al);
+                        request.getRequestDispatcher("inforAlumno.jsp").forward(request, response);
+                    } else {
+                        String error = "no se inserto correctamente vuelva a intentar";
+                        request.getSession().setAttribute("error", error);
+                        request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
                     }
-                
+                    }
                 }
             }
         }

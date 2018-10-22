@@ -80,7 +80,7 @@
                         <input class="form-control text-center" readonly="readonly"  value="<%out.print(sec);%>" name="seccion"/>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                    <div class="row justify-content-center" id="bimestre1">
                     <div class="col-1">
 
                     </div>
@@ -91,7 +91,7 @@
                             <thead class="thead-dark">
                                 <tr>
 
-                                    <th>Alumno</th>
+                                    <th colspan="2">Apellidos y Nombres</th>
                                     <th>Bimestre</th>
                                     <th>Nota Oral</th>
                                     <th>Nota Prac</th>
@@ -104,10 +104,12 @@
                             </thead>
                             <tbody>
                                 <%
+                                   
                                     for (int i = 0; i < lis.size(); i++) {
+                                     if(lis.get(i).getBime().equals("I")){
                                 %>
                                 <tr>
-                                    <td><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
                                     <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                     <td><%out.print(lis.get(i).getNoral());%></td>
                                     <td><%out.print(lis.get(i).getNprac());%></td>
@@ -117,7 +119,161 @@
                                     <td><%out.print(lis.get(i).getExabi());%></td>
                                     <td><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
-                                <%}%>
+                                <%}}%>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-12 justify-content-center" id="bimestre2">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th colspan="2">Apellidos y Nombres</th>
+                                    <th>Bimestre</th>
+                                    <th>Nota Oral</th>
+                                    <th>Nota Prac</th>
+                                    <th>Nota Trab</th>
+                                    <th>Nota Cuad</th>
+                                    <th>Proceso</th>
+                                    <th>Ex. Bimes.</th>
+                                    <th>Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                        if(lis.get(i).getBime().equals("II")){
+                                %>
+                                <tr>
+                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td><%out.print(lis.get(i).getNoral());%></td>
+                                    <td><%out.print(lis.get(i).getNprac());%></td>
+                                    <td><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td><%out.print(lis.get(i).getProce());%></td>
+                                    <td><%out.print(lis.get(i).getExabi());%></td>
+                                    <td><%out.print(lis.get(i).getPromedio());%></td>
+                                </tr>
+                                <%}}%>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+               <div class="row justify-content-center">
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-12 justify-content-center" id="bimestre3">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th colspan="2">Apellidos y Nombres</th>
+                                    <th>Bimestre</th>
+                                    <th>Nota Oral</th>
+                                    <th>Nota Prac</th>
+                                    <th>Nota Trab</th>
+                                    <th>Nota Cuad</th>
+                                    <th>Proceso</th>
+                                    <th>Ex. Bimes.</th>
+                                    <th>Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                        if(lis.get(i).getBime().equals("III")){
+                                %>
+                                <tr>
+                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td><%out.print(lis.get(i).getNoral());%></td>
+                                    <td><%out.print(lis.get(i).getNprac());%></td>
+                                    <td><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td><%out.print(lis.get(i).getProce());%></td>
+                                    <td><%out.print(lis.get(i).getExabi());%></td>
+                                    <td><%out.print(lis.get(i).getPromedio());%></td>
+                                </tr>
+                                <%}}%>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-12 justify-content-center" id="bimestre4">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+
+                                    <th colspan="2">Apellidos y Nombres</th>
+                                    <th>Bimestre</th>
+                                    <th>Nota Oral</th>
+                                    <th>Nota Prac</th>
+                                    <th>Nota Trab</th>
+                                    <th>Nota Cuad</th>
+                                    <th>Proceso</th>
+                                    <th>Ex. Bimes.</th>
+                                    <th>Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                        if(lis.get(i).getBime().equals("IV")){
+                                    
+                                %>
+                                <tr>
+                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td><%out.print(lis.get(i).getNoral());%></td>
+                                    <td><%out.print(lis.get(i).getNprac());%></td>
+                                    <td><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td><%out.print(lis.get(i).getProce());%></td>
+                                    <td><%out.print(lis.get(i).getExabi());%></td>
+                                    <td><%out.print(lis.get(i).getPromedio());%></td>
+                                </tr>
+                                <%}}%>
 
 
                             </tbody>

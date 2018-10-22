@@ -76,6 +76,49 @@ public class Profesor {
         }
     }
     
+    public boolean editar() {
+        try {
+            ps = conn.getConnection().prepareCall("call ModificarProfesor(?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, this.codigo);
+            ps.setString(2, this.apellido);
+            ps.setString(3, this.nombre);
+            ps.setString(4, this.direccion);
+            ps.setString(5, this.ciudad);
+            ps.setInt(6, this.edad);
+            ps.setInt(7, this.tcasa);
+            ps.setInt(8,this.tmovil);
+            ps.setString(9,this.correo);
+            ps.setString(10,this.contraseña);
+            
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
     
     
 

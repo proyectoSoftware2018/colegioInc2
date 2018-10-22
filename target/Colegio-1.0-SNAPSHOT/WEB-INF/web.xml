@@ -78,12 +78,40 @@
         <servlet-class>controlador.ControladorRN</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>suave</servlet-name>
-        <servlet-class>controlador.suave</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>validarDni</servlet-name>
         <servlet-class>controlador.validarDni</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarGrado</servlet-name>
+        <servlet-class>controlador.editarGrado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarGrado</servlet-name>
+        <servlet-class>controlador.ControladorEditarGrado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarGrado</servlet-name>
+        <servlet-class>controlador.EliminarGrado</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarSeccion</servlet-name>
+        <servlet-class>controlador.editarSeccion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarSec</servlet-name>
+        <servlet-class>controlador.ControladorEditarSec</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarSeccion</servlet-name>
+        <servlet-class>controlador.EliminarSeccion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarProfe</servlet-name>
+        <servlet-class>controlador.editarProfe</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarProfe</servlet-name>
+        <servlet-class>controlador.ControladorEditarProfe</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
@@ -146,12 +174,40 @@
         <url-pattern>/controladorrn.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>suave</servlet-name>
-        <url-pattern>/suave.do</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>validarDni</servlet-name>
         <url-pattern>/validardni.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarGrado</servlet-name>
+        <url-pattern>/editargrado.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarGrado</servlet-name>
+        <url-pattern>/controladoreditargrado.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarGrado</servlet-name>
+        <url-pattern>/eliminargrado.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarSeccion</servlet-name>
+        <url-pattern>/editarseccion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarSec</servlet-name>
+        <url-pattern>/controladoreditarsec.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarSeccion</servlet-name>
+        <url-pattern>/eliminarseccion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarProfe</servlet-name>
+        <url-pattern>/editarprofe.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarProfe</servlet-name>
+        <url-pattern>/controladoreditarprofe.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KandL
  */
-public class suave extends HttpServlet {
+public class editarGrado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,13 +30,9 @@ public class suave extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String va = request.getParameter("as");
-        if(va.equals("")){
-           va ="jaja"; 
-        }
-        request.getSession().setAttribute("error", va);
-          request.getRequestDispatcher("errorLogin.jsp").forward(request, response);
+        String grado = request.getParameter("grado");
+        request.getSession().setAttribute("grado", grado);
+        request.getRequestDispatcher("editarGrado.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

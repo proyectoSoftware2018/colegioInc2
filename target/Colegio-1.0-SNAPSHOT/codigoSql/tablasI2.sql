@@ -1,10 +1,10 @@
 create table seccion(
-seccion varchar(20) primary key,
+seccion varchar(100) primary key,
 estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table grado(
-grado varchar(80) primary key,
+grado varchar(100) primary key,
 estado int(11)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -16,7 +16,7 @@ estado int(11)
 
 
 create table profesor(
-usuario varchar(20) NOT NULL PRIMARY KEY,
+usuario varchar(100) NOT NULL PRIMARY KEY,
 nombre varchar(200) ,
 apellido varchar(200),
 direccion varchar(200) ,
@@ -35,30 +35,30 @@ secciong varchar(20),
 usuarioP varchar(20),
 cantMax int(11),
 estado int(11),
-CONSTRAINT profe_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT,
-CONSTRAINT secc_foreana2 FOREIGN KEY (secciong) REFERENCES seccion(seccion) ON DELETE RESTRICT,
-CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE RESTRICT,
+CONSTRAINT profe_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT secc_foreana2 FOREIGN KEY (secciong) REFERENCES seccion(seccion) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE RESTRICT ON UPDATE CASCADE,
 PRIMARY KEY (gradog, secciong)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 create table asignacion(
-cursod varchar(20),
+cursod varchar(100),
 profesord varchar(20),
 grad varchar(80),
 seccio varchar(20),
 estado int(11),
-CONSTRAINT curso_foreana1 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT,
-CONSTRAINT profesor_foreana1 FOREIGN KEY (profesord) REFERENCES profesor(usuario) ON DELETE RESTRICT,
-CONSTRAINT aula_fo3 FOREIGN KEY (grad) REFERENCES aula(gradog) ON DELETE RESTRICT,
-CONSTRAINT aula_fo4 FOREIGN KEY (seccio) REFERENCES aula(secciong) ON DELETE RESTRICT,
+CONSTRAINT curso_foreana1 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT profesor_foreana1 FOREIGN KEY (profesord) REFERENCES profesor(usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT aula_fo3 FOREIGN KEY (grad) REFERENCES aula(gradog) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT aula_fo4 FOREIGN KEY (seccio) REFERENCES aula(secciong) ON DELETE RESTRICT ON UPDATE CASCADE,
 PRIMARY KEY (cursod,grad, seccio)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
 CREATE TABLE alumno (
-  usuario varchar(20) NOT NULL PRIMARY KEY,
+  usuario varchar(100) NOT NULL PRIMARY KEY,
   nombreh varchar(200) ,
   apellidoh varchar(200) ,
   dnih varchar(20),
@@ -73,14 +73,13 @@ CREATE TABLE alumno (
   nombrep varchar(200) ,
   apellidop varchar(200) ,
   dnip varchar(20),
-  direccionp varchar(200),
   estadoCi varchar(80) ,
   sexop varchar(20) ,
   telefono int(11),
   contra varchar(60),
   estado int(11),
-CONSTRAINT aula_fore1 FOREIGN KEY (gradoa) REFERENCES aula(gradog) ON DELETE RESTRICT,
-CONSTRAINT aula_fore2 FOREIGN KEY (secciona) REFERENCES aula(secciong) ON DELETE RESTRICT
+CONSTRAINT aula_fore1 FOREIGN KEY (gradoa) REFERENCES aula(gradog) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT aula_fore2 FOREIGN KEY (secciona) REFERENCES aula(secciong) ON DELETE RESTRICT ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table nota(
@@ -98,10 +97,10 @@ exbi int(11),
 proce double,
 prome double,
 estado int(11),
-CONSTRAINT curso_forea2 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT,
-CONSTRAINT alumno_foreana1 FOREIGN KEY (usuarioA) REFERENCES alumno(usuario) ON DELETE RESTRICT,
-CONSTRAINT alumno_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT,
-CONSTRAINT aula_for1 FOREIGN KEY (gradon) REFERENCES aula(gradog) ON DELETE RESTRICT,
-CONSTRAINT aula_for2 FOREIGN KEY (seccionn) REFERENCES aula(secciong) ON DELETE RESTRICT,
+CONSTRAINT curso_forea2 FOREIGN KEY (cursod) REFERENCES curso(codCurso) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT alumno_foreana1 FOREIGN KEY (usuarioA) REFERENCES alumno(usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT alumno_foreana2 FOREIGN KEY (usuarioP) REFERENCES profesor(usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT aula_for1 FOREIGN KEY (gradon) REFERENCES aula(gradog) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT aula_for2 FOREIGN KEY (seccionn) REFERENCES aula(secciong) ON DELETE RESTRICT ON UPDATE CASCADE,
 primary key (usuarioA,usuarioP,cursod,gradon,seccionn,bimestre)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -47,31 +47,43 @@
 
         <div id="page-content-wrapper container">
             <div class="row bg-light">
-                <div class="col-4"></div>
-                <div class="col-4 justify-content-center">
+                <div class="col-3"></div>
+                <div class="col-6 justify-content-center">
                     <section>
                         <table class="table table-hover ">
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Nombre de la Sección</th>
+                                    <th style="text-align: center" colspan="2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                <% 
                                   for(int i=0; i<li.size(); i++){ 
-                                      out.print("<tr>");
                                  %>
+                                 <tr>
                             <td style="text-align: center"><%out.print(li.get(i).getNombre());%> </td>
-                            <%
-                              out.print("</tr>");    
-                             }%>
+                             <td>
+                                <form method="post" action="editarseccion.do">
+                                    <input name="sec" value="<%out.print(li.get(i).getNombre());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                </form>   
+                            </td>
+                            <td>
+                                <form method="post" action="eliminarseccion.do">
+                                    <input name="sec" value="<%out.print(li.get(i).getNombre());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                </form>   
+                            </td>
+                                 </tr>
+                            <%}%>
 
                             </tbody>
                         </table>
                     </section>
                 </div>
-                <div class="col-4"></div>
+                <div class="col-3"></div>
             </div>
             <div class="py-3 bg-light" style="text-align: center;">
                     <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>

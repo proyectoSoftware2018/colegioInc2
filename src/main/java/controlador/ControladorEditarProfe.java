@@ -7,18 +7,18 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.reniec;
+import modelo.EsNumero;
+import modelo.Profesor;
 
 /**
  *
- * @author alumno
+ * @author KandL
  */
-public class validarDni extends HttpServlet {
+public class ControladorEditarProfe extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,32 +32,41 @@ public class validarDni extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-        String dni = request.getParameter("dni");
         
-        if(dni.equals("")){
-            String error = "No hay ningun dni";
+        String codigo = request.getParameter("codigo");
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String direccion = request.getParameter("dire");
+        String ciudad = request.getParameter("ciudad");
+        String edad = request.getParameter("edad");
+        String tcasa = request.getParameter("tcasa");
+        String tmovil = request.getParameter("tmovil");
+        String correo = request.getParameter("correo");
+        String contraseña = request.getParameter("contra");
+
+        if (codigo.equals("") || apellido.equals("") || nombre.equals("") || direccion.equals("") || ciudad.equals("") || edad.equals("") || tcasa.equals("") || tmovil.equals("") || correo.equals("") || contraseña.equals("")) {
+            String error = "Debera de completar todos los campos";
             request.getSession().setAttribute("error", error);
-            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);   
-        }else{
-        try{
-        reniec re = new reniec();
-        String recivido = re.getNombre("http://aplicaciones007.jne.gob.pe/srop_publico/consulta/afiliado/getNombresCiudadano?DNI="+dni);
-        StringTokenizer st= new StringTokenizer(recivido,"|");
-        String apeP = st.nextToken();
-        String apeM = st.nextToken();
-        String Nombre = st.nextToken();
-        request.getSession().setAttribute("ape1", apeP);
-        request.getSession().setAttribute("ape2", apeM);
-        request.getSession().setAttribute("nom", Nombre);
-        request.getSession().setAttribute("dni", dni);
-        request.getRequestDispatcher("registroAlumno.jsp").forward(request, response);   
-        }catch(Exception e){
-        String error = "No se pudo validar el dni del padre";
-        request.getSession().setAttribute("error", error);
-        request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
-        }
-        
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        } else if (EsNumero.validar(edad) == false || EsNumero.validar(tcasa) == false || EsNumero.validar(tmovil) == false) {
+
+            String error = "Error un tipo de dato no es correcto";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        } else {
+            int eda = Integer.parseInt(edad);
+            int tc = Integer.parseInt(tcasa);
+            int tm = Integer.parseInt(tmovil);
+            Profesor pro = new Profesor(codigo, apellido, nombre, direccion, ciudad, eda, tc, tm, correo, contraseña);
+            
+            if (pro.editar() == true) {
+                    request.getSession().setAttribute("profesor", pro);
+                    request.getRequestDispatcher("inforProfe.jsp").forward(request, response);
+                } else {
+                    String error = "Error no se pudo modificar";
+                    request.getSession().setAttribute("error", error);
+                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+                }
         }
     }
 

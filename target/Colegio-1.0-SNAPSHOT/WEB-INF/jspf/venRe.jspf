@@ -3,7 +3,7 @@
                     <div class="modal-content">
                         
                         <div class="modal-header">
-                            <h4 class="modal-title text-center">ESCRIBIR DNI:</h4> 
+                            <h4 class="modal-title text-center">ESCRIBIR DNI DEL PADRE:</h4> 
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <form action="validardni.do" method="post">
@@ -17,7 +17,7 @@
                         </div>
                         
                         <div class="modal-footer">
-                             <button type="submit" class="btn btn-success" >Registrar</button>
+                             <button type="submit" class="btn btn-success" >Validar</button>
                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                         </div>
                         </form>

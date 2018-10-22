@@ -33,7 +33,7 @@
                 </div>
                 <a href="#menu5" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-cube"></i>&nbsp;<span>Aulas</span> </a>
                 <div class="collapse" id="menu5">
-                    <a href="registroAula.jsp" class="list-group-item text-dark" data-parent="#menu5">Registrar Aula</a>
+                    <a href="registroAulas.jsp" class="list-group-item text-dark" data-parent="#menu5">Registrar Aula</a>
                     <a href="reporteAula.jsp" class="list-group-item text-dark" data-parent="#menu5">Reporte Aula</a>
                 </div>
                 <a href="#menu6" class="list-group-item d-inline-block collapsed bg-dark text-white" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-book"></i>&nbsp;<span>Cursos</span> </a>

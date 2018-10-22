@@ -31,7 +31,6 @@
     LinkedList<Asignacion> li = ls.select();
     ListaCursos cur = new ListaCursos();
     LinkedList<Curso> cur1 = cur.select();
-
     if (li == null) {
         String error = "No hay ningun dato de asignaciones";
         request.getSession().setAttribute("error", error);
@@ -47,7 +46,7 @@
     <body>
 
         <%@include file="WEB-INF/jspf/cabecera.jspf" %>
-        <%@include file="WEB-INF/jspf/navProfesor.jspf" %>
+        <%@include file="WEB-INF/jspf/navProfesor.jspf"%>
 
         <h2></h2>
         <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark py-3">

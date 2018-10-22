@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 public class Alumno {
     public String grado,sexoh,nombreh,apellidoh,deparh,distritoh,dnih,direccionh,obserh,usuario,contra;
-    public String estado,sexop,nombrep,apellidop,dnip,direccionp,seccion;
+    public String estado,sexop,nombrep,apellidop,dnip,seccion;
     public int edadh,telefonoh;
     private Conexion conn;
     private PreparedStatement ps;
 
-    public Alumno(String grado,String seccion, String sexoh, String nombreh, String apellidoh, String deparh, String distritoh, String dnih, String direccionh, String obserh, String usuario, String contra, String estado, String sexop, String nombrep, String apellidop, String dnip, String direccionp, int edadh, int telefonoh) {
+    public Alumno(String grado,String seccion, String sexoh, String nombreh, String apellidoh, String deparh, String distritoh, String dnih, String direccionh, String obserh, String usuario, String contra, String estado, String sexop, String nombrep, String apellidop, String dnip, int edadh, int telefonoh) {
         this.grado = grado;
         this.sexoh = sexoh;
         this.nombreh = nombreh;
@@ -28,7 +28,6 @@ public class Alumno {
         this.nombrep = nombrep;
         this.apellidop = apellidop;
         this.dnip = dnip;
-        this.direccionp = direccionp;
         this.seccion = seccion;
         this.edadh = edadh;
         this.telefonoh = telefonoh;
@@ -39,7 +38,7 @@ public class Alumno {
 
      public boolean insert() {
         try {
-            ps = conn.getConnection().prepareCall("call InsertarAlumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps = conn.getConnection().prepareCall("call InsertarAlumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, usuario);
             ps.setString(2, nombreh);
             ps.setString(3, apellidoh);
@@ -55,11 +54,10 @@ public class Alumno {
             ps.setString(13, nombrep);
             ps.setString(14, apellidop);
             ps.setString(15, dnip);
-            ps.setString(16, direccionp);
-            ps.setString(17, estado);
-            ps.setString(18, sexop);
-            ps.setInt(19, telefonoh);
-            ps.setString(20, contra);
+            ps.setString(16, estado);
+            ps.setString(17, sexop);
+            ps.setInt(18, telefonoh);
+            ps.setString(19, contra);
             int filas = ps.executeUpdate();
 
             if (filas > 0) {
@@ -217,13 +215,6 @@ public class Alumno {
         this.dnip = dnip;
     }
 
-    public String getDireccionp() {
-        return direccionp;
-    }
-
-    public void setDireccionp(String direccionp) {
-        this.direccionp = direccionp;
-    }
 
     public int getEdadh() {
         return edadh;

@@ -93,7 +93,6 @@ IN edadh int(11),
 IN nomp varchar(200) ,
 IN apep varchar(200) ,
 IN dnp varchar(20),
-IN direp varchar(200),
 IN estaCi varchar(80) ,
 IN sexp varchar(20) ,
 IN tele int(11),
@@ -117,7 +116,6 @@ BEGIN
         nombrep,
         apellidop,
         dnip,
-        direccionp,
         estadoCi,
         sexop,
         telefono,
@@ -140,7 +138,6 @@ edadh ,
 nomp  ,
 apep  ,
 dnp ,
-direp ,
 estaCi  ,
 sexp,
 tele,
@@ -305,11 +302,7 @@ LIMIT 1;
 END$$
 
 
-DELIMITER $$
-CREATE  PROCEDURE ConsultarSeccion ()  BEGIN
-select * from seccion
-where estado=0;
-END$$
+
 
 DELIMITER $$
 CREATE  PROCEDURE InsertarSeccion (IN sec VARCHAR(20))  BEGIN
@@ -317,8 +310,49 @@ insert into seccion values(sec,0);
 END$$
 
 DELIMITER $$
+CREATE  PROCEDURE EditarSeccion (IN seca VARCHAR(20),IN secn VARCHAR(20))  BEGIN
+update seccion
+set seccion = secn
+where seccion = seca;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE EliminarSeccion(IN sec VARCHAR(20))  BEGIN
+update seccion
+set 
+seccion = concat(seccion,'i'),
+estado = 1
+where seccion = sec;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE ConsultarSeccion ()  BEGIN
+select * from seccion
+where estado=0;
+END$$
+
+
+DELIMITER $$
 CREATE  PROCEDURE InsertarGrado (IN gra VARCHAR(20))  BEGIN
 insert into grado values(gra,0);
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE EditarGrado (IN graa VARCHAR(20),IN gran VARCHAR(20))  BEGIN
+update grado
+set grado = gran
+where grado = graa;
+END$$
+
+
+
+DELIMITER $$
+CREATE  PROCEDURE EliminarGrado (IN graa VARCHAR(20))  BEGIN
+update grado
+set 
+grado = concat(grado,'i'),
+estado = 1
+where grado = graa;
 END$$
 
 DELIMITER $$

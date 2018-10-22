@@ -56,4 +56,72 @@ public class Grado {
 
         }
     }
+    
+    public boolean editar(String nuevo) {
+        try {
+            ps = conn.getConnection().prepareCall("call EditarGrado(?,?)");
+            ps.setString(1, nombre);
+            ps.setString(2, nuevo);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    public boolean eliminar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EliminarGrado(?)");
+            ps.setString(1, nombre);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
 }
