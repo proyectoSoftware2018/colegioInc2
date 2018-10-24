@@ -35,6 +35,13 @@ public class Alumno {
         ps = null;
     }
 
+    public Alumno(String usuario) {
+        this.usuario = usuario;
+        conn = new Conexion();
+        ps = null;
+    }
+    
+
 
      public boolean insert() {
         try {
@@ -68,6 +75,91 @@ public class Alumno {
             return true;
         } catch (Exception e) {
             System.out.println("error");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+     
+    public boolean editar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EditarAlumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, usuario);
+            ps.setString(2, nombreh);
+            ps.setString(3, apellidoh);
+            ps.setString(4, dnih);
+            ps.setString(5, direccionh);
+            ps.setString(6, grado);
+            ps.setString(7, seccion);
+            ps.setString(8, sexoh);
+            ps.setString(9, deparh);
+            ps.setString(10, distritoh);
+            ps.setString(11, obserh);
+            ps.setInt(12, edadh);
+            ps.setString(13, nombrep);
+            ps.setString(14, apellidop);
+            ps.setString(15, dnip);
+            ps.setString(16, estado);
+            ps.setString(17, sexop);
+            ps.setInt(18, telefonoh);
+            ps.setString(19, contra);
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("inserto");
+            } else {
+                System.out.print("nooo");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("error "+e);
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean eliminar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EliminarAlumno(?)");
+            ps.setString(1, usuario);
+           
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("inserto");
+            } else {
+                System.out.print("nooo");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("error "+e);
             return false;
         }
         finally {

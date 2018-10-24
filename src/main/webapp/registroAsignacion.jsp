@@ -3,6 +3,8 @@
     Created on : 19-sep-2018, 17:21:03
     Author     : alumno
 --%>
+<%@page import="modelo.Aula"%>
+<%@page import="modelo.ListaAulas"%>
 <%@page import="modelo.Curso"%>
 <%@page import="modelo.ListaCursos"%>
 <%@page import="modelo.Profesor"%>
@@ -30,10 +32,8 @@
 
     }
 
-    ListaSecciones ls = new ListaSecciones();
-    LinkedList<Seccion> li = ls.select();
-    ListaGrados ls2 = new ListaGrados();
-    LinkedList<Grado> li2 = ls2.select();
+    ListaAulas ls = new ListaAulas();
+     LinkedList<Aula> li= ls.select();
     ListaProfesores ls3 = new ListaProfesores();
     LinkedList<Profesor> li3 = ls3.select();
     ListaCursos ls4 = new ListaCursos();
@@ -70,13 +70,14 @@
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Grado de estudio Primario:</label>
                                         <select id="inputState" class="form-control" name="grado">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%
-                                                if (li2.size() == 0) {
+                                                if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Grados </option>");
                                                 } else {
-                                                    for (int i = 0; i < li2.size(); i++) {
+                                                    for (int i = 0; i < li.size(); i++) {
                                                %>
-                                                 <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option>
+                                               <option value="<%out.print(li.get(i).getGrado());%>"><%out.print(li.get(i).getGrado());%></option>
                                                 <%    }
                                                 }
 
@@ -86,12 +87,13 @@
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Sección:</label>
                                         <select id="inputState" class="form-control" name="comboSe">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%                                                    if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Sección </option>");
                                                 } else {
-                                                    for (int i = 0; i < li.size(); i++) {
-                                                        out.print("<option value=" + li.get(i).getNombre() + "> Sección " + li.get(i).getNombre() + "</option>");
-                                                    }
+                                                    for (int i = 0; i < li.size(); i++) {%>
+                                            <option value="<%out.print(li.get(i).getSeccion());%>">Sección <%out.print(li.get(i).getSeccion());%></option>
+                                         <%           }
                                                 }
 
                                             %>
@@ -104,12 +106,13 @@
                                   <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Lista de Profesores:</label>
                                         <select id="inputState" class="form-control" name="comboPro">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%     if (li3.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Profesores </option>");
                                                 } else {
-                                                    for (int i = 0; i < li3.size(); i++) {
-                                                        out.print("<option value=" + li3.get(i).getCodigo() + ">" + li3.get(i).getNombre()+" "+li3.get(i).getApellido()+" </option>");
-                                                    }
+                                                    for (int i = 0; i < li3.size(); i++) {%>
+                                                    <option value="<%out.print(li3.get(i).getCodigo());%>"><%out.print(li3.get(i).getNombre()+" "+li3.get(i).getApellido());%></option>
+                                           <%         }
                                                 }
 
                                             %>
@@ -119,13 +122,14 @@
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState"> Lista de Cursos:</label>
                                         <select id="inputState" class="form-control" name="curso">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%
                                                 if (li4.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Cursos </option>");
                                                 } else {
                                                     for (int i = 0; i < li4.size(); i++) {
                                                %>
-                                                 <option value="<%out.print(li4.get(i).getCodigo());%>"><%out.print(li4.get(i).getNombre());%></option>
+                                               <option value="<%out.print(li4.get(i).getCodigo());%>"><%out.print(li4.get(i).getNombre());%></option>
                                                 <%    }
                                                 }
 

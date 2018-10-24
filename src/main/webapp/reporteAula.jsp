@@ -62,21 +62,36 @@ LinkedList<Profesor> po1 = po.select();
                                     <th style="text-align: center">Nombre de Sección</th>
                                     <th style="text-align: center">Tutor</th>
                                     <th style="text-align: center">Cantidad Maxima</th>
+                                    <th style="text-align: center" colspan="2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
 
                                <% 
                                   for(int i=0; i<li.size(); i++){ 
-                                      out.print("<tr>");
                                  %>
+                                 <tr>
                             <td style="text-align: center"><%out.print(li.get(i).getGrado());%> </td>
                             <td style="text-align: center"><%out.print(li.get(i).getSeccion());%> </td>
                             <td style="text-align: center"><%out.print(po.buscar(li.get(i).getProfesor()).getNombre()+" "+po.buscar(li.get(i).getProfesor()).getApellido());%>  </td>
                             <td style="text-align: center"><%out.print(li.get(i).getCantMax());%> </td>
-                            <%
-                              out.print("</tr>");    
-                             }%>
+                           <td>
+                                <form method="post" action="editaraula.do">
+                                    <input name="grado" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                </form>   
+                            </td>
+                            <td>
+                                <form method="post" action="eliminaraula.do">
+                                    <input name="grado" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
+                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                </form>   
+                            </td>
+                            
+                            </tr>
+                            <%}%>
 
                             </tbody>
                         </table>

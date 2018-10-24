@@ -44,7 +44,7 @@ public class ListaAlumnos {
                int tel = rs.getInt(18);
                String contra =rs.getString(19);
                
-               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, direh, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip,edad, tel);
+               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, dis, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip,edad, tel);
                lista.add(a);
             }
             return lista;

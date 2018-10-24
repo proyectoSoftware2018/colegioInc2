@@ -36,6 +36,7 @@ public class ControladorEditarProfe extends HttpServlet {
         String codigo = request.getParameter("codigo");
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
+        String dni = request.getParameter("dni");
         String direccion = request.getParameter("dire");
         String ciudad = request.getParameter("ciudad");
         String edad = request.getParameter("edad");
@@ -44,7 +45,7 @@ public class ControladorEditarProfe extends HttpServlet {
         String correo = request.getParameter("correo");
         String contraseña = request.getParameter("contra");
 
-        if (codigo.equals("") || apellido.equals("") || nombre.equals("") || direccion.equals("") || ciudad.equals("") || edad.equals("") || tcasa.equals("") || tmovil.equals("") || correo.equals("") || contraseña.equals("")) {
+        if (codigo.equals("") || apellido.equals("") || nombre.equals("") || dni.equals("") || direccion.equals("") || ciudad.equals("") || edad.equals("") || tcasa.equals("") || tmovil.equals("") || correo.equals("") || contraseña.equals("")) {
             String error = "Debera de completar todos los campos";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
@@ -57,7 +58,7 @@ public class ControladorEditarProfe extends HttpServlet {
             int eda = Integer.parseInt(edad);
             int tc = Integer.parseInt(tcasa);
             int tm = Integer.parseInt(tmovil);
-            Profesor pro = new Profesor(codigo, apellido, nombre, direccion, ciudad, eda, tc, tm, correo, contraseña);
+             Profesor pro = new Profesor(codigo, apellido, nombre,dni, direccion, ciudad, eda, tc, tm, correo, contraseña);
             
             if (pro.editar() == true) {
                     request.getSession().setAttribute("profesor", pro);

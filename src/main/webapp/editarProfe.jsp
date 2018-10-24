@@ -62,11 +62,15 @@ Profesor pro = (Profesor) request.getSession().getAttribute("profe");
                                 </div>
 
                                 <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="ciudad">DNI:</label>
+                                        <input type="text" class="form-control" id="ciudad" name="dni" value="<%out.print(pro.getDni());%>" readonly="readonly">
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label for="dire">Direccion:</label>
                                         <input type="text" class="form-control" id="dire" name="dire" value="<%out.print(pro.getDireccion());%>">
                                     </div>
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-3">
                                         <label for="ciudad">Ciudad:</label>
                                         <input type="text" class="form-control" id="ciudad" name="ciudad" value="<%out.print(pro.getCiudad());%>">
                                     </div>

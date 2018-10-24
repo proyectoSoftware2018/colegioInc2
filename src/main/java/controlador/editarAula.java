@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Aula;
-import modelo.EsNumero;
+import modelo.ListaAulas;
 
 /**
  *
  * @author KandL
  */
-public class ControladorAula extends HttpServlet {
+public class editarAula extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,34 +32,16 @@ public class ControladorAula extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String grado = request.getParameter("grado");
-        String seccion = request.getParameter("comboSe");
-        String profesor = request.getParameter("comboPro");
-        String cant = request.getParameter("cant");
+        String seccion = request.getParameter("sec");
 
-        if (grado.equals("0") || seccion.equals("0") || profesor.equals("0") || cant.equals("")) {
-            String error = "Falta llenar todos los datos no selecciono";
-            request.getSession().setAttribute("error", error);
-            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-        } else {
-            if (EsNumero.validar(cant) == false) {
-                String error = "Hay un error en la cantidad no es número";
-                request.getSession().setAttribute("error", error);
-                request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-            } else {
-                int cantMax = Integer.parseInt(cant);
-                Aula au = new Aula(grado, seccion, profesor, cantMax);
-                if (au.insert() == false) {
-                    String error = "No se pudo Insertar error";
-                    request.getSession().setAttribute("error", error);
-                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-                }else{
-                    request.getSession().setAttribute("aula", au);
-                    request.getRequestDispatcher("inforAula.jsp").forward(request, response);
-                }
-            }
-        }
+        ListaAulas aulas = new ListaAulas();
+        aulas.select();
+        Aula au = aulas.verAula(grado, seccion);
+        request.getSession().setAttribute("aula", au);
+        request.getRequestDispatcher("editarAula.jsp").forward(request, response);
+        
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

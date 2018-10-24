@@ -69,5 +69,14 @@ public class ListaAsignaciones {
         return lis;
     }
     
+        public Asignacion verAsignacion(String gra,String sec, String cur){
+            for(int i =0 ; i<tama();i++){
+             if(lista.get(i).getGrado().equalsIgnoreCase(gra) && lista.get(i).getSeccion().equalsIgnoreCase(sec)
+                && lista.get(i).getCurso().equalsIgnoreCase(cur)) {
+                 return lista.get(i);
+             }
+            }
+            return null;
+        }
     
 }

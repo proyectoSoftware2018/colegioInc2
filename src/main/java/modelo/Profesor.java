@@ -13,14 +13,16 @@ import java.sql.SQLException;
  * @author alumno
  */
 public class Profesor {
-      public String nombre, apellido, direccion, ciudad, contraseña, codigo, correo;
-    public int edad,tcasa, tmovil;
-       private Conexion conn;
-       private PreparedStatement ps;
-    
-    public Profesor(String codigo, String apellido, String nombre, String direccion, String ciudad, int edad , int tcasa, int tmovil, String correo,String contraseña) {
+
+    public String nombre, apellido, dni, direccion, ciudad, contraseña, codigo, correo;
+    public int edad, tcasa, tmovil;
+    private Conexion conn;
+    private PreparedStatement ps;
+
+    public Profesor(String codigo, String apellido, String nombre, String dni, String direccion, String ciudad, int edad, int tcasa, int tmovil, String correo, String contraseña) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni = dni;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.tcasa = tcasa;
@@ -32,27 +34,28 @@ public class Profesor {
         conn = new Conexion();
         ps = null;
     }
-    
-    public Profesor(String codigo){
-      this.codigo = codigo;  
-      conn = new Conexion();
-      ps = null;
+
+    public Profesor(String codigo) {
+        this.codigo = codigo;
+        conn = new Conexion();
+        ps = null;
     }
 
     public boolean insert() {
         try {
-            ps = conn.getConnection().prepareCall("call InsertarProfesor(?,?,?,?,?,?,?,?,?,?)");
+            ps = conn.getConnection().prepareCall("call InsertarProfesor(?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, this.codigo);
-            ps.setString(2, this.apellido);
-            ps.setString(3, this.nombre);
-            ps.setString(4, this.direccion);
-            ps.setString(5, this.ciudad);
-            ps.setInt(6, this.edad);
-            ps.setInt(7, this.tcasa);
-            ps.setInt(8,this.tmovil);
-            ps.setString(9,this.correo);
-            ps.setString(10,this.contraseña);
-            
+            ps.setString(2, this.nombre);
+            ps.setString(3, this.apellido);
+            ps.setString(4, this.dni);
+            ps.setString(5, this.direccion);
+            ps.setString(6, this.ciudad);
+            ps.setInt(7, this.edad);
+            ps.setInt(8, this.tcasa);
+            ps.setInt(9, this.tmovil);
+            ps.setString(10, this.correo);
+            ps.setString(11, this.contraseña);
+
             int filas = ps.executeUpdate();
 
             if (filas > 0) {
@@ -64,8 +67,7 @@ public class Profesor {
         } catch (Exception e) {
             System.out.println("ErrorE");
             return false;
-        }
-        finally {
+        } finally {
 
             try {
                 if (ps != null) {
@@ -76,26 +78,27 @@ public class Profesor {
                 }
             } catch (SQLException ex) {
                 System.out.println("error");
-                
+
             }
 
         }
     }
-    
+
     public boolean editar() {
         try {
-            ps = conn.getConnection().prepareCall("call ModificarProfesor(?,?,?,?,?,?,?,?,?,?)");
+            ps = conn.getConnection().prepareCall("call EditarProfesor(?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, this.codigo);
-            ps.setString(2, this.apellido);
-            ps.setString(3, this.nombre);
-            ps.setString(4, this.direccion);
-            ps.setString(5, this.ciudad);
-            ps.setInt(6, this.edad);
-            ps.setInt(7, this.tcasa);
-            ps.setInt(8,this.tmovil);
-            ps.setString(9,this.correo);
-            ps.setString(10,this.contraseña);
-            
+            ps.setString(2, this.nombre);
+            ps.setString(3, this.apellido);
+            ps.setString(4, this.dni);
+            ps.setString(5, this.direccion);
+            ps.setString(6, this.ciudad);
+            ps.setInt(7, this.edad);
+            ps.setInt(8, this.tcasa);
+            ps.setInt(9, this.tmovil);
+            ps.setString(10, this.correo);
+            ps.setString(11, this.contraseña);
+
             int filas = ps.executeUpdate();
 
             if (filas > 0) {
@@ -107,8 +110,7 @@ public class Profesor {
         } catch (Exception e) {
             System.out.println("ErrorE");
             return false;
-        }
-        finally {
+        } finally {
 
             try {
                 if (ps != null) {
@@ -119,12 +121,12 @@ public class Profesor {
                 }
             } catch (SQLException ex) {
                 System.out.println("error");
-                
+
             }
 
         }
     }
-    
+
     public boolean eliminar(String codigo) {
         try {
             ps = conn.getConnection().prepareCall("call EliminarProfesor(?)");
@@ -138,10 +140,9 @@ public class Profesor {
             }
             return true;
         } catch (Exception e) {
-            System.out.println("ErroasdsadsadreE"+e);
+            System.out.println("ErroasdsadsadreE" + e);
             return false;
-        }
-        finally {
+        } finally {
 
             try {
                 if (ps != null) {
@@ -152,14 +153,19 @@ public class Profesor {
                 }
             } catch (SQLException ex) {
                 System.out.println("error");
-                
+
             }
 
         }
     }
-    
-    
-    
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
     public String getNombre() {
         return nombre;

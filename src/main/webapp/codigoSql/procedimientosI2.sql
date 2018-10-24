@@ -1,20 +1,22 @@
 DELIMITER $$
-CREATE PROCEDURE `InsertarProfesor` (
-IN `codigo` VARCHAR(20), 
-IN `nombre` VARCHAR(200), 
-IN `apellido` VARCHAR(200), 
-IN `direccion` VARCHAR(200), 
-IN `ciudad` VARCHAR(40), 
-IN `edad` INT(11), 
-IN `telefonoCasa` INT(11), 
-IN `telefonoMovil` INT(11), 
-IN `correo` VARCHAR(40), 
-IN `contraseña` VARCHAR(40))  
+CREATE PROCEDURE InsertarProfesor (
+IN codigo VARCHAR(20), 
+IN nombre VARCHAR(200), 
+IN apellido VARCHAR(200),
+IN dni VARCHAR(20), 
+IN direccion VARCHAR(200), 
+IN ciudad VARCHAR(40), 
+IN edad INT(11), 
+IN telefonoCasa INT(11), 
+IN telefonoMovil INT(11), 
+IN correo VARCHAR(40), 
+IN contraseña VARCHAR(40))  
 BEGIN
 insert into profesor
 (usuario, 
 nombre, 
 apellido,
+dni,
 direccion, 
 ciudad, 
 edad,
@@ -24,14 +26,15 @@ correo,
 contraseña,
 estado
 )
-values(codigo, nombre, apellido, direccion, ciudad, edad,telefonoCasa,telefonoMovil,correo,contraseña,0);
+values(codigo, nombre, apellido, dni,direccion, ciudad, edad,telefonoCasa,telefonoMovil,correo,contraseña,0);
 END$$
 
 DELIMITER $$
-CREATE PROCEDURE `ModificarProfesor` 
+CREATE PROCEDURE EditarProfesor 
 (IN usu VARCHAR(20), 
 IN nom VARCHAR(200), 
-IN ape VARCHAR(200), 
+IN ape VARCHAR(200),
+IN d VARCHAR(20),
 IN direc VARCHAR(200), 
 IN ciu VARCHAR(40), 
 IN eda VARCHAR(40), 
@@ -43,6 +46,7 @@ IN contra VARCHAR(40)
 update profesor
 set nombre =nom,
 apellido = ape,
+dni = d,
 direccion = direc,
 ciudad = ciu,
 edad = eda,
@@ -54,7 +58,7 @@ where usuario = usu;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `ConsultarProfesor` ()  BEGIN
+CREATE  PROCEDURE ConsultarProfesor ()  BEGIN
 select * from profesor
 where estado = 0;
 END$$
@@ -68,7 +72,7 @@ where usuario = usu;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `LoginProfesor` (IN usu VARCHAR(20))  BEGIN
+CREATE  PROCEDURE LoginProfesor (IN usu VARCHAR(20))  BEGIN
 select usuario,contraseña from profesor
 where usuario = usu
 LIMIT 1;
@@ -78,7 +82,7 @@ END$$
 
 
 DELIMITER $$
-CREATE  PROCEDURE `InsertarAlumno` (
+CREATE  PROCEDURE InsertarAlumno (
 IN usu VARCHAR(20), 
 IN nomh VARCHAR(20), 
 IN apeh VARCHAR(200),
@@ -148,13 +152,14 @@ pass,
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `ModificarAlumnno` (
+CREATE  PROCEDURE EditarAlumno (
 IN usu VARCHAR(20), 
 IN nomh VARCHAR(20), 
 IN apeh VARCHAR(200),
 IN dnh VARCHAR(20), 
 IN direh VARCHAR(200), 
 IN grad varchar(80) ,
+IN sec varchar(20) ,
 IN sexh varchar(20) ,
 IN depa varchar(200) ,
 IN dis varchar(200),
@@ -163,7 +168,6 @@ IN edadh int(11),
 IN nomp varchar(200) ,
 IN apep varchar(200) ,
 IN dnp varchar(20),
-IN direp varchar(200),
 IN estaCi varchar(80) ,
 IN sexp varchar(20) ,
 IN tele int(11),
@@ -175,7 +179,8 @@ SET nombreh = nomh,
 apellidoh=apeh,
 dnih=dnh,
 direccionh=direh,
-grado=grad,
+gradoa=grad,
+secciona=sec,
 sexoh=sexh,
 departamento=depa,
 distrito=dis,
@@ -184,7 +189,6 @@ edad=edadh,
 nombrep=nomp,
 apellidop=apep,
 dnip=dnp,
-direccionp=direp,
 estadoCi=estaCi,
 sexop=sexp,
 telefono=tele,
@@ -193,20 +197,22 @@ WHERE usuario = usu ;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `ConsultarAlumno` ()  BEGIN
+CREATE  PROCEDURE ConsultarAlumno ()  BEGIN
 select * from alumno
 where estado = 0;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `EliminarAlumno` (IN usu VARCHAR(20))  BEGIN
+CREATE  PROCEDURE EliminarAlumno (IN usu VARCHAR(20))  BEGIN
 update alumno
-set estado = 1
+set 
+usuario = concat(usuario,'in'),
+estado = 1
 where usuario = usu;
 END$$
 
 DELIMITER $$
-CREATE PROCEDURE `InsertarNota` (
+CREATE PROCEDURE InsertarNota (
 IN alu VARCHAR(20), 
 IN profe VARCHAR(20),
 IN cur varchar(20),
@@ -384,6 +390,29 @@ pro,
 can,
 0
 );
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE EditarAula (
+IN gra VARCHAR(80),
+IN sec VARCHAR(20),
+IN pro VARCHAR(20),
+IN can int(11)
+)  BEGIN
+
+update aula
+set usuarioP=pro,
+cantMax = can
+where gradog = gra and secciong = sec;
+
+END$$
+call EliminarAula('1 Grado','A')
+DELIMITER $$
+CREATE  PROCEDURE EliminarAula (IN gra VARCHAR(80), IN sec VARCHAR(20))  BEGIN
+update aula
+set 
+estado = 1
+where gradog = gra and secciong = sec;
 END$$
 
 DELIMITER $$

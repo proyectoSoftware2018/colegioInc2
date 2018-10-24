@@ -26,15 +26,16 @@ public class ListaProfesores {
                 String codigo = rs.getString(1);
                 String nombre = rs.getString(2);
                 String apellido = rs.getString(3);
-                String direccion = rs.getString(4);
-                String ciudad = rs.getString(5);
-                int edad = rs.getInt(6);
-                int tcasa = rs.getInt(7);
-                int tmovil = rs.getInt(8);
-                String correo = rs.getString(9);
-                String contra = rs.getString(10);
+                String dni = rs.getString(4);
+                String direccion = rs.getString(5);
+                String ciudad = rs.getString(6);
+                int edad = rs.getInt(7);
+                int tcasa = rs.getInt(8);
+                int tmovil = rs.getInt(9);
+                String correo = rs.getString(10);
+                String contra = rs.getString(11);
 
-                Profesor a = new Profesor(codigo, nombre,apellido, direccion, ciudad, edad, tcasa, tmovil, correo, contra);
+                Profesor a = new Profesor(codigo,apellido, nombre,dni, direccion, ciudad, edad, tcasa, tmovil, correo, contra);
                 lista.add(a);
             }
             return lista;

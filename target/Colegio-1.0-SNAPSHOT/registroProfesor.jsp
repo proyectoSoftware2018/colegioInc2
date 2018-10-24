@@ -22,6 +22,10 @@
 
     }
 
+ String ape1 = (String) request.getSession().getAttribute("ape1");
+ String ape2 = (String) request.getSession().getAttribute("ape2");
+ String nom = (String) request.getSession().getAttribute("nom");
+ String dni = (String) request.getSession().getAttribute("dni");
 
 %>
 <!DOCTYPE html>
@@ -52,20 +56,24 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="nombre">Nombre:</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Victor">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<%out.print(nom);%>" readonly="readonly">
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="apellido">Apellidos:</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Morales">
+                                        <input type="text" class="form-control" id="apellido" name="apellido" value="<%out.print(ape1+" "+ape2);%>" readonly="readonly">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="ciudad">DNI:</label>
+                                        <input type="text" class="form-control" id="ciudad" name="dni" value="<%out.print(dni);%>" readonly="readonly">
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label for="dire">Direccion:</label>
                                         <input type="text" class="form-control" id="dire" name="dire" placeholder="av.Belaunde-primera etapa">
                                     </div>
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-3">
                                         <label for="ciudad">Ciudad:</label>
                                         <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Lima">
                                     </div>

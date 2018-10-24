@@ -3,11 +3,13 @@
     Created on : 09/10/2018, 12:56:16 AM
     Author     : KandL
 --%>
-<%@page import="modelo.Grado"%>
+
 <%@page import="modelo.ListaGrados"%>
-<%@page import="modelo.Seccion"%>
+<%@page import="modelo.Grado"%>
+<%@page import="modelo.Aula"%>
+<%@page import="modelo.ListaAulas"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="modelo.ListaSecciones"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -26,10 +28,10 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
    
 }
 
- ListaSecciones ls = new ListaSecciones();
- LinkedList<Seccion> li= ls.select();
- ListaGrados ls2 = new ListaGrados();
- LinkedList<Grado> li2 = ls2.select();
+ ListaAulas ls = new ListaAulas();
+ LinkedList<Aula> li= ls.select();
+ ListaGrados lis = new ListaGrados();
+ LinkedList<Grado> gr = lis.select();
 %>
 <html>
     <head>
@@ -59,38 +61,6 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                 <div class="container">
 
                     <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top"  alt="alumnos" style="height: 100%; width: 100%; display: block;" src="img/foto4.png" data-holder-rendered="true">
-                                <div class="card-body">
-                                    <p class="card-text">Aqui se podra Registrar a los Alumnos</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-
-                                            <a href="#ventana2" class="btn btn-sm btn-outline-secondary" data-toggle="modal">Registrar</a>
-                                            <a href="#ventana1" class="btn btn-sm btn-outline-secondary"  data-toggle="modal">Listar</a>
-
-                                        </div>
-                                        <small class="text-muted">alumnos</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top"  alt="profesores" style="height: 100%; width: 100%; display: block;" src="img/foto5.png" data-holder-rendered="true">
-                                <div class="card-body">
-                                    <p class="card-text">Aqui se podra Registrar a los Profesores</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a href="registroProfesor.jsp" class="btn btn-sm btn-outline-secondary">Registrar</a>
-                                            <a href="repoprofe.do" class="btn btn-sm btn-outline-secondary"  >Listar</a>
-                                        </div>
-                                        <small class="text-muted">Profesores</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"  alt="secciones" style="height: 100%; width: 100%; display: block;" src="img/seccion.jpg" data-holder-rendered="true">
@@ -123,6 +93,22 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                         </div>
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"  alt="profesores" style="height: 100%; width: 100%; display: block;" src="img/foto5.png" data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Módulo de Profesores</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="#ventana3" class="btn btn-sm btn-outline-secondary" data-toggle="modal">Registrar</a>
+                                            <a href="repoprofe.do" class="btn btn-sm btn-outline-secondary"  >Listar</a>
+                                        </div>
+                                        <small class="text-muted">Profesores</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"  alt="aulas" style="height: 100%; width: 100%; display: block;" src="img/aula.png" data-holder-rendered="true">
                                 <div class="card-body">
                                     <p class="card-text">Modulo de los Aulas</p>
@@ -136,6 +122,24 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top"  alt="alumnos" style="height: 100%; width: 100%; display: block;" src="img/foto4.png" data-holder-rendered="true">
+                                <div class="card-body">
+                                    <p class="card-text">Módulo de Alumnos</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+
+                                            <a href="#ventana2" class="btn btn-sm btn-outline-secondary" data-toggle="modal">Registrar</a>
+                                            <a href="#ventana1" class="btn btn-sm btn-outline-secondary"  data-toggle="modal">Listar</a>
+
+                                        </div>
+                                        <small class="text-muted">alumnos</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top"  alt="cursos" style="height: 100%; width: 100%; display: block;" src="img/libro.png" data-holder-rendered="true">
@@ -185,14 +189,18 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Grado de estudio Primario:</label>
                                         <select id="inputState" class="form-control" name="grado">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%
-                                                if (li2.size() == 0) {
+                                                int asu=0;
+                                                if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Grados </option>");
                                                 } else {
-                                                    for (int i = 0; i < li2.size(); i++) {
+                                                    for(int i=0;i<li.size();i++){
                                                %>
-                                                 <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option>
-                                                <%    }
+                                               
+                                               <option value="<%out.print(li.get(i).getGrado());%>"><%out.print(li.get(i).getGrado());%></option>
+                                               
+                                                <%   }
                                                 }
 
                                             %>
@@ -201,12 +209,13 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                     <div class="form-group col-md-6 col-lg-6">
                                         <label for="inputState">Sección:</label>
                                         <select id="inputState" class="form-control" name="sec">
+                                            <option selected="selected" value="0">Seleccionar:</option>
                                             <%                                                    if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Sección </option>");
                                                 } else {
-                                                    for (int i = 0; i < li.size(); i++) {
-                                                        out.print("<option value=" + li.get(i).getNombre() + "> Sección " + li.get(i).getNombre() + "</option>");
-                                                    }
+                                                    for (int i = 0; i < li.size(); i++) {%>
+                                            <option value="<%out.print(li.get(i).getSeccion());%>">Sección <%out.print(li.get(i).getSeccion());%></option>
+                                         <%           }
                                                 }
 
                                             %>
@@ -225,7 +234,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                 </div>
             </div>
                                             
-             <%@include file="WEB-INF/jspf/venRe.jspf" %>                               
+             <%@include file="WEB-INF/jspf/venRe.jspf" %> 
+             <%@include file="WEB-INF/jspf/venRePro.jspf" %> 
              <%@include file="WEB-INF/jspf/footer.jspf" %>
         </div>
   

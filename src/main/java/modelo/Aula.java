@@ -19,9 +19,13 @@ public class Aula {
         ps = null;
     }
 
+    public Aula(String grado, String seccion) {
+        this.grado = grado;
+        this.seccion = seccion;
+        conn = new Conexion();
+        ps = null;
+    }
 
-
-    
     public boolean insert() {
         try {
             ps = conn.getConnection().prepareCall("call InsertarAula(?,?,?,?)");
@@ -40,6 +44,78 @@ public class Aula {
             return true;
         } catch (Exception e) {
             System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean editar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EditarAula(?,?,?,?)");
+            ps.setString(1, grado);
+            ps.setString(2, seccion);
+            ps.setString(3, profesor);
+            ps.setInt(4, cantMax);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean eliminar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EliminarAula(?,?)");
+            ps.setString(1, grado);
+            ps.setString(2, seccion);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error de eliminacion "+e);
             return false;
         }
         finally {

@@ -41,7 +41,8 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                     <p class="card-text">Codigo: <% out.print(pro.getCodigo());  %></p>
                     <p class="card-text">Nombre: <% out.print(pro.getNombre());  %></p>
                     <p class="card-text">Apellido: <% out.print(pro.getApellido());%></p>
-                    <p class="card-text">Dirección <% out.print(pro.getDireccion());%></p>
+                    <p class="card-text">DNI: <% out.print(pro.getDni());%></p>
+                    <p class="card-text">Dirección: <% out.print(pro.getDireccion());%></p>
                     <p class="card-text">Ciudad: <% out.print(pro.getCiudad());%></p>
                     <p class="card-text">Telefono Casa: <% out.print(pro.getTcasa());%></p>
                     <p class="card-text">Telefono Movil: <% out.print(pro.getTmovil());%></p>

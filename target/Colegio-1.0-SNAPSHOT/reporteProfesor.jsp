@@ -48,8 +48,8 @@
                                     <th>Codigo</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
+                                    <th>DNI</th>
                                     <th>Dirección</th>
-                                    <th>Ciudad</th>
                                     <th>Edad</th>
                                     <th>Tel. Casa</th>
                                     <th>Tel. Movil</th>
@@ -67,8 +67,8 @@
                                         <td><%out.print(profesores.get(i).getCodigo());%></td>
                                         <td><%out.print(profesores.get(i).getNombre());%></td>
                                         <td><%out.print(profesores.get(i).getApellido());%></td>
+                                        <td><%out.print(profesores.get(i).getDni());%></td>
                                         <td><%out.print(profesores.get(i).getDireccion());%></td>
-                                        <td><%out.print(profesores.get(i).getCiudad());%></td>
                                         <td><%out.print(profesores.get(i).getEdad());%></td>
                                         <td><%out.print(profesores.get(i).getTcasa());%></td>
                                         <td><%out.print(profesores.get(i).getTmovil());%></td>

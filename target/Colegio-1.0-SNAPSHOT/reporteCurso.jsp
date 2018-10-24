@@ -65,6 +65,7 @@
                                <% 
                                   for(int i=0; i<li.size(); i++){ 
                                  %>
+                                 <tr>
                             <td style="text-align: center"><%out.print(li.get(i).getCodigo());%> </td>
                             <td style="text-align: center"><%out.print(li.get(i).getNombre());%> </td>
                                    <td>
@@ -79,6 +80,7 @@
                                     <button type="submit" class="btn btn-danger">ELIMINAR</button>
                                 </form>   
                             </td>
+                                 </tr>
                             <% }%>
 
                             </tbody>

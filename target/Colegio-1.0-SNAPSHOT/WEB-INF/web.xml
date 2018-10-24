@@ -129,6 +129,38 @@
         <servlet-name>EliminarCurso</servlet-name>
         <servlet-class>controlador.EliminarCurso</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ValidarDni2</servlet-name>
+        <servlet-class>controlador.ValidarDni2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarAula</servlet-name>
+        <servlet-class>controlador.editarAula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarAula</servlet-name>
+        <servlet-class>controlador.ControladorEditarAula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarAula</servlet-name>
+        <servlet-class>controlador.EliminarAula</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarAlumno</servlet-name>
+        <servlet-class>controlador.editarAlumno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarAlumno</servlet-name>
+        <servlet-class>controlador.ControladorEditarAlumno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarAlumno</servlet-name>
+        <servlet-class>controlador.EliminarAlumno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarAsignacion</servlet-name>
+        <servlet-class>controlador.editarAsignacion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -240,6 +272,38 @@
     <servlet-mapping>
         <servlet-name>EliminarCurso</servlet-name>
         <url-pattern>/eliminarcurso.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidarDni2</servlet-name>
+        <url-pattern>/validardni2.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarAula</servlet-name>
+        <url-pattern>/editaraula.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarAula</servlet-name>
+        <url-pattern>/controladoreditaraula.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarAula</servlet-name>
+        <url-pattern>/eliminaraula.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarAlumno</servlet-name>
+        <url-pattern>/editaralumno.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarAlumno</servlet-name>
+        <url-pattern>/controladoreditaralumno.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarAlumno</servlet-name>
+        <url-pattern>/eliminaralumno.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarAsignacion</servlet-name>
+        <url-pattern>/editarasignacion.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

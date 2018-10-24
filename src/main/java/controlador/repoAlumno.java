@@ -39,13 +39,13 @@ response.setContentType("text/html;charset=UTF-8");
             String error = "No selecciono ningun Grado";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-        }
+        }else{
         String secci = request.getParameter("sec");
         if (secci.equalsIgnoreCase("0")) {
             String error = "No selecciono ninguna Sección";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-        }
+        }else{
         
         
         ListaAlumnos li = new ListaAlumnos();
@@ -53,8 +53,8 @@ response.setContentType("text/html;charset=UTF-8");
         LinkedList<Alumno> ve2 = li.reporteAlumno(grado, secci);
         request.getSession().setAttribute("lista", ve2);
         request.getRequestDispatcher("reporteAlumno.jsp").forward(request, response);
+    }}
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

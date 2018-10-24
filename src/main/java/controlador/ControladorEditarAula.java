@@ -18,7 +18,7 @@ import modelo.EsNumero;
  *
  * @author KandL
  */
-public class ControladorAula extends HttpServlet {
+public class ControladorEditarAula extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,14 +32,13 @@ public class ControladorAula extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String grado = request.getParameter("grado");
-        String seccion = request.getParameter("comboSe");
+       String grado = request.getParameter("grado");
+        String seccion = request.getParameter("sec");
         String profesor = request.getParameter("comboPro");
         String cant = request.getParameter("cant");
 
-        if (grado.equals("0") || seccion.equals("0") || profesor.equals("0") || cant.equals("")) {
-            String error = "Falta llenar todos los datos no selecciono";
+        if (grado.equals("") || seccion.equals("") || profesor.equals("") || cant.equals("")) {
+            String error = "Falta llenar todos los datos";
             request.getSession().setAttribute("error", error);
             request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
         } else {
@@ -50,8 +49,8 @@ public class ControladorAula extends HttpServlet {
             } else {
                 int cantMax = Integer.parseInt(cant);
                 Aula au = new Aula(grado, seccion, profesor, cantMax);
-                if (au.insert() == false) {
-                    String error = "No se pudo Insertar error";
+                if (au.editar() == false) {
+                    String error = "No se pudo Editar error";
                     request.getSession().setAttribute("error", error);
                     request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
                 }else{

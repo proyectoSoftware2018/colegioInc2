@@ -19,7 +19,8 @@ create table profesor(
 usuario varchar(100) NOT NULL PRIMARY KEY,
 nombre varchar(200) ,
 apellido varchar(200),
-direccion varchar(200) ,
+dni VARCHAR(20),
+direccion varchar(200),
 ciudad varchar(40),
 edad int(11),
 telefonoCasa int(20),
@@ -41,7 +42,7 @@ CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE
 PRIMARY KEY (gradog, secciong)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+select * from asignacion
 create table asignacion(
 cursod varchar(100),
 profesord varchar(20),

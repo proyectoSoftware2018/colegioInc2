@@ -7,18 +7,18 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Aula;
-import modelo.EsNumero;
+import modelo.reniec;
 
 /**
  *
  * @author KandL
  */
-public class ControladorAula extends HttpServlet {
+public class ValidarDni2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,33 +32,31 @@ public class ControladorAula extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String grado = request.getParameter("grado");
-        String seccion = request.getParameter("comboSe");
-        String profesor = request.getParameter("comboPro");
-        String cant = request.getParameter("cant");
-
-        if (grado.equals("0") || seccion.equals("0") || profesor.equals("0") || cant.equals("")) {
-            String error = "Falta llenar todos los datos no selecciono";
+        String dni = request.getParameter("dni");
+        
+        if(dni.equals("")){
+            String error = "No hay ningun dni";
             request.getSession().setAttribute("error", error);
-            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-        } else {
-            if (EsNumero.validar(cant) == false) {
-                String error = "Hay un error en la cantidad no es número";
-                request.getSession().setAttribute("error", error);
-                request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-            } else {
-                int cantMax = Integer.parseInt(cant);
-                Aula au = new Aula(grado, seccion, profesor, cantMax);
-                if (au.insert() == false) {
-                    String error = "No se pudo Insertar error";
-                    request.getSession().setAttribute("error", error);
-                    request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
-                }else{
-                    request.getSession().setAttribute("aula", au);
-                    request.getRequestDispatcher("inforAula.jsp").forward(request, response);
-                }
-            }
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);   
+        }else{
+        try{
+        reniec re = new reniec();
+        String recivido = re.getNombre("http://aplicaciones007.jne.gob.pe/srop_publico/consulta/afiliado/getNombresCiudadano?DNI="+dni);
+        StringTokenizer st= new StringTokenizer(recivido,"|");
+        String apeP = st.nextToken();
+        String apeM = st.nextToken();
+        String Nombre = st.nextToken();
+        request.getSession().setAttribute("ape1", apeP);
+        request.getSession().setAttribute("ape2", apeM);
+        request.getSession().setAttribute("nom", Nombre);
+        request.getSession().setAttribute("dni", dni);
+        request.getRequestDispatcher("registroProfesor.jsp").forward(request, response);   
+        }catch(Exception e){
+        String error = "No se pudo validar el dni del padre";
+        request.getSession().setAttribute("error", error);
+        request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
+        }
+        
         }
     }
 
