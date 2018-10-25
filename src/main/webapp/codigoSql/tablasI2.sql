@@ -42,7 +42,7 @@ CONSTRAINT grado_foreana2 FOREIGN KEY (gradog) REFERENCES grado(grado) ON DELETE
 PRIMARY KEY (gradog, secciong)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-select * from asignacion
+
 create table asignacion(
 cursod varchar(100),
 profesord varchar(20),

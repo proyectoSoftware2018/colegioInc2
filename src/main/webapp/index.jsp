@@ -13,7 +13,7 @@ response.addHeader("Cache-control", "must-revalidate");
 response.addHeader("Cache-control", "no-cache");
 response.addHeader("Cache-control", "no-store");
 response.setDateHeader("Expires", 0);
-%>
+%> 
 <html class="no-js"> 
 	<head>
 	<meta charset="utf-8">

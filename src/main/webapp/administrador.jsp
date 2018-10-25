@@ -4,6 +4,8 @@
     Author     : KandL
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
 <%@page import="modelo.ListaGrados"%>
 <%@page import="modelo.Grado"%>
 <%@page import="modelo.Aula"%>
@@ -194,13 +196,16 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                                 int asu=0;
                                                 if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Grados </option>");
-                                                } else {
-                                                    for(int i=0;i<li.size();i++){
+                                                } else {%>
+                                                <option value="<%out.print(li.get(0).getGrado());%>"><%out.print(li.get(0).getGrado());%></option>
+                                                <%    for(int i=0;i<li.size()-1;i++){
+                                                        if(li.get(i).getGrado().equalsIgnoreCase(li.get(i+1).getGrado())){  
+                                                        }else{
                                                %>
                                                
-                                               <option value="<%out.print(li.get(i).getGrado());%>"><%out.print(li.get(i).getGrado());%></option>
+                                               <option value="<%out.print(li.get(i+1).getGrado());%>"><%out.print(li.get(i+1).getGrado());%></option>
                                                
-                                                <%   }
+                                                <% }  }
                                                 }
 
                                             %>
@@ -210,14 +215,28 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                         <label for="inputState">Sección:</label>
                                         <select id="inputState" class="form-control" name="sec">
                                             <option selected="selected" value="0">Seleccionar:</option>
-                                            <%                                                    if (li.size() == 0) {
-                                                    out.print("<option value=" + 0 + ">No Hay Sección </option>");
-                                                } else {
-                                                    for (int i = 0; i < li.size(); i++) {%>
-                                            <option value="<%out.print(li.get(i).getSeccion());%>">Sección <%out.print(li.get(i).getSeccion());%></option>
-                                         <%           }
+                                            <% 
+                                                List<String> ordenado =  new LinkedList<String>();
+                                                for(int i=0;i<li.size();i++){
+                                             ordenado.add(li.get(i).getSeccion());
+                                             Collections.sort(ordenado);
                                                 }
-
+                                                
+                                             if (li.size() == 0) {
+                                                    out.print("<option value=" + 0 + ">No Hay Grados </option>");
+                                                } else {%>
+                                                <option value="<%out.print(ordenado.get(0));%>"><%out.print(ordenado.get(0));%></option>
+                                                <%   for(int i=0;i<li.size()-1;i++){
+                                                        if(ordenado.get(i).equalsIgnoreCase(ordenado.get(i+1))){  
+                                                        }else{
+                                               %>
+                                               
+                                               <option value="<%out.print(ordenado.get(i+1));%>"><%out.print(ordenado.get(i+1));%></option>
+                                               
+                                                <% }  }
+                                                }
+                                             
+                                             
                                             %>
 
                                         </select>
