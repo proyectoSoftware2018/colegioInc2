@@ -62,7 +62,8 @@ LinkedList<Profesor> po1 = po.select();
                                     <th style="text-align: center">Nombre de Sección</th>
                                     <th style="text-align: center">Tutor</th>
                                     <th style="text-align: center">Cantidad Maxima</th>
-                                    <th style="text-align: center" colspan="2">Acciones</th>
+                                    <th style="text-align: center" >Editar</th>
+                                    <th style="text-align: center" >Elimnar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,14 +80,14 @@ LinkedList<Profesor> po1 = po.select();
                                 <form method="post" action="editaraula.do">
                                     <input name="grado" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                    <button type="submit" class="btn  btn-outline-success"><i class="fas fa-edit">&nbsp; Editar</i></button>
                                 </form>   
                             </td>
                             <td>
                                 <form method="post" action="eliminaraula.do">
                                     <input name="grado" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>
                                 </form>   
                             </td>
                             

@@ -53,7 +53,7 @@ public class validarDni extends HttpServlet {
         request.getSession().setAttribute("dni", dni);
         request.getRequestDispatcher("registroAlumno.jsp").forward(request, response);   
         }catch(Exception e){
-        String error = "No se pudo validar el dni del padre";
+        String error = "No se pudo validar el dni del padre "+e;
         request.getSession().setAttribute("error", error);
         request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
         }

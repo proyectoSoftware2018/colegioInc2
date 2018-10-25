@@ -1,6 +1,9 @@
+<%@page import="modelo.Alumno"%>
+<%@page import="modelo.ListaAlumnos"%>
+<%@page import="modelo.Nota"%>
 <%@page import="modelo.Curso"%>
 <%@page import="modelo.ListaCursos"%>
-<%@page import="modelo.Alumno"%>
+
 <%@page import="java.util.LinkedList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
@@ -29,12 +32,16 @@
 
 
 %>
-<%    String grado = (String) request.getSession().getAttribute("gra");
+<%  String grado = (String) request.getSession().getAttribute("gra");
     String seccion = (String) request.getSession().getAttribute("sec");
     String curso = (String) request.getSession().getAttribute("cur");
+    String pro = (String) request.getSession().getAttribute("pro");
+    String bime = (String) request.getSession().getAttribute("bime");
+    LinkedList<Nota> lista = (LinkedList<Nota>) request.getSession().getAttribute("notas");
     ListaCursos cur = new ListaCursos();
     LinkedList<Curso> cur1 = cur.select();
-    LinkedList<Alumno> l = (LinkedList<Alumno>) request.getSession().getAttribute("lista");
+    ListaAlumnos li3 = new ListaAlumnos();
+    LinkedList<Alumno> c = li3.select();
 %>
 <!DOCTYPE html>
 <html ng-app>
@@ -109,11 +116,11 @@
                                 </thead>
                                 <tbody>
 
-                                    <%    for (int i = 0; i < l.size(); i++) {
+                                    <%    for (int i = 0; i < lista.size(); i++) {
                                             out.print("<tr>");
                                     %>
-                                <td><input class="alert alert-success" readonly="readonly" size="4" class="text-center" name="codi<%out.print(i);%>" type="text" value="<%out.print(l.get(i).getUsuario());%>" /></td>
-                                <td><input class="alert alert-success" readonly="readonly" size="30" class="text-center"  type="text" value="<%out.print(l.get(i).getNombreh() + " " + l.get(i).getApellidoh());%>"/></td>
+                                <td><input class="alert alert-success" readonly="readonly" size="4" class="text-center" name="codi<%out.print(i);%>" type="text" value="<%out.print(lista.get(i).getAlumno());%>" /></td>
+                                <td><input class="alert alert-success" readonly="readonly" size="30" class="text-center"  type="text" value="<%out.print(li3.buscar(lista.get(i).getAlumno()).getApellidoh() + " " + li3.buscar(lista.get(i).getAlumno()).getNombreh());%>"/></td>
                                 <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="ora<%out.print(i);%>" type="number" ng-model="a<%out.print(i);%>" ng-init="a<%out.print(i);%> = 0"/></td>
                                 <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="pra<%out.print(i);%>" type="number" ng-model="b<%out.print(i);%>" ng-init="b<%out.print(i);%> = 0"/></td>
                                 <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="tra<%out.print(i);%>" type="number" ng-model="c<%out.print(i);%>" ng-init="c<%out.print(i);%> = 0"/></td>

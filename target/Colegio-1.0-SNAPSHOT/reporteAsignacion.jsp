@@ -67,7 +67,8 @@ LinkedList<Curso> cur1 = cur.select();
                                     <th style="text-align: center">Nombre de Sección</th>
                                     <th style="text-align: center">Profesor</th>
                                     <th style="text-align: center">Curso</th>
-                                    <th colspan="2" style="text-align: center;">Acciones</th>
+                                    <th style="text-align: center" >Editar</th>
+                                    <th style="text-align: center" >Elimnar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,15 +86,15 @@ LinkedList<Curso> cur1 = cur.select();
                                     <input name="gra" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="cur" value="<%out.print(li.get(i).getCurso());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                    <button type="submit" class="btn  btn-outline-success"><i class="fas fa-edit">&nbsp; Editar</i></button>
                                 </form>   
                             </td>
                             <td>
-                                <form method="post" action="eliminaralumno.do">
+                                <form method="post" action="eliminarasignacion.do">
                                     <input name="gra" value="<%out.print(li.get(i).getGrado());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="sec" value="<%out.print(li.get(i).getSeccion());%>" style="visibility: hidden; width: 1px; height: 1px;">
                                     <input name="cur" value="<%out.print(li.get(i).getCurso());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>
                                 </form>   
                             </td>
                             </tr>

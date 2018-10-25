@@ -161,6 +161,18 @@
         <servlet-name>editarAsignacion</servlet-name>
         <servlet-class>controlador.editarAsignacion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarAsig</servlet-name>
+        <servlet-class>controlador.ControladorEditarAsig</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarAsignacion</servlet-name>
+        <servlet-class>controlador.EliminarAsignacion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editarNota</servlet-name>
+        <servlet-class>controlador.editarNota</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -304,6 +316,18 @@
     <servlet-mapping>
         <servlet-name>editarAsignacion</servlet-name>
         <url-pattern>/editarasignacion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarAsig</servlet-name>
+        <url-pattern>/controladoreditarasig.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarAsignacion</servlet-name>
+        <url-pattern>/eliminarasignacion.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editarNota</servlet-name>
+        <url-pattern>/editarnota.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

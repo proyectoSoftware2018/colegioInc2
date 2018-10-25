@@ -65,7 +65,8 @@
                                 <tr>
                                     <th style="text-align: center">Aula</th>
                                     <th style="text-align: center">Curso</th>
-                                    <th style="text-align: center" colspan="2">Acciones</th>
+                                    <th style="text-align: center" >Registrar</th>
+                                    <th style="text-align: center" >Reporte</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,7 +100,7 @@
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(lis.get(i).getGrado());%>">
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(lis.get(i).getSeccion());%>">
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(lis.get(i).getCurso());%>">   
-                                <button type="submit" class="btn btn-success">Registrar</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle">&nbsp; Registrar</i></button>
                                 </form>
                             </td>
                             
@@ -109,7 +110,7 @@
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(lis.get(i).getSeccion());%>">
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(lis.get(i).getCurso());%>">   
                             <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(correo);%>">   
-                            <button type="submit" class="btn btn-primary">Listar</button>
+                            <button type="submit" class="btn btn-secondary"><i class="fas fa-list-alt">&nbsp; Reporte</i></button>
                                 </form>
                             </td>
                                 </tr>

@@ -18,7 +18,13 @@ public class Asignacion {
         ps = null;
     }
 
-
+    public Asignacion(String grado, String seccion, String curso) {
+        this.grado = grado;
+        this.seccion = seccion;
+        this.curso = curso;
+        conn = new Conexion();
+        ps = null;
+    }
 
     
     public boolean insert() {
@@ -28,6 +34,79 @@ public class Asignacion {
             ps.setString(2, profesor);
             ps.setString(3, grado);
             ps.setString(4, seccion);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean editar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EditarAsignacion(?,?,?,?)");
+            ps.setString(1, curso);
+            ps.setString(2, profesor);
+            ps.setString(3, grado);
+            ps.setString(4, seccion);
+
+            int filas = ps.executeUpdate();
+
+            if (filas > 0) {
+                System.out.print("bien");
+            } else {
+                System.out.print("mal");
+            }
+            return true;
+        } catch (Exception e) {
+            System.out.println("ErrorE");
+            return false;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    public boolean eliminar() {
+        try {
+            ps = conn.getConnection().prepareCall("call EliminarAsignacion(?,?,?)");
+            ps.setString(1, curso);
+            ps.setString(2, grado);
+            ps.setString(3, seccion);
 
             int filas = ps.executeUpdate();
 

@@ -6,8 +6,6 @@
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.Collections"%>
-<%@page import="modelo.ListaGrados"%>
-<%@page import="modelo.Grado"%>
 <%@page import="modelo.Aula"%>
 <%@page import="modelo.ListaAulas"%>
 <%@page import="java.util.LinkedList"%>
@@ -32,8 +30,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
 
  ListaAulas ls = new ListaAulas();
  LinkedList<Aula> li= ls.select();
- ListaGrados lis = new ListaGrados();
- LinkedList<Grado> gr = lis.select();
+ 
 %>
 <html>
     <head>
@@ -193,7 +190,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                         <select id="inputState" class="form-control" name="grado">
                                             <option selected="selected" value="0">Seleccionar:</option>
                                             <%
-                                                int asu=0;
+                                                
                                                 if (li.size() == 0) {
                                                     out.print("<option value=" + 0 + ">No Hay Grados </option>");
                                                 } else {%>
@@ -223,7 +220,7 @@ request.getRequestDispatcher("index.jsp").forward(request, response);
                                                 }
                                                 
                                              if (li.size() == 0) {
-                                                    out.print("<option value=" + 0 + ">No Hay Grados </option>");
+                                                    out.print("<option value=" + 0 + ">No Hay Secciones </option>");
                                                 } else {%>
                                                 <option value="<%out.print(ordenado.get(0));%>"><%out.print(ordenado.get(0));%></option>
                                                 <%   for(int i=0;i<li.size()-1;i++){

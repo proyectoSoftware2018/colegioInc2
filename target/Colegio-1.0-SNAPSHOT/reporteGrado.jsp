@@ -54,7 +54,8 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center">Nombre del Grado</th>
-                                    <th style="text-align: center" colspan="2">Acciones</th>
+                                    <th style="text-align: center" >Editar</th>
+                                    <th style="text-align: center" >Elimnar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,13 +68,13 @@
                             <td>
                                 <form method="post" action="editargrado.do">
                                     <input name="grado" value="<%out.print(li.get(i).getNombre());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                   <button type="submit" class="btn  btn-outline-success"><i class="fas fa-edit">&nbsp; Editar</i></button>
                                 </form>   
                             </td>
                             <td>
                                 <form method="post" action="eliminargrado.do">
                                     <input name="grado" value="<%out.print(li.get(i).getNombre());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>
                                 </form>   
                             </td>
                            </tr>

@@ -6,19 +6,17 @@
 package controlador;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.ListaNotas;
-import modelo.Nota;
+import modelo.Asignacion;
 
 /**
  *
  * @author KandL
  */
-public class repoNota extends HttpServlet {
+public class EliminarAsignacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,21 +30,25 @@ public class repoNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String grado = request.getParameter("grado");
-        String secc = request.getParameter("seccion");
-        String curso = request.getParameter("curso");
-        String profe = request.getParameter("profe");
-        
-        ListaNotas no = new ListaNotas();
-          LinkedList<Nota> lis = no.select();
-          LinkedList<Nota> listaOficial = no.reporteNotaAlumno(grado, secc, curso);
-          request.getSession().setAttribute("gra", grado);
-          request.getSession().setAttribute("cur", curso);
-          request.getSession().setAttribute("sec", secc);
-          request.getSession().setAttribute("pro", profe);
-          request.getSession().setAttribute("notas", listaOficial);
-          request.getRequestDispatcher("reporteNota.jsp").forward(request, response);
+
+        String grado = request.getParameter("gra");
+        String seccion = request.getParameter("sec");
+        String curso = request.getParameter("cur");
+
+        if (grado.equals("") || seccion.equals("") || curso.equals("")) {
+            String error = "esta vacio todo";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);
+        } else {
+            Asignacion asig = new Asignacion(grado, seccion, curso);
+            if(asig.eliminar()==false){
+            String error = "Error no se pudo eliminar";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);    
+            }else{
+            request.getRequestDispatcher("reporteAsignacion.jsp").forward(request, response);    
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

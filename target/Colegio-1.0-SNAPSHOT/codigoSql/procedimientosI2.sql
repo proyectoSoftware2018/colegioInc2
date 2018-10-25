@@ -1,3 +1,21 @@
+
+DELIMITER $$
+CREATE  PROCEDURE LoginPadre (IN usu VARCHAR(20))  BEGIN
+select usuario,contra from alumno
+where usuario = usu
+LIMIT 1;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE LoginProfesor (IN usu VARCHAR(20))  BEGIN
+select usuario,contraseña from profesor
+where usuario = usu
+LIMIT 1;
+END$$
+
+
+
+
 DELIMITER $$
 CREATE PROCEDURE InsertarProfesor (
 IN codigo VARCHAR(20), 
@@ -71,12 +89,8 @@ estado = 1
 where usuario = usu;
 END$$
 
-DELIMITER $$
-CREATE  PROCEDURE LoginProfesor (IN usu VARCHAR(20))  BEGIN
-select usuario,contraseña from profesor
-where usuario = usu
-LIMIT 1;
-END$$
+
+
 
 
 
@@ -211,6 +225,11 @@ estado = 1
 where usuario = usu;
 END$$
 
+
+
+
+
+
 DELIMITER $$
 CREATE PROCEDURE InsertarNota (
 IN alu VARCHAR(20), 
@@ -261,10 +280,8 @@ prom,
 0);
 END$$
 
-
-
 DELIMITER $$
-CREATE  PROCEDURE `ModificarNota` (
+CREATE  PROCEDURE EditarNota (
 IN alu VARCHAR(200), 
 IN profe VARCHAR(200), 
 IN nor int(11),
@@ -289,24 +306,18 @@ WHERE usuarioA = usu ;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `ConsultarNotas` ()  BEGIN
+CREATE  PROCEDURE ConsultarNotas ()  BEGIN
 select * from nota
 where estado = 0;
 END$$
 
 DELIMITER $$
-CREATE  PROCEDURE `EliminarNota` (IN usu VARCHAR(20))  BEGIN
+CREATE  PROCEDURE EliminarNota (IN usu VARCHAR(20))  BEGIN
 update nota
 set estado = 1
 where usuarioA = usu;
 END$$
 
-DELIMITER $$
-CREATE  PROCEDURE `LoginPadre` (IN usu VARCHAR(20))  BEGIN
-select usuario,contra from alumno
-where usuario = usu
-LIMIT 1;
-END$$
 
 
 
@@ -339,6 +350,9 @@ where estado=0;
 END$$
 
 
+
+
+
 DELIMITER $$
 CREATE  PROCEDURE InsertarGrado (IN gra VARCHAR(20))  BEGIN
 insert into grado values(gra,0);
@@ -350,8 +364,6 @@ update grado
 set grado = gran
 where grado = graa;
 END$$
-
-
 
 DELIMITER $$
 CREATE  PROCEDURE EliminarGrado (IN graa VARCHAR(20))  BEGIN
@@ -367,6 +379,9 @@ CREATE  PROCEDURE ConsultarGrado ()  BEGIN
 select * from grado
 where estado=0;
 END$$
+
+
+
 
 
 DELIMITER $$
@@ -399,14 +414,12 @@ IN sec VARCHAR(20),
 IN pro VARCHAR(20),
 IN can int(11)
 )  BEGIN
-
 update aula
 set usuarioP=pro,
 cantMax = can
 where gradog = gra and secciong = sec;
-
 END$$
-call EliminarAula('1 Grado','A')
+
 DELIMITER $$
 CREATE  PROCEDURE EliminarAula (IN gra VARCHAR(80), IN sec VARCHAR(20))  BEGIN
 update aula
@@ -421,11 +434,13 @@ select * from aula
 where estado=0;
 END$$
 
+
+
+
 DELIMITER $$
 CREATE  PROCEDURE InsertarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  BEGIN
 insert into curso(codCurso, nombre, estado) values(cod,nom,0);
 END$$
-
 
 DELIMITER $$
 CREATE  PROCEDURE ConsultarCurso ()  BEGIN
@@ -452,6 +467,9 @@ END$$
 
 
 
+
+
+
 DELIMITER $$
 CREATE  PROCEDURE InsertarAsignacion (
 IN cur VARCHAR(20),
@@ -463,6 +481,28 @@ insert into asignacion(cursod, profesord, grad,seccio,estado)
 values(cur,pro,gra,sec,0);
 END$$
 
+DELIMITER $$
+CREATE  PROCEDURE EditarAsignacion (
+IN cur VARCHAR(20),
+IN pro VARCHAR(200),
+IN gra VARCHAR(80),
+IN sec VARCHAR(20)
+)  BEGIN
+update asignacion
+set profesord = pro
+where grad = gra and cursod = cur and seccio = sec;
+END$$
+
+DELIMITER $$
+CREATE  PROCEDURE EliminarAsignacion (
+IN cur VARCHAR(20),
+IN gra VARCHAR(80),
+IN sec VARCHAR(20)
+)  BEGIN
+update asignacion
+set estado = 1
+where grad = gra and cursod = cur and seccio = sec;
+END$$
 
 DELIMITER $$
 CREATE  PROCEDURE ConsultarAsignacion ()  BEGIN

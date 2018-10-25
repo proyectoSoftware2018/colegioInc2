@@ -59,7 +59,7 @@ Curso curso = (Curso) request.getSession().getAttribute("curso");
                                             <label for="nom">Nuevo Nombre del Curso:</label>
                                             <input type="text" class="form-control" id="nom" name="nom"><br>
                                             <div style="text-align: center;">
-                                                <button type="submit" class="btn btn-primary">Registrar</button> <a href="administrador.jsp" class="btn btn-danger">Cancelar</a>
+                                                <button type="submit" id="boton" class="btn btn-success">Editar</button> <a href="administrador.jsp" class="btn btn-danger">Cancelar</a>
                                             </div>
                                         </div>
                                     </div>

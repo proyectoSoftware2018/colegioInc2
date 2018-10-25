@@ -3,12 +3,11 @@
     Created on : 12/09/2018, 07:12:56 PM
     Author     : ALUMNO
 --%>
-
-<%@page import="modelo.Grado"%>
-<%@page import="modelo.ListaGrados"%>
-<%@page import="modelo.Seccion"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
+<%@page import="modelo.Aula"%>
+<%@page import="modelo.ListaAulas"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="modelo.ListaSecciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -27,15 +26,13 @@
 
     }
 
- ListaSecciones ls = new ListaSecciones();
- LinkedList<Seccion> li= ls.select();
- ListaGrados ls2 = new ListaGrados();
- LinkedList<Grado> li2 = ls2.select();
+    ListaAulas ls = new ListaAulas();
+    LinkedList<Aula> li = ls.select();
 
- String ape1 = (String) request.getSession().getAttribute("ape1");
- String ape2 = (String) request.getSession().getAttribute("ape2");
- String nom = (String) request.getSession().getAttribute("nom");
- String dni = (String) request.getSession().getAttribute("dni");
+    String ape1 = (String) request.getSession().getAttribute("ape1");
+    String ape2 = (String) request.getSession().getAttribute("ape2");
+    String nom = (String) request.getSession().getAttribute("nom");
+    String dni = (String) request.getSession().getAttribute("dni");
 
 %>
 <!DOCTYPE html>
@@ -55,15 +52,15 @@
 
                     <div class="container col-12 col-lg-10 col-md-10 col-xl-10 col-xs-10 col-sm-10" >
                         <form action="controladoralumno.do" method="post" class="container" id="needs-validation" novalidate>
-                            
-                           <div class="card">
+
+                            <div class="card">
                                 <h5 class="card-header">REGISTRO DEL ALUMNO </h5>
                                 <div class="card-body">
 
 
                                     <div class="container">
 
-                                       <div class="row">
+                                        <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label for="validationCustom01">Nombre</label>
                                                 <input type="text" name="nomh" class="form-control" id="validationCustom01" placeholder="Ej: Mario" required>
@@ -77,30 +74,59 @@
                                             <div class="form-group col-md-4 col-lg-6">
                                                 <label for="inputState">Grado de estudio Primario:</label>
                                                 <select id="inputState" class="form-control" name="combo3">
-                                                 <% 
-                                                 if(li2.size()==0){
-                                                   out.print("<option value="+0+">No Hay Grados </option>");  
-                                                 }else{
-                                                 for(int i=0; i<li2.size(); i++){ 
-                                                 %>
-                                                 <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option>
-                                                 <%} 
-                                                 }
-                                                 
-                                                %>
+                                                    <option selected="selected" value="0">Seleccionar:</option>
+                                                    <%
+                                                        if (li.size() == 0) {
+                                                            out.print("<option value=" + 0 + ">No Hay Grados </option>");
+                                                        } else {%>
+                                                    <option value="<%out.print(li.get(0).getGrado());%>"><%out.print(li.get(0).getGrado());%></option>
+                                                    <%    for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (li.get(i).getGrado().equalsIgnoreCase(li.get(i + 1).getGrado())) {
+                                                            } else {
+                                                    %>
+
+                                                    <option value="<%out.print(li.get(i + 1).getGrado());%>"><%out.print(li.get(i + 1).getGrado());%></option>
+
+                                                    <% }
+                                                            }
+                                                        }
+
+                                                    %>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-4 col-lg-6">
-                                                <label for="inputState">Sexo:</label>
-                                                <select id="inputState" class="form-control" name="combo4">
-                                                    <option selected value="0">Elija:</option>
-                                                    <option value="1">Hombre</option>
-                                                    <option value="2">Mujer</option>
+                                            <div class="form-group col-md-4 col-lg-4">
+                                                <label for="inputState">Sección:</label>
+                                                <select id="inputState" class="form-control" name="comboSe">
+                                                    <option selected="selected" value="0">Seleccionar:</option>
+                                                    <% List<String> ordenado = new LinkedList<String>();
+                                                        for (int i = 0; i < li.size(); i++) {
+                                                            ordenado.add(li.get(i).getSeccion());
+                                                            Collections.sort(ordenado);
+                                                        }
+
+                                                        if (li.size() == 0) {
+                                                            out.print("<option value=" + 0 + ">No Hay Secciones </option>");
+                                                        } else {%>
+                                                    <option value="<%out.print(ordenado.get(0));%>"><%out.print(ordenado.get(0));%></option>
+                                                    <%   for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (ordenado.get(i).equalsIgnoreCase(ordenado.get(i + 1))) {
+                                                            } else {
+                                                    %>
+
+                                                    <option value="<%out.print(ordenado.get(i + 1));%>"><%out.print(ordenado.get(i + 1));%></option>
+
+                                                    <% }
+                                                            }
+                                                        }
+
+                                                    %>
+
                                                 </select>
                                             </div>
+
                                         </div>
 
-                                        
+
                                         <div class="row">
                                             <div class="col-md-6 mb-3 col-lg-6">
                                                 <label for="validationCustom03">Departamento</label>
@@ -123,22 +149,14 @@
                                                 <label for="validationCustom04">Edad</label>
                                                 <input type="number" name="edadh" class="form-control" id="validationCustom04" placeholder="Ej: 9" required>
                                             </div>
-                                            <div class="form-group col-md-4 col-lg-4">
-                                                <label for="inputState">Sección:</label>
-                                                <select id="inputState" class="form-control" name="comboSe">
-                                                <% 
-                                                 if(li.size()==0){
-                                                   out.print("<option value="+0+">No Hay Sección </option>");  
-                                                 }else{
-                                                 for(int i=0; i<li.size(); i++){ 
-                                                    out.print("<option value="+li.get(i).getNombre()+"> Sección "+li.get(i).getNombre()+"</option>");
-                                                 } 
-                                                 }
-                                                 
-                                                %>
-                                                 
+                                            <div class="form-group col-md-4 col-lg-6">
+                                                <label for="inputState">Sexo:</label>
+                                                <select id="inputState" class="form-control" name="combo4">
+                                                    <option selected value="0">Elija:</option>
+                                                    <option value="1">Hombre</option>
+                                                    <option value="2">Mujer</option>
                                                 </select>
-                                            </div>
+                                            </div> 
                                         </div>
 
                                         <div class="row">
@@ -156,9 +174,9 @@
                                         </div>
                                     </div>
                                 </div>
-                           </div>
-                           
-                                                <br>
+                            </div>
+
+                            <br>
                             <%--todo sobre padre--%> 
                             <div class="card">
                                 <h5 class="card-header">REGISTRO DEL APODERADO</h5>
@@ -174,7 +192,7 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="validationCustom02">Apellidos</label>
-                                                <input type="text" name="apep" class="form-control" readonly="readonly" value="<%out.print(ape1+" "+ape2);%>">
+                                                <input type="text" name="apep" class="form-control" readonly="readonly" value="<%out.print(ape1 + " " + ape2);%>">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -210,7 +228,7 @@
                                             </div>
                                         </div>
 
-                                            <br>
+                                        <br>
 
                                         <div class="container col-12 col-lg-10 col-md-10 col-xl-10 col-xs-10 col-sm-10">
                                             <div class="card">

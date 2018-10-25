@@ -6,6 +6,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ import modelo.Nota;
  *
  * @author KandL
  */
-public class repoNota extends HttpServlet {
+public class editarNota extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,21 +33,22 @@ public class repoNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         String grado = request.getParameter("grado");
         String secc = request.getParameter("seccion");
         String curso = request.getParameter("curso");
         String profe = request.getParameter("profe");
-        
+        String bime = request.getParameter("bime");
+
         ListaNotas no = new ListaNotas();
-          LinkedList<Nota> lis = no.select();
-          LinkedList<Nota> listaOficial = no.reporteNotaAlumno(grado, secc, curso);
-          request.getSession().setAttribute("gra", grado);
-          request.getSession().setAttribute("cur", curso);
-          request.getSession().setAttribute("sec", secc);
-          request.getSession().setAttribute("pro", profe);
-          request.getSession().setAttribute("notas", listaOficial);
-          request.getRequestDispatcher("reporteNota.jsp").forward(request, response);
+        LinkedList<Nota> lis = no.select();
+        LinkedList<Nota> listaOficial = no.reporteNotaAlumnoBimestre(grado, secc, curso, bime, profe);
+        request.getSession().setAttribute("gra", grado);
+        request.getSession().setAttribute("cur", curso);
+        request.getSession().setAttribute("sec", secc);
+        request.getSession().setAttribute("pro", profe);
+        request.getSession().setAttribute("bime", bime);
+        request.getSession().setAttribute("notas", listaOficial);
+        request.getRequestDispatcher("editarNota.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

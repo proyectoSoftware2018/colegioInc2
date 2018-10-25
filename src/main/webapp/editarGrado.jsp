@@ -56,7 +56,7 @@
                                             <label for="gradonu">Nuevo Nombre de Grado:</label>
                                             <input type="text" class="form-control" id="grado" name="gradonu"><br>
                                             <div style="text-align: center;">
-                                                <button type="submit" class="btn btn-primary">Editar</button> <a href="administrador.jsp" class="btn btn-danger">Cancelar</a>
+                                                <button type="submit" class="btn btn-success">Editar</button> <a href="administrador.jsp" class="btn btn-danger">Cancelar</a>
                                             </div>
                                         </div>
                                     </div>

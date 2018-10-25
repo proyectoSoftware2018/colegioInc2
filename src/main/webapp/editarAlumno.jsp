@@ -5,11 +5,11 @@
 --%>
 
 <%@page import="modelo.Alumno"%>
-<%@page import="modelo.Grado"%>
-<%@page import="modelo.ListaGrados"%>
-<%@page import="modelo.Seccion"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
+<%@page import="modelo.Aula"%>
+<%@page import="modelo.ListaAulas"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="modelo.ListaSecciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -28,10 +28,8 @@
 
     }
 
-    ListaSecciones ls = new ListaSecciones();
-    LinkedList<Seccion> li = ls.select();
-    ListaGrados ls2 = new ListaGrados();
-    LinkedList<Grado> li2 = ls2.select();
+    ListaAulas ls = new ListaAulas();
+    LinkedList<Aula> li = ls.select();
 
     Alumno alu = (Alumno) request.getSession().getAttribute("alumno");
 
@@ -74,36 +72,87 @@
                                         <div class="row">
                                             <div class="form-group col-md-4 col-lg-6">
                                                 <label for="inputState">Grado de estudio Primario:</label>
-                                                <select id="inputState" class="form-control" name="combo3" it>
+                                                <select id="inputState" class="form-control" name="combo3">
+                                                    <option value="0">Seleccionar:</option>
                                                     <%
-                                                        if (li2.size() == 0) {
+                                                        if (li.size() == 0) {
                                                             out.print("<option value=" + 0 + ">No Hay Grados </option>");
                                                         } else {
-                                                            for (int i = 0; i < li2.size(); i++) {
-                                                                if (li2.get(i).getNombre().equalsIgnoreCase(alu.getGrado())) {
-                                                    %>
-                                                    <option value="<%out.print(li2.get(i).getNombre());%>" selected="selected"><%out.print(li2.get(i).getNombre());%></option>
-                                                    <%} else {
-                                                    %>   
-                                                    <option value="<%out.print(li2.get(i).getNombre());%>"><%out.print(li2.get(i).getNombre());%></option> 
-                                                    <%    }
+                                                        if(li.get(0).getGrado().equals(alu.getGrado())){%>
+                                                        
+                                                        <option value="<%out.print(li.get(0).getGrado());%>" selected="selected"><%out.print(li.get(0).getGrado());%></option>
+                                                    <%    for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (li.get(i).getGrado().equalsIgnoreCase(li.get(i + 1).getGrado())) {
+                                                            } else {
+                                                     %>               
+                                                    <option value="<%out.print(li.get(i + 1).getGrado());%>"><%out.print(li.get(i + 1).getGrado());%></option>
+
+                                                    <%}
+                                                       }%>
+                                                     <%}else{%>
+                                                    <option value="<%out.print(li.get(0).getGrado());%>"><%out.print(li.get(0).getGrado());%></option>
+                                                    <%    for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (li.get(i).getGrado().equalsIgnoreCase(li.get(i + 1).getGrado())) {
+                                                            } else {
+                                                            if (li.get(i+1).getGrado().equalsIgnoreCase(alu.getGrado())) {%>
+                                                    <option value="<%out.print(li.get(i + 1).getGrado());%>" selected="selected"><%out.print(li.get(i + 1).getGrado());%></option>      
+                                                    <%} else {%>
+
+                                                    <option value="<%out.print(li.get(i + 1).getGrado());%>"><%out.print(li.get(i + 1).getGrado());%></option>
+
+                                                    <%}
+                                                                }
                                                             }
+                                                        }
                                                         }
                                                     %>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-4 col-lg-6">
-                                                <label for="inputState">Sexo:</label>
-                                                <select id="inputState" class="form-control" name="combo4">
+                                            <div class="form-group col-md-6 col-lg-6">
+                                                <label for="inputState">Sección:</label>
+                                                <select id="inputState" class="form-control" name="comboSe">
+                                                    <option value="0">Seleccionar:</option>
                                                     <%
-                                                        if (alu.getSexoh().equalsIgnoreCase("Hombre")) {
-                                                    %>
-                                                    <option value="1" selected="selected">Hombre</option>
-                                                    <option value="2">Mujer</option>
+                                                        List<String> ordenado = new LinkedList<String>();
+                                                        for (int i = 0; i < li.size(); i++) {
+                                                            ordenado.add(li.get(i).getSeccion());
+                                                            Collections.sort(ordenado);
+                                                        }
+
+                                                        if (li.size() == 0) {
+                                                        } else {
+                                                    if (ordenado.get(0).equalsIgnoreCase(alu.getSeccion())) {%>
+
+                                                    <option value="<%out.print(ordenado.get(0));%>" selected="selected"><%out.print(ordenado.get(0));%></option>
+                                                    <%   for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (ordenado.get(i).equalsIgnoreCase(ordenado.get(i + 1))) {
+                                                            } else {
+                                                    %>     
+
+                                                    <option value="<%out.print(ordenado.get(i + 1));%>"><%out.print(ordenado.get(i + 1));%></option>
+
+                                                    <% }
+                                                    }%> 
                                                     <%} else {%>
-                                                    <option value="1">Hombre</option>
-                                                    <option value="2" selected="selected">Mujer</option>    
-                                                    <%}%>  
+                                                    <option value="<%out.print(ordenado.get(0));%>"><%out.print(ordenado.get(0));%></option>
+
+                                                    <%
+                                                        for (int i = 0; i < li.size() - 1; i++) {
+                                                            if (ordenado.get(i).equalsIgnoreCase(ordenado.get(i + 1))) {
+                                                            } else {
+                                                            if (ordenado.get(i+1).equalsIgnoreCase(alu.getSeccion())) {%>
+                                                    <option value="<%out.print(ordenado.get(i + 1));%>" selected="selected"><%out.print(ordenado.get(i + 1));%></option>        
+                                                    <%} else {%>
+
+                                                    <option value="<%out.print(ordenado.get(i + 1));%>"><%out.print(ordenado.get(i + 1));%></option>
+
+                                                    <% }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                    %>
 
                                                 </select>
                                             </div>
@@ -133,25 +182,20 @@
                                                 <input type="number" name="edadh" class="form-control" value="<%out.print(alu.getEdadh());%>">
                                             </div>
                                             <div class="form-group col-md-4 col-lg-4">
-                                                <label for="inputState">Sección:</label>
-                                                <select id="inputState" class="form-control" name="comboSe">
-                                                    <%
-                                                        if (li.size() == 0) {
-                                                            out.print("<option value=" + 0 + ">No Hay Sección </option>");
-                                                        } else {
-                                                            for (int i = 0; i < li.size(); i++) {
-                                                                if (li.get(i).getNombre().equalsIgnoreCase(alu.getSeccion())) {
+                                                <label for="inputState">Sexo:</label>
+                                                <select id="inputState" class="form-control" name="combo4">
+                                                    <%                                                        if (alu.getSexoh().equalsIgnoreCase("Hombre")) {
                                                     %>
-                                                    <option value="<%out.print(li.get(i).getNombre());%>" selected="selected"><%out.print(li.get(i).getNombre());%></option>
-                                                    <%} else {
-                                                    %>   
-                                                    <option value="<%out.print(li.get(i).getNombre());%>"><%out.print(li.get(i).getNombre());%></option> 
-                                                    <%    }
-                                                            }
-                                                        }
-                                                    %>
+                                                    <option value="1" selected="selected">Hombre</option>
+                                                    <option value="2">Mujer</option>
+                                                    <%} else {%>
+                                                    <option value="1">Hombre</option>
+                                                    <option value="2" selected="selected">Mujer</option>    
+                                                    <%}%>  
+
                                                 </select>
                                             </div>
+                                            
                                         </div>
 
                                         <div class="row">
@@ -206,18 +250,18 @@
                                                     <option value="2" selected="selected">Casado</option>
                                                     <option value="3">Viudo</option>
                                                     <option value="4">Divorciado</option>   
-                                                    <%}else if (alu.getEstado().equalsIgnoreCase("viudo")) {%>
+                                                    <%} else if (alu.getEstado().equalsIgnoreCase("viudo")) {%>
                                                     <option value="1" >Soltero</option>
                                                     <option value="2">Casado</option>
                                                     <option value="3"  selected="selected">Viudo</option>
                                                     <option value="4">Divorciado</option>   
-                                                    <%}else if (alu.getEstado().equalsIgnoreCase("divorciado")) {%>
+                                                    <%} else if (alu.getEstado().equalsIgnoreCase("divorciado")) {%>
                                                     <option value="1" >Soltero</option>
                                                     <option value="2" >Casado</option>
                                                     <option value="3">Viudo</option>
                                                     <option value="4" selected="selected">Divorciado</option>   
                                                     <%}%> 
-                                                    
+
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6 col-lg-6">

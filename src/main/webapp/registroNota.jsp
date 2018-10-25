@@ -90,7 +90,6 @@
                     <div class="py-3" style="text-align: center;">
                         <button type="submit" class="btn btn-primary">Registrar</button>
                         <a href="profesor.jsp" class="btn btn-danger">Cancelar</a>
-                        <a href="profesor.jsp" class="btn btn-primary">ir al panel de control</a>
                     </div> 
                     <div class="row">
                         <div class="col-12" style="width: 100%">

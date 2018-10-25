@@ -55,7 +55,8 @@
                                     <th>Tel. Movil</th>
                                     <th>Correo</th>
                                     <th>Contraseña</th>
-                                    <th colspan="2" style="text-align: center">Acciones</th>
+                                    <th style="text-align: center" >Editar</th>
+                                    <th style="text-align: center" >Elimnar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,13 +78,13 @@
                                        <td>
                                 <form method="post" action="editarprofe.do">
                                     <input name="profe" value="<%out.print(profesores.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                    <button type="submit" class="btn  btn-outline-success"><i class="fas fa-edit">&nbsp; Editar</i></button>
                                 </form>   
                             </td>
                             <td>
                                 <form method="post" action="eliminarprofesor.do">
                                     <input name="profe" value="<%out.print(profesores.get(i).getCodigo());%>" style="visibility: hidden; width: 1px; height: 1px;">
-                                    <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                                    <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>
                                 </form>   
                             </td>
                                     </tr>
