@@ -106,7 +106,7 @@ public class ControladorNota extends HttpServlet {
           request.getSession().setAttribute("sec", secc);
           request.getSession().setAttribute("pro", profe);
           request.getSession().setAttribute("notas", listaOficial);
-          request.getRequestDispatcher("reporteNota_1.jsp").forward(request, response);  
+          request.getRequestDispatcher("reporteNota.jsp").forward(request, response);  
         }else{
           request.getRequestDispatcher("errorProfe.jsp").forward(request, response);  
         }

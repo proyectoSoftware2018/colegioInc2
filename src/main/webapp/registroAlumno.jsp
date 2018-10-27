@@ -94,7 +94,7 @@
                                                     %>
                                                 </select>
                                             </div>
-                                            <div class="form-group col-md-4 col-lg-4">
+                                            <div class="form-group col-md-6 col-lg-6">
                                                 <label for="inputState">Sección:</label>
                                                 <select id="inputState" class="form-control" name="comboSe">
                                                     <option selected="selected" value="0">Seleccionar:</option>
@@ -149,7 +149,7 @@
                                                 <label for="validationCustom04">Edad</label>
                                                 <input type="number" name="edadh" class="form-control" id="validationCustom04" placeholder="Ej: 9" required>
                                             </div>
-                                            <div class="form-group col-md-4 col-lg-6">
+                                            <div class="form-group col-md-4 col-lg-4">
                                                 <label for="inputState">Sexo:</label>
                                                 <select id="inputState" class="form-control" name="combo4">
                                                     <option selected value="0">Elija:</option>

@@ -14,8 +14,6 @@ LIMIT 1;
 END$$
 
 
-
-
 DELIMITER $$
 CREATE PROCEDURE InsertarProfesor (
 IN codigo VARCHAR(20), 
@@ -437,6 +435,8 @@ END$$
 
 
 
+
+
 DELIMITER $$
 CREATE  PROCEDURE InsertarCurso (IN cod VARCHAR(20),IN nom VARCHAR(200))  BEGIN
 insert into curso(codCurso, nombre, estado) values(cod,nom,0);
@@ -464,6 +464,7 @@ set codCurso = concat(codCurso,'i'),
 estado =1
 where `codCurso` = cod;
 END$$
+
 
 
 

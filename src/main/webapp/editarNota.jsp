@@ -61,7 +61,7 @@
                     <img src="img/cole.ico" style="height: 50px; width: 50px;">
                 </div>
                 <div class="col-11">
-                    <h1 class="text-center font-weight-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registro de Evaluación</font></font></h1>
+                    <h1 class="text-center font-weight-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Edición de Evaluación</font></font></h1>
                 </div>
             </div>
 
@@ -70,13 +70,8 @@
                     <div class="form-row">
                         <div class="form-group col-md-6 col-lg-6">
                             <label for="inputState">Periodo Escolar:</label>
-                            <select id="inputState" class="form-control" name="bimestre">
-                                <option selected value="0">Seleccionar:</option>
-                                <option value="I">Primer Bimestre 2018</option>
-                                <option value="II">Segundo Bimestre 2018</option>
-                                <option value="III">Tercero Bimestre 2018</option>
-                                <option value="IV">Cuarto Bimestre 2018</option>
-                            </select>
+                            <input class="form-control text-center" readonly="readonly"  value="<%out.print(bime);%> BIMESTRE" />
+                            <input class="form-control text-center" readonly="readonly"  value="<%out.print(bime);%>" name="bimestre" style="visibility: hidden; height: 1px; width: 1px;"/>
                         </div>
                         <div class="form-group col-md-6 col-lg-6">
                             <label for="inputState">Grado:</label>
@@ -95,7 +90,7 @@
                     </div>
 
                     <div class="py-3" style="text-align: center;">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="submit" class="btn btn-success">Editar</button>
                         <a href="profesor.jsp" class="btn btn-danger">Cancelar</a>
                     </div> 
                     <div class="row">
@@ -119,14 +114,14 @@
                                     <%    for (int i = 0; i < lista.size(); i++) {
                                             out.print("<tr>");
                                     %>
-                                <td><input class="alert alert-success" readonly="readonly" size="4" class="text-center" name="codi<%out.print(i);%>" type="text" value="<%out.print(lista.get(i).getAlumno());%>" /></td>
+                                <td><input class="alert alert-success" readonly="readonly" size="4" class="text-center" name="codi<%out.print(i);%>" type="text" value="<%out.print(lista.get(i).getAlumno());%>"/></td>
                                 <td><input class="alert alert-success" readonly="readonly" size="30" class="text-center"  type="text" value="<%out.print(li3.buscar(lista.get(i).getAlumno()).getApellidoh() + " " + li3.buscar(lista.get(i).getAlumno()).getNombreh());%>"/></td>
-                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="ora<%out.print(i);%>" type="number" ng-model="a<%out.print(i);%>" ng-init="a<%out.print(i);%> = 0"/></td>
-                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="pra<%out.print(i);%>" type="number" ng-model="b<%out.print(i);%>" ng-init="b<%out.print(i);%> = 0"/></td>
-                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="tra<%out.print(i);%>" type="number" ng-model="c<%out.print(i);%>" ng-init="c<%out.print(i);%> = 0"/></td>
-                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="cua<%out.print(i);%>" type="number" ng-model="d<%out.print(i);%>" ng-init="d<%out.print(i);%> = 0"/></td>
+                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="ora<%out.print(i);%>" type="number" ng-model="a<%out.print(i);%>" ng-init="a<%out.print(i);%> = <%out.print(lista.get(i).getNoral());%>" value="<%out.print(lista.get(i).getNoral());%>"/></td>
+                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="pra<%out.print(i);%>" type="number" ng-model="b<%out.print(i);%>" ng-init="b<%out.print(i);%> = <%out.print(lista.get(i).getNprac());%>" value="<%out.print(lista.get(i).getNprac());%>"/></td>
+                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="tra<%out.print(i);%>" type="number" ng-model="c<%out.print(i);%>" ng-init="c<%out.print(i);%> = <%out.print(lista.get(i).getNtrab());%>" value="<%out.print(lista.get(i).getNtrab());%>"/></td>
+                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="cua<%out.print(i);%>" type="number" ng-model="d<%out.print(i);%>" ng-init="d<%out.print(i);%> = <%out.print(lista.get(i).getNcuad());%>" value="<%out.print(lista.get(i).getNcuad());%>"/></td>
                                 <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="pro<%out.print(i);%>" type="number" value="{{(((a<%out.print(i);%>) + (b<%out.print(i);%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)}}"/></td>
-                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="bi<%out.print(i);%>" type="number"  ng-model="bi<%out.print(i);%>" ng-init="bi<%out.print(i);%> = 0"/></td>
+                                <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="bi<%out.print(i);%>" type="number"  ng-model="bi<%out.print(i);%>" ng-init="bi<%out.print(i);%> = <%out.print(lista.get(i).getExabi());%>" value="<%out.print(lista.get(i).getExabi());%>"/></td>
                                 <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="p<%out.print(i);%>" type="number" value="{{(((((a<%out.print(i)
                             ;%>) + (b<%out.print(i)
                             ;%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)) + bi<%out.print(i);%>) / 2}}" ng-init="0"/></td>
@@ -136,9 +131,10 @@
                                     %>  
                                 </tbody>
                             </table>
-                            </form>
+                            
                         </div>
                     </div>
+                 </form>
             </div>
         </div>
 

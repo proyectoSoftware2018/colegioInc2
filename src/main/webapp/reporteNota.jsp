@@ -80,23 +80,7 @@
                         <input class="form-control text-center" readonly="readonly"  value="<%out.print(sec);%>" name="seccion"/>
                     </div>
                 </div>
-                    <div class="row">
-                        <div class="col-6 py-3" style="text-align: right;">
-                            <form action="editarnota.do" method="post">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("I");%>">
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>   
-                        </div>
-                        <div class="col-6 py-3" style="text-align: left;">
-                            <form>
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>  
-                        </div>
-                    </div>
+                    
                     <div class="row justify-content-center" id="bimestre1">
                     <div class="col-1">
 
@@ -107,16 +91,18 @@
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr>
-
-                                    <th>Apellidos y Nombres</th>
-                                    <th>Bimestre</th>
-                                    <th>Nota Oral</th>
-                                    <th>Nota Prac</th>
-                                    <th>Nota Trab</th>
-                                    <th>Nota Cuad</th>
-                                    <th>Proceso</th>
-                                    <th>Ex. Bimes.</th>
-                                    <th>Promedio</th>
+                                    <th colspan="10" style="text-align: left; font-size: 18px;">I BIMESTRE</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" style="text-align: center;">Apellidos y Nombres</th>
+                                    <th style="text-align: center;">Bimestre</th>
+                                    <th style="text-align: center;">Nota Oral</th>
+                                    <th style="text-align: center;">Nota Prac</th>
+                                    <th style="text-align: center;">Nota Trab</th>
+                                    <th style="text-align: center;">Nota Cuad</th>
+                                    <th style="text-align: center;">Proceso</th>
+                                    <th style="text-align: center;">Ex. Bimes.</th>
+                                    <th style="text-align: center;">Promedio</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,208 +112,269 @@
                                      if(lis.get(i).getBime().equals("I")){
                                 %>
                                 <tr>
-                                    <td><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh() + " " + li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
-                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
-                                    <td><%out.print(lis.get(i).getNoral());%></td>
-                                    <td><%out.print(lis.get(i).getNprac());%></td>
-                                    <td><%out.print(lis.get(i).getNtrab());%></td>
-                                    <td><%out.print(lis.get(i).getNcuad());%></td>
-                                    <td><%out.print(lis.get(i).getProce());%></td>
-                                    <td><%out.print(lis.get(i).getExabi());%></td>
-                                    <td><%out.print(lis.get(i).getPromedio());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getProce());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getExabi());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col-1">
-
-                    </div>
-
-                </div>
-                <div class="row">
-                        <div class="col-6 py-3" style="text-align: right;">
-                            <form>
+                                <tr>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th>
+                                    <td style="text-align: right;">
+                                    <form action="editarnota.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("I");%>">
                              <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>   
-                        </div>
-                        <div class="col-6 py-3" style="text-align: left;">
-                            <form>
+                            </form>    
+                                    </td>
+                                    <td style="text-align: left;">
+                                    <form>
                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>  
-                        </div>
-                    </div>    
-                <div class="row justify-content-center">
-                    <div class="col-1">
-
-                    </div>
-
-                    <div class="col-12 justify-content-center" id="bimestre2">
-
-                        <table class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-
-                                    <th colspan="2">Apellidos y Nombres</th>
-                                    <th>Bimestre</th>
-                                    <th>Nota Oral</th>
-                                    <th>Nota Prac</th>
-                                    <th>Nota Trab</th>
-                                    <th>Nota Cuad</th>
-                                    <th>Proceso</th>
-                                    <th>Ex. Bimes.</th>
-                                    <th>Promedio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%
-                                   
-                                    for (int i = 0; i < lis.size(); i++) {
-                                        if(lis.get(i).getBime().equals("II")){
-                                %>
-                                <tr>
-                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
-                                    <td><%out.print(lis.get(i).getNoral());%></td>
-                                    <td><%out.print(lis.get(i).getNprac());%></td>
-                                    <td><%out.print(lis.get(i).getNtrab());%></td>
-                                    <td><%out.print(lis.get(i).getNcuad());%></td>
-                                    <td><%out.print(lis.get(i).getProce());%></td>
-                                    <td><%out.print(lis.get(i).getExabi());%></td>
-                                    <td><%out.print(lis.get(i).getPromedio());%></td>
-                                </tr>
-                                <%}}%>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col-1">
-
-                    </div>
-
-                </div>
-               <div class="row">
-                        <div class="col-6 py-3" style="text-align: right;">
-                            <form>
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>   
-                        </div>
-                        <div class="col-6 py-3" style="text-align: left;">
-                            <form>
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>  
-                        </div>
-                    </div>
-               <div class="row justify-content-center">
-                    <div class="col-1">
-
-                    </div>
-
-                    <div class="col-12 justify-content-center" id="bimestre3">
-
-                        <table class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-
-                                    <th colspan="2">Apellidos y Nombres</th>
-                                    <th>Bimestre</th>
-                                    <th>Nota Oral</th>
-                                    <th>Nota Prac</th>
-                                    <th>Nota Trab</th>
-                                    <th>Nota Cuad</th>
-                                    <th>Proceso</th>
-                                    <th>Ex. Bimes.</th>
-                                    <th>Promedio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%
-                                   
-                                    for (int i = 0; i < lis.size(); i++) {
-                                        if(lis.get(i).getBime().equals("III")){
-                                %>
-                                <tr>
-                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
-                                    <td><%out.print(lis.get(i).getNoral());%></td>
-                                    <td><%out.print(lis.get(i).getNprac());%></td>
-                                    <td><%out.print(lis.get(i).getNtrab());%></td>
-                                    <td><%out.print(lis.get(i).getNcuad());%></td>
-                                    <td><%out.print(lis.get(i).getProce());%></td>
-                                    <td><%out.print(lis.get(i).getExabi());%></td>
-                                    <td><%out.print(lis.get(i).getPromedio());%></td>
-                                </tr>
-                                <%}}%>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col-1">
-
-                    </div>
-
-                </div>
-                <div class="row">
-                        <div class="col-6 py-3" style="text-align: right;">
-                            <form>
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>   
-                        </div>
-                        <div class="col-6 py-3" style="text-align: left;">
-                            <form>
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>  
-                        </div>
-                    </div>
-                <div class="row justify-content-center">
-                    <div class="col-1">
-
-                    </div>
-
-                    <div class="col-12 justify-content-center" id="bimestre4">
-
-                        <table class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-
-                                    <th colspan="2">Apellidos y Nombres</th>
-                                    <th>Bimestre</th>
-                                    <th>Nota Oral</th>
-                                    <th>Nota Prac</th>
-                                    <th>Nota Trab</th>
-                                    <th>Nota Cuad</th>
-                                    <th>Proceso</th>
-                                    <th>Ex. Bimes.</th>
-                                    <th>Promedio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%
-                                   
-                                    for (int i = 0; i < lis.size(); i++) {
-                                        if(lis.get(i).getBime().equals("IV")){
+                            </form>     
+                                    </td>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th> 
                                     
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+                 
+                <div class="row justify-content-center" id="bimestre2">
+                    <div class="col-1">
+
+                    </div>
+
+                   <div class="col-12 justify-content-center">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="10" style="text-align: left; font-size: 18px;">II BIMESTRE</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" style="text-align: center;">Apellidos y Nombres</th>
+                                    <th style="text-align: center;">Bimestre</th>
+                                    <th style="text-align: center;">Nota Oral</th>
+                                    <th style="text-align: center;">Nota Prac</th>
+                                    <th style="text-align: center;">Nota Trab</th>
+                                    <th style="text-align: center;">Nota Cuad</th>
+                                    <th style="text-align: center;">Proceso</th>
+                                    <th style="text-align: center;">Ex. Bimes.</th>
+                                    <th style="text-align: center;">Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                     if(lis.get(i).getBime().equals("II")){
                                 %>
                                 <tr>
-                                    <td colspan="2"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh() + " " + li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
-                                    <td><%out.print(lis.get(i).getNoral());%></td>
-                                    <td><%out.print(lis.get(i).getNprac());%></td>
-                                    <td><%out.print(lis.get(i).getNtrab());%></td>
-                                    <td><%out.print(lis.get(i).getNcuad());%></td>
-                                    <td><%out.print(lis.get(i).getProce());%></td>
-                                    <td><%out.print(lis.get(i).getExabi());%></td>
-                                    <td><%out.print(lis.get(i).getPromedio());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getProce());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getExabi());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
+                                <tr>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th>
+                                    <td style="text-align: right;">
+                                    <form action="editarnota.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("II");%>">
+                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
+                            </form>    
+                                    </td>
+                                    <td style="text-align: left;">
+                                    <form>
+                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
+                            </form>     
+                                    </td>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th> 
+                                    
+                                </tr>
 
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+              
+                <div class="row justify-content-center" id="bimestre3">
+                    <div class="col-1">
+
+                    </div>
+
+                   <div class="col-12 justify-content-center">
+
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="10" style="text-align: left; font-size: 18px;">III BIMESTRE</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" style="text-align: center;">Apellidos y Nombres</th>
+                                    <th style="text-align: center;">Bimestre</th>
+                                    <th style="text-align: center;">Nota Oral</th>
+                                    <th style="text-align: center;">Nota Prac</th>
+                                    <th style="text-align: center;">Nota Trab</th>
+                                    <th style="text-align: center;">Nota Cuad</th>
+                                    <th style="text-align: center;">Proceso</th>
+                                    <th style="text-align: center;">Ex. Bimes.</th>
+                                    <th style="text-align: center;">Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                     if(lis.get(i).getBime().equals("III")){
+                                %>
+                                <tr>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getProce());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getExabi());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
+                                </tr>
+                                <%}}%>
+                                <tr>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th>
+                                    <td style="text-align: right;">
+                                    <form action="editarnota.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("III");%>">
+                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
+                            </form>    
+                                    </td>
+                                    <td style="text-align: left;">
+                                    <form>
+                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
+                            </form>     
+                                    </td>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th> 
+                                    
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+                
+                <div class="row justify-content-center" id="bimestre4">
+                    <div class="col-1">
+
+                    </div>
+
+                    <div class="col-12 justify-content-center">
+
+                        <table class="table table-hover">
+                            
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th colspan="10" style="text-align: left; font-size: 18px;">IV BIMESTRE</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2" style="text-align: center;">Apellidos y Nombres</th>
+                                    <th style="text-align: center;">Bimestre</th>
+                                    <th style="text-align: center;">Nota Oral</th>
+                                    <th style="text-align: center;">Nota Prac</th>
+                                    <th style="text-align: center;">Nota Trab</th>
+                                    <th style="text-align: center;">Nota Cuad</th>
+                                    <th style="text-align: center;">Proceso</th>
+                                    <th style="text-align: center;">Ex. Bimes.</th>
+                                    <th style="text-align: center;">Promedio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%
+                                   
+                                    for (int i = 0; i < lis.size(); i++) {
+                                     if(lis.get(i).getBime().equals("IV")){
+                                %>
+                                <tr>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
+                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNtrab());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getNcuad());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getProce());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getExabi());%></td>
+                                    <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
+                                </tr>
+                                <%}}%>
+                                <tr>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th>
+                                    <td style="text-align: right;">
+                                    <form action="editarnota.do" method="post">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
+                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("IV");%>">
+                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
+                            </form>    
+                                    </td>
+                                    <td style="text-align: left;">
+                                    <form>
+                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
+                            </form>     
+                                    </td>
+                                    <th colspan="2"></th>
+                                    <th colspan="2"></th> 
+                                    
+                                </tr>
 
                             </tbody>
                         </table>
