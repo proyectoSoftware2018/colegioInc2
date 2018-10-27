@@ -278,10 +278,15 @@ prom,
 0);
 END$$
 
+
 DELIMITER $$
-CREATE  PROCEDURE EditarNota (
-IN alu VARCHAR(200), 
-IN profe VARCHAR(200), 
+CREATE PROCEDURE EditarNota (
+IN alu VARCHAR(20), 
+IN profe VARCHAR(20),
+IN cur varchar(20),
+IN gra varchar(80) ,
+IN sec varchar(10), 
+IN bim varchar(10),
 IN nor int(11),
 IN npra int(11),
 IN ntra int(11),
@@ -289,10 +294,9 @@ IN ncua int(11),
 IN bi int(11),
 IN pro double,
 IN prom double
-)  BEGIN
-
-UPDATE nota
-SET   
+) BEGIN
+update nota
+set 
 noral=nor, 
 nprac=npra, 
 ntrab=ntra,
@@ -300,7 +304,7 @@ ncuad=ncua,
 exbi=bi,
 proce=pro,
 prome=prom
-WHERE usuarioA = usu ;
+where usuarioA=alu and usuarioP=profe and cursod=cur and gradon=gra and seccionn=sec and bimestre=bim;
 END$$
 
 DELIMITER $$

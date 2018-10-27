@@ -60,6 +60,36 @@ public class Nota {
 
        
     }
+    
+    public boolean editar() {
+        
+        try {
+            ps = conn.getConnection().prepareCall("call EditarNota(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, alumno);
+            ps.setString(2, profesor);
+            ps.setString(3, cur);
+            ps.setString(4, gra);
+            ps.setString(5, sec);
+            ps.setString(6, bime);
+            ps.setInt(7, noral);
+            ps.setInt(8, nprac);
+            ps.setInt(9, ntrab);
+            ps.setInt(10, ncuad);
+            ps.setInt(11, exabi);
+            ps.setDouble(12, proce);
+            ps.setDouble(13, promedio);
+            
+            ps.executeUpdate();
+            return true;
+           
+        } catch (Exception e) {
+            System.out.println("el error es "+e);
+             return false;
+             
+        }
+
+       
+    }
 
     public String getBime() {
         return bime;

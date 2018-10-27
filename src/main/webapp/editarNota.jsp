@@ -66,7 +66,7 @@
             </div>
 
             <div class="col-12" style="height: 100%">
-                <form action="controladornota.do" method="post">
+                <form action="controladoreditarnota.do" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6 col-lg-6">
                             <label for="inputState">Periodo Escolar:</label>
@@ -122,9 +122,7 @@
                                 <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="cua<%out.print(i);%>" type="number" ng-model="d<%out.print(i);%>" ng-init="d<%out.print(i);%> = <%out.print(lista.get(i).getNcuad());%>" value="<%out.print(lista.get(i).getNcuad());%>"/></td>
                                 <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="pro<%out.print(i);%>" type="number" value="{{(((a<%out.print(i);%>) + (b<%out.print(i);%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)}}"/></td>
                                 <td><input class="alert alert-secondary" min="0" max="20" class="text-center" name="bi<%out.print(i);%>" type="number"  ng-model="bi<%out.print(i);%>" ng-init="bi<%out.print(i);%> = <%out.print(lista.get(i).getExabi());%>" value="<%out.print(lista.get(i).getExabi());%>"/></td>
-                                <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="p<%out.print(i);%>" type="number" value="{{(((((a<%out.print(i)
-                            ;%>) + (b<%out.print(i)
-                            ;%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)) + bi<%out.print(i);%>) / 2}}" ng-init="0"/></td>
+                                <td><input class="alert alert-danger" min="0" max="20" readonly="readonly" class="text-center" name="p<%out.print(i);%>" type="number" value="{{(((((a<%out.print(i);%>) + (b<%out.print(i);%>) + (c<%out.print(i);%>) + (d<%out.print(i);%>)) / 4)) + bi<%out.print(i);%>) / 2}}" ng-init="0"/></td>
                                     <%
                                             out.print("</tr>");
                                         }

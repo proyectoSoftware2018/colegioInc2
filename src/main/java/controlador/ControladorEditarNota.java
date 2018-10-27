@@ -6,6 +6,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,9 +21,9 @@ import modelo.Nota;
 
 /**
  *
- * @author alumno
+ * @author KandL
  */
-public class ControladorNota extends HttpServlet {
+public class ControladorEditarNota extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +37,7 @@ public class ControladorNota extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+       
         
         ListaAlumnos li = new ListaAlumnos();
         LinkedList<Alumno> ve = li.select();
@@ -86,8 +87,8 @@ public class ControladorNota extends HttpServlet {
                 
                   Nota not = new Nota(alu[i], profe,curso,grado,secc,bimestre,Integer.parseInt(oral[i]), Integer.parseInt(prac[i]), Integer.parseInt(trab[i]), Integer.parseInt(cuad[i]), Integer.parseInt(bime[i]),(double) Math.round(Double.parseDouble(proc[i])),(double) Math.round(Double.parseDouble(prome[i])));
                   
-                  if(not.insert()==false){
-                  String error = "Las notas ya han sido registradas no se puede volver a registrar";
+                  if(not.editar()==false){
+                  String error = "Las notas no se pudieron modificar";
                   request.getSession().setAttribute("error", error);   
                   }else{
                   si = true;

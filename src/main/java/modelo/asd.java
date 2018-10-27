@@ -7,16 +7,10 @@ import java.util.List;
 
 public class asd {
     public static void main(String[] args) {
-        List<String> ordenado = new LinkedList<String>();
-         
-ordenado.add("A");
-ordenado.add("D");
-ordenado.add("B");
-ordenado.add("B");
-         
-Collections.sort(ordenado);
-         
-System.out.println(ordenado.get(1));
+
+float a= (float) 3.75; 
+int b = Math.round(a);
+System.out.println("ad "+b);
     }
    
 }

@@ -173,6 +173,14 @@
         <servlet-name>editarNota</servlet-name>
         <servlet-class>controlador.editarNota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorEditarNota</servlet-name>
+        <servlet-class>controlador.ControladorEditarNota</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarNota</servlet-name>
+        <servlet-class>controlador.EliminarNota</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -328,6 +336,14 @@
     <servlet-mapping>
         <servlet-name>editarNota</servlet-name>
         <url-pattern>/editarnota.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEditarNota</servlet-name>
+        <url-pattern>/controladoreditarnota.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarNota</servlet-name>
+        <url-pattern>/eliminarnota.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

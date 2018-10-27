@@ -91,12 +91,13 @@ public class ListaNotas {
     }
     
      public LinkedList<Nota> reporteNotaAlumnoBimestre(String gra, String sec,String curso,String bime,String pro){
-        LinkedList<Nota> lis = new LinkedList<>();
+        LinkedList<Nota> lis = new LinkedList<Nota>();
         for(int i =0; i<tama();i++){
          if(lista.get(i).getGra().equalsIgnoreCase(gra) && lista.get(i).getSec().equalsIgnoreCase(sec) 
                  && lista.get(i).getCur().equals(curso) && lista.get(i).getBime().equalsIgnoreCase(bime)
                  && lista.get(i).getProfesor().equals(pro)){
-           lis.add(lista.get(i));
+             Nota n = new Nota(lista.get(i).getAlumno(), lista.get(i).getProfesor(), lista.get(i).getCur(),lista.get(i).getGra(), lista.get(i).getSec(), lista.get(i).getBime(), lista.get(i).getNoral(), lista.get(i).getNtrab(), lista.get(i).getNtrab(), lista.get(i).getNcuad(), lista.get(i).getExabi(), (double)lista.get(i).getProce(), (double)lista.get(i).getPromedio());
+             lis.add(n);
         }   
         }
         

@@ -119,7 +119,7 @@
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNtrab());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNcuad());%></td>
-                                    <td style="text-align: center;"><%out.print(lis.get(i).getProce());%></td>
+                                    <td style="text-align: center;"><%out.print((double)lis.get(i).getProce());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getExabi());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
@@ -138,7 +138,7 @@
                             </form>    
                                     </td>
                                     <td style="text-align: left;">
-                                    <form>
+                                        <form action="eliminarnota.do">
                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
                             </form>     
                                     </td>
@@ -214,7 +214,7 @@
                             </form>    
                                     </td>
                                     <td style="text-align: left;">
-                                    <form>
+                                     <form action="eliminarnota.do">
                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
                             </form>     
                                     </td>
@@ -290,7 +290,7 @@
                             </form>    
                                     </td>
                                     <td style="text-align: left;">
-                                    <form>
+                                     <form action="eliminarnota.do">
                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
                             </form>     
                                     </td>
@@ -367,7 +367,7 @@
                             </form>    
                                     </td>
                                     <td style="text-align: left;">
-                                    <form>
+                                     <form action="eliminarnota.do">
                              <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
                             </form>     
                                     </td>
