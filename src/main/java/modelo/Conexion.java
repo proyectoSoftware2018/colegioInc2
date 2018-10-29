@@ -13,7 +13,7 @@ public class Conexion {
   
    //conexion localhost
     //estan son atributos necesarios para la conexion
-    
+    /*
     //primero el controlador de mysql
     public static final String driver="com.mysql.jdbc.Driver";
     //aqui esta el usuario de la Base de Datos
@@ -22,14 +22,14 @@ public class Conexion {
     public static final String pass="12345678";
     //finalmente la ruta de la Base de datos como es localhost, con el puerto y el nombre de la BDD
     public static final String url = "jdbc:mysql://localhost:3306/colegio";
-  
-  /*    
+  */ 
+      
    //conexion openshift
     public static final String driver="com.mysql.jdbc.Driver";
     public static final String user="root";
     public static final String pass="root";
     public static final String url = "jdbc:mysql://mysql:3306/colegio";
-  */  
+   
    //este es el contructor de la clase
     public Conexion() {
         //inicializamos la variable de Connection con null
