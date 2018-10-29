@@ -12,6 +12,7 @@
     response.addHeader("Cache-control", "no-cache");
     response.addHeader("Cache-control", "no-store");
     response.setDateHeader("Expires", 0);
+    //este login es solo un formulario como de java
 %>
 
 
@@ -33,6 +34,12 @@
                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 col-xs-4 col-sm-4">
 
                         <form action="controladorlogin.do" method="post">
+                            <!-- 
+                            ya como te decial jajaj aqui es un formulario normal que tiene cajas de texto
+                            como java textField pero aqui se llama input
+                            y tambien comboBox pero aqui se llama select
+                            esos son los item y esos son los values
+                            -->
                             <div class="form-group">
                                 <label for="codigo">Usuario:</label>
                                 <input type="text" class="form-control" id="codigo" name="txtCodigo" aria-describedby="emailHelp" placeholder="Usuario">
@@ -45,13 +52,17 @@
                             <div class="form-group">
                                 <label for="tipo">Tipo Usuario:</label>
                                 <select name="tipo" id="tipo" class="form-control" >
+                                    
                                     <option value="1">Administrador</option>
                                     <option value="2">Profesor</option>
                                     <option value="3">Padre</option>
                                 </select>
                                 <br>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-responsive ">Ingresar</button>
+                                    <!-- con este boton envio esa informacion de este formulario al servlet
+                                    que es como una clase java pero que te permite recibir estos datos observa
+                                    -->
+                                   <button type="submit" class="btn btn-primary btn-responsive ">Ingresar</button>
                                 </div>
                             </div>
                         </form>

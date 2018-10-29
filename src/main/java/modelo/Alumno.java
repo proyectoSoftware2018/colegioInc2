@@ -3,14 +3,25 @@ package modelo;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+//la clase alumno es la clase principal aqui se ponen los atributos que tiene el alumno y los metodos
+//cada clase general como alumno, nota , curso tiene 3 metodos importantes muy aparte de los 
+//get y set
 public class Alumno {
+    //atributos principales de la clase alumno junto con informacion del padre
+    // lo que tiene h al final como nombreh es del hijo y lo que tiene p como
+    // nombrep es del padre
     public String grado,sexoh,nombreh,apellidoh,deparh,distritoh,dnih,direccionh,obserh,usuario,contra;
     public String estado,sexop,nombrep,apellidop,dnip,seccion;
     public int edadh,telefonoh;
+    //estos son 2 atributos importantes de la conexion para la base de datos
+    //aqui esta Conexion que es de la clase que creamos Conexion
     private Conexion conn;
+    //este es una varible de la clase PreparedStament
+    //esta clase esta en la libreria java.SQL 
     private PreparedStatement ps;
 
+    
+    //aqui esta el constructor de alumno
     public Alumno(String grado,String seccion, String sexoh, String nombreh, String apellidoh, String deparh, String distritoh, String dnih, String direccionh, String obserh, String usuario, String contra, String estado, String sexop, String nombrep, String apellidop, String dnip, int edadh, int telefonoh) {
         this.grado = grado;
         this.sexoh = sexoh;
@@ -31,21 +42,55 @@ public class Alumno {
         this.seccion = seccion;
         this.edadh = edadh;
         this.telefonoh = telefonoh;
+        //aqui se crea la instancia de conexion en el constructor de alumno
         conn = new Conexion();
+        //tambien se pone desde el inicio al ps como null asi se inicializa 
         ps = null;
     }
 
+    //este es otro constructor de la clase alumno y lo e utilizado mas que todo para poder
+    //usar la eliminacion del alumno ya que no se podia
+    //aqui al igual la conexion se instancia y el ps en null
+    //una clase puede tener varios contructores pero con la codicion de que no tenga la misma cantidad de parametros mira
     public Alumno(String usuario) {
         this.usuario = usuario;
         conn = new Conexion();
         ps = null;
     }
     
+    //primero cuando se logea 
 
-
+    //ya ahora si lo fuerte men atento 
+    //si entiendes esto entiendes todo el proyecto
      public boolean insert() {
+         //primero creamos el metodo insert que te retorne una varible boolean osea un true o un false
+         //siempre cuando se trata de alguna conexion como puede ver errores te pide
+         //que este dentro de un try y catch 
         try {
+            //primero a la varible ps de la clase PreparedStament la llenamos con 
+            //el metodo de conexion llamado prepareCall
+            //en la clase Connection de MYSQL tiene un metodo llamado prepareCall
+            //esto sirve para llamar a procedimientos almacenados de la base de datos 
+            //esto te devuelve un preparedStament 
+            //para eso sirve el ps permite recibir declaraciones preparadas de mysql
+            //primero conn es nuestra varible de nuestra clase Conexion
+            //en nuestra clase ay un metodo que se llama getConnection
+            //ese metodo te retorna la varible conn ahora dentro de esa variable 
+            //que no te olvides que viene de una clase de la libreria MYSQL llamada Connection
+            //la en esa clase que te mostre que no debi abrir tiene un metodo llamado prepareCall
+            //este metodo te retorna un tipo de varible llamado PreparedStament
+            //pero ese metodo prepareCall tiene la particularidad de poder ejecutar codigo sql
+            //de procedimeintos almacenados osea que en ese momento lo estoy llamando a ese metodo
+            //le estoy diciendo que ese es el procedimento que voy a ejecutar pero todavia no
+            //lo ejecuto solo lo llamo al procedimeinto
+            //luego de llamarlo nada mas si tiene parametros ese prodimento se pone la cantidad
+            //de parametros con signo de ?
+            //aqui esta este procedmiento
             ps = conn.getConnection().prepareCall("call InsertarAlumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            //ya ahora para llenar de informacion en cada paramaetro de ese procedimiento
+            //utilizamos el metodo de ps llamado set(aqui se ppone el tipo de dato) hay
+            //de todo tipo setString setInt setDouble asi
+            //ahora esto debe hacerse segun el orden del procedmiento almacenado
             ps.setString(1, usuario);
             ps.setString(2, nombreh);
             ps.setString(3, apellidoh);
@@ -65,24 +110,35 @@ public class Alumno {
             ps.setString(17, sexop);
             ps.setInt(18, telefonoh);
             ps.setString(19, contra);
+            //despues de que ya lo llenaste todo segun el orden del procedimiento
+            //ahora si lo ejecutamos porfin
+            //con el metodo de ps.executeUpdate();
+            //esto como puedes ver te retorna un int y lo almaceno el filas
             int filas = ps.executeUpdate();
-
+            //ahora pregunto si filas mayor a 0 quiere decir que inserto una fila
             if (filas > 0) {
                 System.out.print("inserto");
             } else {
+                //si no no ps
                 System.out.print("nooo");
             }
+            //y por fin retorna true
             return true;
         } catch (Exception e) {
+            //si hay alguna problema o excepcion retorna false
             System.out.println("error");
             return false;
         }
+        //luego ya esto la verdad no se muy bien jajaj me lo enseño mi profe despues
+        //pero con finally es lo que se hace finalmente osea al final de todo
         finally {
-
+            //aqui pregunto si ps ya no es null entonces lo cierro
             try {
                 if (ps != null) {
                     ps.close();
                 }
+                //si conn ya no es null lo desconceto o cierro
+                //como te dije solamente se cierra por buenas constumbre
                 if (conn != null) {
                     conn.desconectar();
                 }
@@ -94,6 +150,7 @@ public class Alumno {
         }
     }
      
+     //este editar es igualito lo unico es que llama al procediminto editarAlumno
     public boolean editar() {
         try {
             ps = conn.getConnection().prepareCall("call EditarAlumno(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -145,6 +202,7 @@ public class Alumno {
         }
     }
     
+    //igualito al anterior con la diferencia que llamo a eliminarAlumno jaja 
     public boolean eliminar() {
         try {
             ps = conn.getConnection().prepareCall("call EliminarAlumno(?)");
@@ -332,7 +390,7 @@ public class Alumno {
         this.seccion = seccion;
     }
 
-    
+    // estos son los metodos get y set
     
     
     

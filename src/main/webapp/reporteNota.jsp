@@ -36,14 +36,23 @@
     String gra = (String) request.getSession().getAttribute("gra");
     String cur = (String) request.getSession().getAttribute("cur");
     String sec = (String) request.getSession().getAttribute("sec");
-    String pro = (String) request.getSession().getAttribute("pro");
-    
+    if(lis.size()==0){
+     String error = "No Se han registrado las notas de esta aula";
+            request.getSession().setAttribute("error", error);
+            request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
+    }
+    String pro="";
+    for(int i = 0; i<lis.size(); i++){
+         pro = lis.get(i).getProfesor();
+    }
     ListaCursos li1 = new ListaCursos();
     LinkedList<Curso> a = li1.select();
     ListaProfesores li2 = new ListaProfesores();
     LinkedList<Profesor> b = li2.select();
     ListaAlumnos li3 = new ListaAlumnos();
     LinkedList<Alumno> c = li3.select();
+    
+    
 %>
 <html>
 

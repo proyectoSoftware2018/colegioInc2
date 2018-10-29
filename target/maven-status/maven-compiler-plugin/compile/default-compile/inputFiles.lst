@@ -14,6 +14,7 @@ C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\Controlado
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\Alumno.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\ControladorLogin.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\Nota.java
+C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\Buscador.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\EliminarCurso.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\Literal.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\Usuario.java
@@ -24,9 +25,11 @@ C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\Controlado
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\ListaProfesores.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\repoNota.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\ListaCursos.java
+C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\ControladorBoleta.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\EliminarNota.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\ControladorEditarGrado.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\modelo\ListaGrados.java
+C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\reporteNotaAd.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\ControladorEditarAula.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\editarAlumno.java
 C:\Users\KandL\Documents\GitHub\colegioInc2\src\main\java\controlador\EliminarSeccion.java

@@ -39,7 +39,7 @@
     if(lis.size()==0){
      String error = "No Se han registrado las notas de esta aula";
             request.getSession().setAttribute("error", error);
-            request.getRequestDispatcher("errorProfe.jsp").forward(request, response);   
+            request.getRequestDispatcher("errorAdmi.jsp").forward(request, response);   
     }
     String pro="";
     for(int i = 0; i<lis.size(); i++){
@@ -64,7 +64,7 @@
 
 
         <%@include  file="WEB-INF/jspf/cabecera.jspf" %>      
-        <%@include  file="WEB-INF/jspf/navProfesor.jspf" %>    
+        <%@include  file="WEB-INF/jspf/navAdministrador.jspf" %>    
         <div class="container-fluid">
             <section>
                 <div class="form-row">
@@ -72,7 +72,7 @@
                         <label for="inputState">Profesor:</label>
                                 
 
-                        <input class="form-control text-center" readonly="readonly"  value=" <%out.print(po.buscar(pro).getNombre() + " " + po.buscar(pro).getApellido());%>" name="grado"/>
+                        <input class="form-control text-center" readonly="readonly"  value=" <%out.print(li2.buscar(pro).getNombre() + " " + li2.buscar(pro).getApellido());%>" name="grado"/>
                     </div>
                     <div class="form-group col-md-6 col-lg-6">
                         <label for="inputState">Area/Asignatura:</label>
@@ -121,8 +121,14 @@
                                      if(lis.get(i).getBime().equals("I")){
                                 %>
                                 <tr>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: left;" colspan="2">
+                                        <form action="controladorboleta.do" method="post">
+                                            <input style="width: 1px; height: 1px;" name="alumno" value="<%out.print(lis.get(i).getAlumno());%>">
+                                            <input style="width: 1px; height: 1px; visibility: hidden;" name="bime" value="I">
+                                            <button type="submit" class="btn btn-link text-dark"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh()+" "+li3.buscar(lis.get(i).getAlumno()).getNombreh());%></button>
+                                        </form>
+                                        
+                                    </td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
@@ -133,29 +139,7 @@
                                     <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
-                                <tr>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th>
-                                    <td style="text-align: right;">
-                                    <form action="editarnota.do" method="post">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("I");%>">
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>    
-                                    </td>
-                                    <td style="text-align: left;">
-                                        <form action="eliminarnota.do">
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>     
-                                    </td>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th> 
-                                    
-                                </tr>
-
+                        
                             </tbody>
                         </table>
                     </div>
@@ -197,8 +181,14 @@
                                      if(lis.get(i).getBime().equals("II")){
                                 %>
                                 <tr>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: left;" colspan="2">
+                                        <form action="controladorboleta.do" method="post">
+                                            <input style="width: 1px; height: 1px;" name="alumno" value="<%out.print(lis.get(i).getAlumno());%>">
+                                            <input style="width: 1px; height: 1px; visibility: hidden;" name="bime" value="II">
+                                            <button type="submit" class="btn btn-link text-dark"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh()+" "+li3.buscar(lis.get(i).getAlumno()).getNombreh());%></button>
+                                        </form>
+                                        
+                                    </td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
@@ -209,29 +199,7 @@
                                     <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
-                                <tr>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th>
-                                    <td style="text-align: right;">
-                                    <form action="editarnota.do" method="post">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("II");%>">
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>    
-                                    </td>
-                                    <td style="text-align: left;">
-                                     <form action="eliminarnota.do">
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>     
-                                    </td>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th> 
-                                    
-                                </tr>
-
+                               
                             </tbody>
                         </table>
                     </div>
@@ -273,8 +241,14 @@
                                      if(lis.get(i).getBime().equals("III")){
                                 %>
                                 <tr>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: left;" colspan="2">
+                                        <form action="controladorboleta.do" method="post">
+                                            <input style="width: 1px; height: 1px;" name="alumno" value="<%out.print(lis.get(i).getAlumno());%>">
+                                            <input style="width: 1px; height: 1px; visibility: hidden;" name="bime" value="III">
+                                            <button type="submit" class="btn btn-link text-dark"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh()+" "+li3.buscar(lis.get(i).getAlumno()).getNombreh());%></button>
+                                        </form>
+                                        
+                                    </td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
@@ -285,29 +259,7 @@
                                     <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
-                                <tr>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th>
-                                    <td style="text-align: right;">
-                                    <form action="editarnota.do" method="post">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("III");%>">
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>    
-                                    </td>
-                                    <td style="text-align: left;">
-                                     <form action="eliminarnota.do">
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>     
-                                    </td>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th> 
-                                    
-                                </tr>
-
+                       
                             </tbody>
                         </table>
                     </div>
@@ -350,8 +302,14 @@
                                      if(lis.get(i).getBime().equals("IV")){
                                 %>
                                 <tr>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh());%></td>
-                                    <td style="text-align: center;"><%out.print(li3.buscar(lis.get(i).getAlumno()).getNombreh());%></td>
+                                    <td style="text-align: left;" colspan="2">
+                                        <form action="controladorboleta.do" method="post">
+                                            <input style="width: 1px; height: 1px;" name="alumno" value="<%out.print(lis.get(i).getAlumno());%>">
+                                            <input style="width: 1px; height: 1px; visibility: hidden;" name="bime" value="IV">
+                                            <button type="submit" class="btn btn-link text-dark"><%out.print(li3.buscar(lis.get(i).getAlumno()).getApellidoh()+" "+li3.buscar(lis.get(i).getAlumno()).getNombreh());%></button>
+                                        </form>
+                                        
+                                    </td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getBime());%> &nbsp; Bimestre</td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNoral());%></td>
                                     <td style="text-align: center;"><%out.print(lis.get(i).getNprac());%></td>
@@ -362,29 +320,7 @@
                                     <td style="text-align: center;"><%out.print(lis.get(i).getPromedio());%></td>
                                 </tr>
                                 <%}}%>
-                                <tr>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th>
-                                    <td style="text-align: right;">
-                                    <form action="editarnota.do" method="post">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="grado" value="<%out.print(gra);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="seccion" value="<%out.print(sec);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="curso" value="<%out.print(cur);%>">   
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="profe" value="<%out.print(pro);%>">
-                            <input style="visibility: hidden; height: 1px; width: 1px;" name="bime" value="<%out.print("IV");%>">
-                             <button type="submit" class="btn  btn-success"><i class="fas fa-edit">&nbsp; Editar</i></button>   
-                            </form>    
-                                    </td>
-                                    <td style="text-align: left;">
-                                     <form action="eliminarnota.do">
-                             <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt">&nbsp; Eliminar</i></button>   
-                            </form>     
-                                    </td>
-                                    <th colspan="2"></th>
-                                    <th colspan="2"></th> 
-                                    
-                                </tr>
-
+                              
                             </tbody>
                         </table>
                     </div>
@@ -397,7 +333,7 @@
             </section>
         </div>
         <div class="py-3" style="text-align: center;">
-            <a href="profesor.jsp" class="btn btn-primary">ir al panel de control</a>
+            <a href="administrador.jsp" class="btn btn-primary">ir al panel de control</a>
         </div>
 
         <%@include file="WEB-INF/jspf/footer.jspf" %> 

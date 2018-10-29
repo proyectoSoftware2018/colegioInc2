@@ -181,6 +181,18 @@
         <servlet-name>EliminarNota</servlet-name>
         <servlet-class>controlador.EliminarNota</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Buscador</servlet-name>
+        <servlet-class>controlador.Buscador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>reporteNotaAd</servlet-name>
+        <servlet-class>controlador.reporteNotaAd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorBoleta</servlet-name>
+        <servlet-class>controlador.ControladorBoleta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/controladorlogin.do</url-pattern>
@@ -344,6 +356,18 @@
     <servlet-mapping>
         <servlet-name>EliminarNota</servlet-name>
         <url-pattern>/eliminarnota.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Buscador</servlet-name>
+        <url-pattern>/buscador.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reporteNotaAd</servlet-name>
+        <url-pattern>/reportenotaad.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorBoleta</servlet-name>
+        <url-pattern>/controladorboleta.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

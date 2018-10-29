@@ -32,18 +32,24 @@ public class ControladorLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
               response.setContentType("text/html;charset=UTF-8");
-       
+       //antes de que entre a administrador como vez primero pasa por aca
+              //aqui recibo todos los valores de los input y del selected como si fuera mi getText()
         String codigo = request.getParameter("txtCodigo");
         String contra = request.getParameter("txtContra");
         String tipo = request.getParameter("tipo");
-        
+        //valido que no esten vacios si alguno de ellos esta vacio voto error
          if(codigo.equals("") || contra.equals("") || tipo.equals("")){
           String error = "Debera de completar todos los campos";
           request.getSession().setAttribute("error", error);
           request.getRequestDispatcher("errorLogin.jsp").forward(request, response);
+          //sino 
       }else{
+          //paseamos el tipo si es 1 es administrador, profesor, padre
          int ti=Integer.parseInt(tipo);
+         //ya mira primero despues de parsear a entero creo una instancia de la clase Usuario
          Usuario usuario = new Usuario(codigo, contra, ti);
+         //luego esa es la clase pero para valida lo hago con daoUsuario
+         //es para validar observa
          DAOusuario da = new DAOusuario(usuario);
          
          if(da.validar()==false){
@@ -51,6 +57,7 @@ public class ControladorLogin extends HttpServlet {
           request.getSession().setAttribute("error", error);
           request.getRequestDispatcher("errorLogin.jsp").forward(request, response);  
           }else{
+          //aqui por tipo de usuario lo envio a diferentes cosas
           switch(usuario.getTipo()){
               case 1:
                  request.getSession().setAttribute("usuario", usuario.getCodigo());    

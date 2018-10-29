@@ -515,6 +515,10 @@ select * from asignacion
 where estado=0;
 END$$
 
-
+DELIMITER $$
+CREATE  PROCEDURE Observacion (IN palabra varchar(90))  BEGIN
+select * from alumno
+where usuario like concat('%',palabra,'%') or nombreh like concat('%',palabra,'%') or apellidoh like concat('%',palabra,'%');
+END$$
 
 

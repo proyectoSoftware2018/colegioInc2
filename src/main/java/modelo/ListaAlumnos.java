@@ -92,4 +92,60 @@ public class ListaAlumnos {
         
         return lis;
     }
+    
+    public LinkedList<Alumno> observacion(String palabra) {
+         LinkedList<Alumno> lis = new LinkedList<Alumno>();
+        try {
+            ps = conn.getConnection().prepareCall("call Observacion(?)");
+            ps.setString(1, palabra);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) //Esta es la forma correcta de recorrer los valores obtenidos de una consulta
+            {
+               String usuario = rs.getString(1);
+               String nomh =rs.getString(2);
+               String apeh =rs.getString(3);
+               String dnih =rs.getString(4);
+               String direh =rs.getString(5);
+               String grado =rs.getString(6);
+               String seccion = rs.getString(7);
+               String sexoh =rs.getString(8);
+               String depa =rs.getString(9);
+               String dis =rs.getString(10);
+               String obs =rs.getString(11);
+               int edad = rs.getInt(12);
+               String nomp =rs.getString(13);
+               String apep =rs.getString(14);
+               String dnip =rs.getString(15);
+               String estaCi =rs.getString(16);
+               String sexop =rs.getString(17);
+               int tel = rs.getInt(18);
+               String contra =rs.getString(19);
+               
+               Alumno a = new Alumno(grado, seccion,sexoh, nomh, apeh, depa, dis, dnih, direh, obs, usuario, contra, estaCi, sexop, nomp, apep, dnip,edad, tel);
+               lis.add(a);
+            }
+            return lis;
+        } catch (Exception e) {
+            System.out.println("error");
+            return null;
+        }
+        finally {
+
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    conn.desconectar();
+                }
+            } catch (SQLException ex) {
+                System.out.println("error");
+                
+            }
+
+        }
+    }
+    
+    
+    
 }
